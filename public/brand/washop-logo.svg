@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="230" viewBox="0 0 980 230" role="img" aria-label="WaShop.co.il">
+  <image href="washop-symbol.png" x="18" y="25" width="180" height="180"/>
+  <g direction="ltr" unicode-bidi="isolate" font-family="Arial Rounded MT Bold, Segoe UI, Arial, sans-serif" font-weight="900">
+    <text x="220" y="132" font-size="112" fill="#232326">Wa<tspan fill="#00bf36">Shop</tspan><tspan dx="8" font-size="64" fill="#2f2f32">.co.il</tspan></text>
+  </g>
+</svg>

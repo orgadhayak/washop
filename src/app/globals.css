@@ -41,3 +41,15 @@ html {
   unicode-bidi: isolate;
   white-space: nowrap;
 }
+
+.brand-wordmark {
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  font-family: "Arial Rounded MT Bold", "Segoe UI", Arial, sans-serif;
+}
+
+.brand-symbol {
+  flex: 0 0 auto;
+  object-fit: contain;
+}

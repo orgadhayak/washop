@@ -2,6 +2,11 @@ export const siteConfig = {
   name: "WaShop.co.il",
   shortName: "WaShop",
   domain: "https://washop.co.il",
+  brandLogo: "/brand/washop-logo.png",
+  brandIcon: "/brand/washop-icon.png",
+  brandSymbol: "/brand/washop-symbol.png",
+  appleTouchIcon: "/brand/apple-touch-icon.png",
+  ogImage: "/brand/washop-og.png",
   title: "WaShop.co.il | חנויות וואטסאפ בישראל",
   description:
     "כל חנויות הוואטסאפ הכי טובות בישראל במקום אחד. גלו חנויות עם קטלוג וואטסאפ לפי קטגוריות, שירות, איכות ונוחות — וקנו ישירות מהמוכר.",
