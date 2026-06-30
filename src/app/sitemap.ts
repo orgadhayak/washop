@@ -13,6 +13,7 @@ const staticRoutes = [
   "/blog",
   "/privacy",
   "/terms",
+  "/seller-rules",
   "/accessibility",
 ];
 

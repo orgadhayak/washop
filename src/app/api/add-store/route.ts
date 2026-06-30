@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { categories } from "@/data/categories";
 import { siteConfig } from "@/lib/site";
 import {
   extractPhoneFromWhatsappUrl,
@@ -15,15 +14,14 @@ type StoreSubmission = {
   catalogUrl?: string;
   email?: string;
   city?: string;
-  shipsNationwide?: boolean;
-  categories?: string[];
   description?: string;
-  fitReason?: string;
   optionalLink?: string;
+  legalConfirmed?: boolean;
   confirmEmail?: string;
 };
 
-const allowedCategories = new Set(categories.map((category) => category.slug));
+const successMessage =
+  "הבקשה נשלחה בהצלחה וממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם החנות תתאים לרמת האיכות והאמינות הנדרשת, ניצור איתכם קשר.";
 
 function asText(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -47,16 +45,12 @@ function validateSubmission(payload: StoreSubmission) {
   const email = asText(payload.email);
   const city = asText(payload.city);
   const description = asText(payload.description);
-  const fitReason = asText(payload.fitReason);
-  const selectedCategories = Array.isArray(payload.categories)
-    ? payload.categories.filter((category) => allowedCategories.has(category))
-    : [];
 
-  if (!storeName || !contactName || !phone || !catalogUrl || !email || !city) {
+  if (!phone || !catalogUrl || !description) {
     return { error: "יש למלא את כל שדות החובה." };
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: "כתובת האימייל אינה תקינה." };
   }
 
@@ -68,12 +62,11 @@ function validateSubmission(payload: StoreSubmission) {
     return { error: "קישור הקטלוג צריך להיות wa.me/c, wa.me או מספר טלפון." };
   }
 
-  if (!selectedCategories.length) {
-    return { error: "יש לבחור לפחות קטגוריה אחת." };
-  }
-
-  if (!description || !fitReason) {
-    return { error: "יש למלא תיאור קצר והסבר התאמה לוואשופ." };
+  if (!payload.legalConfirmed) {
+    return {
+      error:
+        "יש לאשר שהחנות עוסקת במוצרים או שירותים חוקיים בלבד ושקראתם את תנאי הפרסום.",
+    };
   }
 
   return {
@@ -84,31 +77,24 @@ function validateSubmission(payload: StoreSubmission) {
       catalogUrl: normalizeCatalogUrl(catalogUrl),
       email,
       city,
-      shipsNationwide: Boolean(payload.shipsNationwide),
-      categories: selectedCategories,
       description,
-      fitReason,
       optionalLink: asText(payload.optionalLink),
+      legalConfirmed: true,
     },
   };
 }
 
 function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>["data"]>) {
-  const categoryNames = data.categories
-    .map((slug) => categories.find((category) => category.slug === slug)?.name ?? slug)
-    .join(", ");
-
   const rows = [
-    ["שם החנות", data.storeName],
-    ["שם איש קשר", data.contactName],
+    ["שם החנות", data.storeName || "לא נמסר"],
+    ["שם איש קשר", data.contactName || "לא נמסר"],
     ["מספר וואטסאפ", data.phone],
     ["קישור לקטלוג וואטסאפ", data.catalogUrl],
-    ["אימייל", data.email],
-    ["עיר", data.city],
-    ["קטגוריות", categoryNames],
-    ["תיאור קצר", data.description],
-    ["למה החנות מתאימה לוואשופ", data.fitReason],
+    ["אימייל", data.email || "לא נמסר"],
+    ["עיר", data.city || "לא נמסרה"],
+    ["ספרו לנו על החנות ומה חשוב שנדע", data.description],
     ["קישור אופציונלי", data.optionalLink || "לא נמסר"],
+    ["אישור תנאי פרסום וחוקיות", data.legalConfirmed ? "כן" : "לא"],
   ];
 
   const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
@@ -189,8 +175,7 @@ export async function POST(request: NextRequest) {
 
   if (asText(payload.confirmEmail)) {
     return NextResponse.json({
-      message:
-        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
+      message: successMessage,
     });
   }
 
@@ -200,15 +185,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: validated.error }, { status: 400 });
   }
 
-  const subject = `[וואשופ] בקשת הצטרפות חדשה: ${validated.data.storeName}`;
+  const subject = `[WaShop] בקשת הצטרפות חדשה - ${
+    validated.data.storeName || validated.data.phone
+  }`;
   const body = createEmailBody(validated.data);
 
   try {
     await sendEmail(subject, body);
 
     return NextResponse.json({
-      message:
-        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
+      message: successMessage,
     });
   } catch (error) {
     return NextResponse.json(

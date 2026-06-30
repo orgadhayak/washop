@@ -30,6 +30,7 @@ export const mainNavigation = [
   { label: "חנויות", href: "/shops" },
   { label: "קטגוריות", href: "/#categories" },
   { label: "הוספת חנות", href: "/add-store" },
+  { label: "מי יכול לפרסם?", href: "/seller-rules" },
   { label: "בלוג", href: "/blog" },
   { label: "צור קשר", href: "/contact" },
 ];

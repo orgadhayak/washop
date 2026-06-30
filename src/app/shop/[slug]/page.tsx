@@ -62,6 +62,11 @@ export default async function ShopPage({ params }: ShopPageProps) {
     description: shop.description,
     url: absoluteUrl(`/shop/${shop.slug}`),
     telephone: shop.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: shop.city,
+      addressCountry: "IL",
+    },
     areaServed: "IL",
     sameAs: [shop.catalogUrl],
   };
@@ -177,6 +182,11 @@ export default async function ShopPage({ params }: ShopPageProps) {
                     דירוג וואשופ: {shop.washopRating.toFixed(1)}
                   </p>
                 </div>
+
+                <p className="mt-4 rounded-lg bg-white p-3 text-xs font-bold leading-6 text-zinc-600">
+                  חנויות שמופיעות בוואשופ נדרשות לתת יחס רציני והוגן ללקוחות
+                  שפונים דרך האתר.
+                </p>
 
                 <div className="mt-6 grid gap-3">
                   <a

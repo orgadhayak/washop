@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 export const metadata: Metadata = {
   title: "כל חנויות הוואטסאפ",
   description:
-    "גלו חנויות וואטסאפ בישראל לפי שם, קטגוריה ומוצרים.",
+    "גלו חנויות וואטסאפ בישראל לפי שם, עיר, קטגוריה ומוצרים.",
   alternates: {
     canonical: "/shops",
   },
@@ -27,6 +27,7 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
   const params = await searchParams;
   const initialQuery = readParam(params, "q");
   const initialCategory = readParam(params, "category");
+  const initialCity = readParam(params, "city");
 
   return (
     <div className="py-12 sm:py-16">
@@ -34,12 +35,13 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
         <SectionHeader
           eyebrow="ספריית חנויות"
           title="כל חנויות הוואטסאפ בישראל"
-          description="חפשו חנות, סננו לפי קטגוריה ומצאו עסקים ישראליים שמוכרים ישירות דרך קטלוג וואטסאפ או הודעות."
+          description="חפשו חנות, עיר או קטגוריה ומצאו עסקים ישראליים שמוכרים ישירות דרך קטלוג וואטסאפ או הודעות."
         />
         <div className="mt-10">
           <ShopsDirectory
             initialQuery={initialQuery}
             initialCategory={initialCategory}
+            initialCity={initialCity}
           />
         </div>
       </div>

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 const benefits = [
   { title: "קשר ישיר עם המוכר", icon: MessageCircle },
-  { title: "מחירים נוחים יותר", icon: Tags },
+  { title: "אפשרות למחיר הוגן", icon: Tags },
   { title: "בלי אתר מסובך", icon: Zap },
   { title: "שאלות ותשובות בזמן אמת", icon: Sparkles },
   { title: "קנייה דרך קטלוג מוכר ונוח", icon: ShoppingBag },
@@ -126,7 +126,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
           <form action="/shops" className="relative">
             <label className="sr-only" htmlFor="home-search">
-              חיפוש חנות, קטגוריה או מוצר
+              חיפוש חנות, קטגוריה, עיר או מוצר
             </label>
             <Search
               className="pointer-events-none absolute right-5 top-1/2 size-6 -translate-y-1/2 text-zinc-400"
@@ -135,7 +135,7 @@ export default function Home() {
             <input
               id="home-search"
               name="q"
-              placeholder="חפשו חנות, קטגוריה או מוצר"
+              placeholder="חפשו חנות, קטגוריה, עיר או מוצר"
               className="h-16 w-full rounded-full border border-emerald-200 bg-white pr-14 pl-32 text-lg font-bold text-zinc-950 shadow-lg shadow-emerald-950/5 outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100"
             />
             <button
@@ -181,7 +181,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="למה וואטסאפ"
             title="קנייה ישירה, מהירה ופשוטה יותר"
-            description="חנויות ווטסאפ וחנויות WhatsApp בישראל מאפשרות חוויית קנייה קרובה יותר למוכר ופחות תלויה במערכות מסובכות."
+            description="חנויות וואטסאפ בישראל מאפשרות חוויית קנייה קרובה יותר למוכר ופחות תלויה במערכות מסובכות."
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {benefits.map((benefit) => {
@@ -208,16 +208,24 @@ export default function Home() {
       <section className="bg-zinc-950 py-14 text-white sm:py-18">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <p className="text-sm font-black text-emerald-300">איכות לפני כמות</p>
+            <p className="text-sm font-black text-emerald-300">סטנדרט פרסום</p>
             <h2 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">
-              לא כל החנויות נכנסות לוואשופ
+              וואשופ לא מיועד לכל אחד
             </h2>
           </div>
-          <p className="text-lg leading-9 text-zinc-200">
-            אנחנו מאשרים ידנית חנויות שיש להן קטלוג ברור, פרטי קשר פעילים,
-            שירות רציני וחוויית קנייה מכובדת. המטרה היא לרכז חנויות וואטסאפ
-            טובות באמת, לא סתם רשימה.
-          </p>
+          <div>
+            <p className="text-lg leading-9 text-zinc-200">
+              אנחנו רוצים לרכז חנויות וואטסאפ איכותיות, חוקיות ורציניות בלבד.
+              כל חנות נבדקת ידנית לפני שהיא מופיעה באתר, כדי שהלקוחות יוכלו
+              למצוא עסקים אמיתיים, שירות טוב וקטלוגים שימושיים.
+            </p>
+            <Link
+              href="/seller-rules"
+              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-500 px-6 text-sm font-black text-zinc-950 transition hover:bg-emerald-400"
+            >
+              מי יכול לפרסם בוואשופ?
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -225,12 +233,10 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
           <div>
             <h2 className="text-3xl font-black leading-tight text-zinc-950 sm:text-4xl">
-              יש לכם חנות וואטסאפ איכותית?
+              יש לכם חנות וואטסאפ?
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-600">
-              אם אתם מוכרים דרך קטלוג וואטסאפ וחושבים שהחנות שלכם מתאימה
-              לוואשופ, שלחו לנו פרטים. נבדוק את הבקשה ונאשר חנויות שעומדות
-              ברמת האיכות הנדרשת.
+              שלחו קישור ומספר — ואנחנו נבדוק אם היא מתאימה.
             </p>
           </div>
           <Link

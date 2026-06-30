@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   BadgeCheck,
+  MapPin,
   MessageCircle,
   Star,
   Store,
@@ -31,6 +32,10 @@ export function ShopCard({ shop }: ShopCardProps) {
             </h3>
           </Link>
           <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
+            <span className="inline-flex items-center gap-1">
+              <MapPin className="size-3.5 text-emerald-600" aria-hidden="true" />
+              {shop.city}
+            </span>
             <span className="inline-flex items-center gap-1">
               <Store className="size-3.5" aria-hidden="true" />
               עסק נפרד עם קטלוג וואטסאפ משלו
@@ -101,6 +106,11 @@ export function ShopCard({ shop }: ShopCardProps) {
           נבדק ידנית על ידי וואשופ
         </p>
       ) : null}
+
+      <p className="mt-3 rounded-lg bg-zinc-50 p-3 text-xs font-bold leading-6 text-zinc-600">
+        פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי — המטרה היא שתקבלו
+        יחס רציני, שירות טוב ומחיר הוגן ככל האפשר.
+      </p>
 
       <div className="mt-5 grid gap-2 sm:grid-cols-2">
         <a

@@ -10,6 +10,7 @@ const footerLinks = [
   { label: "צור קשר", href: "/contact" },
   { label: "פרטיות", href: "/privacy" },
   { label: "תנאי שימוש", href: "/terms" },
+  { label: "מי יכול לפרסם?", href: "/seller-rules" },
   { label: "נגישות", href: "/accessibility" },
   { label: "בלוג", href: "/blog" },
 ];

@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
-import { categories } from "@/data/categories";
 
 type FormState = {
   storeName: string;
@@ -11,13 +11,14 @@ type FormState = {
   catalogUrl: string;
   email: string;
   city: string;
-  shipsNationwide: boolean;
-  categories: string[];
   description: string;
-  fitReason: string;
   optionalLink: string;
+  legalConfirmed: boolean;
   confirmEmail: string;
 };
+
+const successMessage =
+  "הבקשה נשלחה בהצלחה וממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם החנות תתאים לרמת האיכות והאמינות הנדרשת, ניצור איתכם קשר.";
 
 const initialState: FormState = {
   storeName: "",
@@ -26,11 +27,9 @@ const initialState: FormState = {
   catalogUrl: "",
   email: "",
   city: "",
-  shipsNationwide: false,
-  categories: [],
   description: "",
-  fitReason: "",
   optionalLink: "",
+  legalConfirmed: false,
   confirmEmail: "",
 };
 
@@ -43,15 +42,6 @@ export function SubmitStoreForm() {
 
   function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
-  }
-
-  function toggleCategory(slug: string) {
-    setForm((current) => ({
-      ...current,
-      categories: current.categories.includes(slug)
-        ? current.categories.filter((item) => item !== slug)
-        : [...current.categories, slug],
-    }));
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -72,10 +62,7 @@ export function SubmitStoreForm() {
       }
 
       setStatus("success");
-      setMessage(
-        result.message ??
-          "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
-      );
+      setMessage(result.message ?? successMessage);
       setForm(initialState);
     } catch (error) {
       setStatus("error");
@@ -84,7 +71,10 @@ export function SubmitStoreForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 rounded-lg border border-emerald-950/10 bg-white p-5 shadow-sm sm:p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 rounded-lg border border-emerald-950/10 bg-white p-5 shadow-sm sm:p-6"
+    >
       <div className="hidden" aria-hidden="true">
         <label>
           אימייל לאימות
@@ -97,26 +87,12 @@ export function SubmitStoreForm() {
         </label>
       </div>
 
+      <div className="rounded-lg bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-900">
+        אין צורך לבחור קטגוריות. צוות וואשופ יעבור על החנות, יבין לאן היא
+        מתאימה וישייך אותה לקטגוריות הנכונות לאחר בדיקה.
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
-        <TextInput
-          label="שם החנות"
-          value={form.storeName}
-          onChange={(value) => updateField("storeName", value)}
-          required
-        />
-        <TextInput
-          label="שם איש קשר"
-          value={form.contactName}
-          onChange={(value) => updateField("contactName", value)}
-          required
-        />
-        <TextInput
-          label="מספר וואטסאפ"
-          value={form.phone}
-          onChange={(value) => updateField("phone", value)}
-          inputMode="tel"
-          required
-        />
         <TextInput
           label="קישור לקטלוג וואטסאפ"
           value={form.catalogUrl}
@@ -125,59 +101,66 @@ export function SubmitStoreForm() {
           required
         />
         <TextInput
-          label="אימייל"
-          value={form.email}
-          onChange={(value) => updateField("email", value)}
-          inputMode="email"
-          dir="ltr"
+          label="מספר וואטסאפ / טלפון"
+          value={form.phone}
+          onChange={(value) => updateField("phone", value)}
+          inputMode="tel"
           required
+        />
+        <TextInput
+          label="שם החנות"
+          value={form.storeName}
+          onChange={(value) => updateField("storeName", value)}
+        />
+        <TextInput
+          label="שם איש קשר"
+          value={form.contactName}
+          onChange={(value) => updateField("contactName", value)}
         />
         <TextInput
           label="עיר"
           value={form.city}
           onChange={(value) => updateField("city", value)}
-          required
+        />
+        <TextInput
+          label="אימייל"
+          value={form.email}
+          onChange={(value) => updateField("email", value)}
+          inputMode="email"
+          dir="ltr"
         />
       </div>
 
-      <fieldset className="space-y-3">
-        <legend className="text-sm font-black text-zinc-950">קטגוריות</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {categories.map((category) => (
-            <label
-              key={category.slug}
-              className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-sm font-bold text-zinc-800"
-            >
-              <input
-                type="checkbox"
-                checked={form.categories.includes(category.slug)}
-                onChange={() => toggleCategory(category.slug)}
-                className="size-4 accent-emerald-600"
-              />
-              {category.name}
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
       <TextArea
-        label="תיאור קצר"
+        label="ספרו לנו על החנות ומה חשוב שנדע"
         value={form.description}
         onChange={(value) => updateField("description", value)}
         required
       />
-      <TextArea
-        label="למה החנות מתאימה לוואשופ?"
-        value={form.fitReason}
-        onChange={(value) => updateField("fitReason", value)}
-        required
-      />
+
       <TextInput
-        label="קישור אופציונלי לאינסטגרם או אתר"
+        label="קישור נוסף אם יש: אינסטגרם / אתר / פייסבוק"
         value={form.optionalLink}
         onChange={(value) => updateField("optionalLink", value)}
         dir="ltr"
       />
+
+      <label className="flex items-start gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm font-bold leading-7 text-zinc-800">
+        <input
+          type="checkbox"
+          checked={form.legalConfirmed}
+          required
+          onChange={(event) => updateField("legalConfirmed", event.target.checked)}
+          className="mt-1 size-4 shrink-0 accent-emerald-600"
+        />
+        <span>
+          אני מאשר/ת שהחנות עוסקת במוצרים או שירותים חוקיים בלבד, ושקראתי את{" "}
+          <Link href="/seller-rules" className="text-emerald-700 underline">
+            תנאי הפרסום בוואשופ
+          </Link>
+          .
+        </span>
+      </label>
 
       {message ? (
         <div
@@ -257,7 +240,7 @@ function TextArea({ label, value, onChange, required }: TextAreaProps) {
         value={value}
         onChange={(event) => onChange(event.target.value)}
         required={required}
-        rows={4}
+        rows={6}
         className="mt-2 w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-zinc-950 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
       />
     </label>

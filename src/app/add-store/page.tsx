@@ -21,8 +21,9 @@ export default function AddStorePage() {
             הוספת חנות וואטסאפ לוואשופ
           </h1>
           <p className="mt-5 text-lg leading-9 text-zinc-600">
-            יש לכם קטלוג וואטסאפ פעיל? מלאו את הפרטים ונבדוק אם החנות מתאימה
-            להופיע בוואשופ.
+            יש לכם חנות וואטסאפ איכותית? שלחו לנו קישור לקטלוג, מספר וואטסאפ
+            וכמה מילים על העסק. צוות וואשופ יבדוק את החנות, יאמת שהיא מתאימה,
+            וישייך אותה לקטגוריות הנכונות באתר.
           </p>
 
           <div className="mt-6 space-y-3">
@@ -31,16 +32,16 @@ export default function AddStorePage() {
                 <AlertCircle className="size-4" aria-hidden="true" />
                 הערת אישור
               </div>
-              שליחת הטופס אינה מבטיחה פרסום באתר. כל חנות נבדקת ידנית לפי איכות
-              הקטלוג, אמינות, נראות, שירות והתאמה לקהל הישראלי.
+              שליחת הטופס אינה מבטיחה פרסום באתר. רק עסקים מתאימים, חוקיים
+              ורציניים יאושרו לאחר בדיקה ידנית.
             </div>
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-7 text-emerald-900">
               <div className="mb-2 flex items-center gap-2 font-black">
                 <BadgeCheck className="size-4" aria-hidden="true" />
                 מה אנחנו בודקים
               </div>
-              קטלוג ברור, פרטי קשר פעילים, שירות רציני, התאמה לישראל וחוויית
-              קנייה מכובדת.
+              התהליך פשוט: שולחים קישור לקטלוג, מספר וואטסאפ והסבר קצר. את
+              הקטגוריות צוות וואשופ יקבע לאחר הבדיקה.
             </div>
             <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm leading-7 text-zinc-700">
               <div className="mb-2 flex items-center gap-2 font-black text-zinc-950">

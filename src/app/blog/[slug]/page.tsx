@@ -73,7 +73,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             href="/add-store"
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-sm font-black text-white transition hover:bg-emerald-700"
           >
-            שליחת חנות לבדיקה
+            {post.articleCtaLabel ?? "שליחת חנות לבדיקה"}
           </Link>
         </div>
       </div>
