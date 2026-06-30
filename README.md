@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WaShop.co.il
 
-## Getting Started
+אתר Next.js בעברית מלאה לגילוי חנויות ישראליות שמוכרות דרך קטלוג וואטסאפ או הודעות וואטסאפ.
 
-First, run the development server:
+## הרצה מקומית
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+האתר יעלה בכתובת `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## בדיקות לפני פריסה
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## משתני סביבה
 
-To learn more about Next.js, take a look at the following resources:
+טופס הוספת חנות שולח מייל ל-`hello@navines.com`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+אפשרות 1, Resend:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+RESEND_API_KEY=
+RESEND_FROM_EMAIL="WaShop <hello@navines.com>"
+```
 
-## Deploy on Vercel
+אפשרות 2, SMTP:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM="WaShop <hello@navines.com>"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+אם לא מוגדר Resend או SMTP, הטופס יחזיר שגיאת שרת ברורה ולא יפיל את האתר.
+
+## הוספת חנות ידנית
+
+1. פותחים את `src/data/shops.ts`.
+2. מוסיפים אובייקט חדש למערך `shops`.
+3. משתמשים ב-slug ייחודי, `status: "approved"` רק אחרי בדיקה ידנית, ובמערך `categories` עם slugs מתוך `src/data/categories.ts`.
+4. אם לחנות יש קטלוג וואטסאפ, אפשר ליצור URL עם `createCatalogUrl("972...")`.
+
+## פריסה ב-Vercel
+
+1. מעלים את הריפו ל-GitHub.
+2. ב-Vercel יוצרים Project חדש מהריפו.
+3. מוודאים שפקודת הבילד היא `npm run build`.
+4. מגדירים את משתני הסביבה של Resend או SMTP.
+5. מחברים את הדומיין `washop.co.il`.
+
+## מבנה מרכזי
+
+- `src/app` - עמודי App Router ו-API route.
+- `src/components` - Header, Footer, כרטיסי חנות, טופס, חיפוש וסינון.
+- `src/data/categories.ts` - קטגוריות סטטיות.
+- `src/data/shops.ts` - חנויות סטטיות.
+- `src/lib/whatsapp.ts` - נרמול קישורי וואטסאפ ויצירת קישורי קטלוג/שיחה.
