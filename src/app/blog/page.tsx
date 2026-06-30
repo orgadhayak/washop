@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpLeft } from "lucide-react";
 import { blogPosts } from "@/data/blog";
-import { formatHebrewDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "בלוג",
@@ -27,9 +26,13 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
               className="group rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
             >
-              <p className="text-sm font-bold text-emerald-700">
-                {formatHebrewDate(post.publishedAt)} · {post.readTime}
-              </p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-bold text-emerald-700">
+                <span>{post.hebrewDate}</span>
+                <span aria-hidden="true">•</span>
+                <span>{post.gregorianDate}</span>
+                <span aria-hidden="true">•</span>
+                <span>{post.readTime}</span>
+              </div>
               <h2 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
                 {post.title}
               </h2>
@@ -37,7 +40,7 @@ export default function BlogPage() {
                 {post.excerpt}
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
-                קריאת המאמר
+                {post.ctaLabel}
                 <ArrowUpLeft className="size-4" aria-hidden="true" />
               </span>
             </Link>

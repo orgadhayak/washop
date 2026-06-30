@@ -74,7 +74,7 @@ export function SubmitStoreForm() {
       setStatus("success");
       setMessage(
         result.message ??
-          "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום ב-WaShop.",
+          "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
       );
       setForm(initialState);
     } catch (error) {
@@ -125,7 +125,7 @@ export function SubmitStoreForm() {
           required
         />
         <TextInput
-          label="Email"
+          label="אימייל"
           value={form.email}
           onChange={(value) => updateField("email", value)}
           inputMode="email"
@@ -177,7 +177,7 @@ export function SubmitStoreForm() {
         required
       />
       <TextArea
-        label="למה החנות מתאימה ל-WaShop?"
+        label="למה החנות מתאימה לוואשופ?"
         value={form.fitReason}
         onChange={(value) => updateField("fitReason", value)}
         required

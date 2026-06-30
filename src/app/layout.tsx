@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
     default: siteConfig.title,
-    template: "%s | WaShop.co.il",
+    template: "%s | washop.co.il",
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: siteConfig.favicon16, type: "image/png", sizes: "16x16" },
+      { url: siteConfig.favicon32, type: "image/png", sizes: "32x32" },
+      { url: siteConfig.brandIcon192, type: "image/png", sizes: "192x192" },
       { url: siteConfig.brandIcon, type: "image/png", sizes: "512x512" },
     ],
     shortcut: "/favicon.ico",
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - ${siteConfig.hebrewPositioning}`,
+        alt: `${siteConfig.name}, ${siteConfig.hebrewPositioning}`,
       },
     ],
   },

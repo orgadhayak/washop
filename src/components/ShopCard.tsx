@@ -71,7 +71,7 @@ export function ShopCard({ shop }: ShopCardProps) {
 
       {shop.status === "approved" ? (
         <p className="mt-4 text-xs font-bold text-emerald-700">
-          נבדק ידנית על ידי WaShop
+          נבדק ידנית על ידי וואשופ
         </p>
       ) : null}
 

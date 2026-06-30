@@ -6,7 +6,7 @@ import { createChatUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "צור קשר",
-  description: "צרו קשר עם WaShop דרך וואטסאפ או אימייל.",
+  description: "צרו קשר עם וואשופ דרך וואטסאפ או אימייל.",
   alternates: {
     canonical: "/contact",
   },
@@ -21,7 +21,7 @@ export default function ContactPage() {
           אנחנו כאן לשאלות, חנויות והצעות
         </h1>
         <p className="mt-5 text-lg leading-9 text-zinc-600">
-          אפשר לפנות אלינו לגבי חנות קיימת, הצטרפות ל-WaShop, תיקון פרטים או
+          אפשר לפנות אלינו לגבי חנות קיימת, הצטרפות לוואשופ, תיקון פרטים או
           שאלה כללית.
         </p>
 
@@ -37,7 +37,7 @@ export default function ContactPage() {
           >
             <MessageCircle className="size-8 text-emerald-600" aria-hidden="true" />
             <h2 className="mt-4 text-xl font-black text-zinc-950">
-              WhatsApp / שירות לקוחות
+              וואטסאפ / שירות לקוחות
             </h2>
             <p className="mt-2 text-lg font-bold text-emerald-700">
               {siteConfig.whatsappDisplayPhone}
@@ -48,9 +48,9 @@ export default function ContactPage() {
             className="rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
           >
             <Mail className="size-8 text-emerald-600" aria-hidden="true" />
-            <h2 className="mt-4 text-xl font-black text-zinc-950">Email</h2>
+            <h2 className="mt-4 text-xl font-black text-zinc-950">מייל</h2>
             <p className="mt-2 text-lg font-bold text-emerald-700">
-              {siteConfig.supportEmail}
+              שליחת מייל לוואשופ
             </p>
           </a>
         </div>

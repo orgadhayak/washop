@@ -21,7 +21,7 @@ export function Footer() {
         <div className="space-y-4">
           <Logo />
           <p className="max-w-md text-sm leading-7 text-zinc-600">
-            WaShop מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
+            וואשופ מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
             פעילים, פנייה ישירה למוכר וחוויית קנייה פשוטה.
           </p>
           <p className="text-xs leading-6 text-zinc-500">{siteConfig.disclaimer}</p>
@@ -62,7 +62,7 @@ export function Footer() {
               className="flex items-center gap-2 transition hover:text-emerald-700"
             >
               <Mail className="size-4" aria-hidden="true" />
-              {siteConfig.supportEmail}
+              שליחת מייל לוואשופ
             </a>
             <div className="flex flex-wrap gap-3 pt-2">
               {footerLinks.map((item) => (

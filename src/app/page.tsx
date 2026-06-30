@@ -19,10 +19,10 @@ import { ShopCard } from "@/components/ShopCard";
 import { blogPosts } from "@/data/blog";
 import { approvedShops, featuredShops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
-import { absoluteUrl, formatHebrewDate } from "@/lib/utils";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "WaShop.co.il | חנויות וואטסאפ בישראל",
+  title: "washop.co.il | חנויות וואטסאפ בישראל",
   description: siteConfig.description,
   alternates: {
     canonical: "/",
@@ -96,7 +96,7 @@ export default function Home() {
               כל חנויות הוואטסאפ הכי טובות בישראל
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
-              גלו חנויות ישראליות שמוכרות ישירות דרך קטלוג וואטסאפ — בלי אתר
+              גלו חנויות ישראליות שמוכרות ישירות דרך קטלוג וואטסאפ, בלי אתר
               מסובך, בלי עמלות מיותרות ועם קשר ישיר למוכר.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -212,13 +212,13 @@ export default function Home() {
           <div>
             <p className="text-sm font-black text-emerald-300">איכות לפני כמות</p>
             <h2 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">
-              לא כל חנות נכנסת ל-WaShop
+              לא כל החנויות נכנסות לוואשופ
             </h2>
           </div>
           <p className="text-lg leading-9 text-zinc-200">
             אנחנו מאשרים ידנית חנויות שיש להן קטלוג ברור, פרטי קשר פעילים,
             שירות רציני וחוויית קנייה מכובדת. המטרה היא לרכז חנויות וואטסאפ
-            טובות באמת — לא סתם רשימה.
+            טובות באמת, לא סתם רשימה.
           </p>
         </div>
       </section>
@@ -231,7 +231,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-600">
               אם אתם מוכרים דרך קטלוג וואטסאפ וחושבים שהחנות שלכם מתאימה
-              ל-WaShop, שלחו לנו פרטים. נבדוק את הבקשה ונאשר חנויות שעומדות
+              לוואשופ, שלחו לנו פרטים. נבדוק את הבקשה ונאשר חנויות שעומדות
               ברמת האיכות הנדרשת.
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function Home() {
                 className="group rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
               >
                 <p className="text-sm font-bold text-emerald-700">
-                  {formatHebrewDate(post.publishedAt)} · {post.readTime}
+                  {post.hebrewDate} • {post.gregorianDate} • {post.readTime}
                 </p>
                 <h3 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
                   {post.title}
@@ -264,6 +264,10 @@ export default function Home() {
                 <p className="mt-3 max-w-3xl text-base leading-7 text-zinc-600">
                   {post.excerpt}
                 </p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
+                  {post.ctaLabel}
+                  <ArrowUpLeft className="size-4" aria-hidden="true" />
+                </span>
               </Link>
             ))}
           </div>

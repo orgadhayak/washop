@@ -73,7 +73,7 @@ function validateSubmission(payload: StoreSubmission) {
   }
 
   if (!description || !fitReason) {
-    return { error: "יש למלא תיאור קצר והסבר התאמה ל-WaShop." };
+    return { error: "יש למלא תיאור קצר והסבר התאמה לוואשופ." };
   }
 
   return {
@@ -103,12 +103,12 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
     ["שם איש קשר", data.contactName],
     ["מספר וואטסאפ", data.phone],
     ["קישור לקטלוג וואטסאפ", data.catalogUrl],
-    ["Email", data.email],
+    ["אימייל", data.email],
     ["עיר", data.city],
     ["משלוחים לכל הארץ", data.shipsNationwide ? "כן" : "לא"],
     ["קטגוריות", categoryNames],
     ["תיאור קצר", data.description],
-    ["למה החנות מתאימה ל-WaShop", data.fitReason],
+    ["למה החנות מתאימה לוואשופ", data.fitReason],
     ["קישור אופציונלי", data.optionalLink || "לא נמסר"],
   ];
 
@@ -126,7 +126,7 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
 
   return {
     text,
-    html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>בקשת הצטרפות חדשה ל-WaShop</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
+    html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>בקשת הצטרפות חדשה לוואשופ</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
   };
 }
 
@@ -139,7 +139,7 @@ async function sendEmail(
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? `WaShop <${siteConfig.supportEmail}>`,
+      from: process.env.RESEND_FROM_EMAIL ?? `washop.co.il <${siteConfig.supportEmail}>`,
       to: siteConfig.supportEmail,
       subject,
       text: body.text,
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
   if (asText(payload.confirmEmail)) {
     return NextResponse.json({
       message:
-        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום ב-WaShop.",
+        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
     });
   }
 
@@ -201,7 +201,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: validated.error }, { status: 400 });
   }
 
-  const subject = `[WaShop] בקשת הצטרפות חדשה - ${validated.data.storeName}`;
+  const subject = `[וואשופ] בקשת הצטרפות חדשה: ${validated.data.storeName}`;
   const body = createEmailBody(validated.data);
 
   try {
@@ -209,7 +209,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       message:
-        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום ב-WaShop.",
+        "הבקשה התקבלה. תודה! נבדוק את החנות ונחזור אליכם אם היא מתאימה לפרסום בוואשופ.",
     });
   } catch (error) {
     return NextResponse.json(

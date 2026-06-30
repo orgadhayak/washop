@@ -136,7 +136,7 @@ export async function fetchOpenGraphMetadata(
       cache: "no-store",
       headers: {
         "user-agent":
-          "WaShop metadata check; contact hello@navines.com; non-aggressive single request",
+          "washop.co.il metadata check; contact hello@navines.com; non-aggressive single request",
       },
       signal: controller.signal,
     });

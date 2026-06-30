@@ -13,7 +13,7 @@ export function HeroVisual() {
                   <Store className="size-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-black">WaShop</p>
+                  <p className="text-sm font-black">וואשופ</p>
                   <p className="text-xs text-emerald-50">קטלוגים פעילים</p>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export function HeroVisual() {
       </div>
 
       <div className="absolute bottom-8 left-0 hidden max-w-40 rotate-[-4deg] rounded-lg bg-zinc-950 p-3 text-sm font-bold text-white shadow-xl sm:block">
-        נבדק ידנית על ידי WaShop
+        נבדק ידנית על ידי וואשופ
       </div>
     </div>
   );

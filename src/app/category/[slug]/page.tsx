@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           ) : (
             <div className="rounded-lg border border-dashed border-emerald-300 bg-white p-8 text-center shadow-sm">
               <h2 className="text-2xl font-black text-zinc-950">
-                אין עדיין חנויות בקטגוריה הזו — רוצים להוסיף חנות?
+                אין עדיין חנויות בקטגוריה הזו. רוצים להוסיף חנות?
               </h2>
               <p className="mt-3 text-zinc-600">
                 אנחנו מחפשים חנויות וואטסאפ איכותיות בקטגוריה הזו. שלחו לנו

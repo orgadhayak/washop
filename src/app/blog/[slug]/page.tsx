@@ -2,20 +2,39 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpLeft } from "lucide-react";
-import { getBlogPostBySlug } from "@/data/blog";
-import { formatHebrewDate } from "@/lib/utils";
+import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 
-const post = getBlogPostBySlug("hashakat-washop");
-
-export const metadata: Metadata = {
-  title: post?.title,
-  description: post?.excerpt,
-  alternates: {
-    canonical: "/blog/hashakat-washop",
-  },
+type BlogArticlePageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export default function LaunchArticlePage() {
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlogArticlePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+  };
+}
+
+export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
+
   if (!post) {
     notFound();
   }
@@ -30,10 +49,14 @@ export default function LaunchArticlePage() {
           <ArrowUpLeft className="size-4" aria-hidden="true" />
           חזרה לבלוג
         </Link>
-        <p className="mt-8 text-sm font-bold text-emerald-700">
-          {formatHebrewDate(post.publishedAt)} · {post.readTime}
-        </p>
-        <h1 className="mt-3 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
+        <div className="mt-8 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-800">
+          <span>{post.hebrewDate}</span>
+          <span aria-hidden="true">•</span>
+          <span>{post.gregorianDate}</span>
+          <span aria-hidden="true">•</span>
+          <span>{post.readTime}</span>
+        </div>
+        <h1 className="mt-5 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
           {post.title}
         </h1>
         <p className="mt-5 text-xl leading-9 text-zinc-600">{post.excerpt}</p>
@@ -47,7 +70,8 @@ export default function LaunchArticlePage() {
             רוצים להוסיף חנות וואטסאפ?
           </h2>
           <p className="mt-3 text-zinc-700">
-            שלחו פרטים לבדיקה ידנית, ואנחנו נחזור אליכם אם החנות מתאימה לפרסום.
+            שלחו פרטים לבדיקה ידנית, ונחזור אליכם אם החנות מתאימה לפרסום
+            בוואשופ.
           </p>
           <Link
             href="/add-store"

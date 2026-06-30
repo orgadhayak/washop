@@ -9,9 +9,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "אודות WaShop",
+  title: "אודות וואשופ",
   description:
-    "WaShop הוא אתר ישראלי לגילוי חנויות שמוכרות דרך קטלוג וואטסאפ והודעות ישירות.",
+    "וואשופ הוא אתר ישראלי לגילוי חנויות שמוכרות דרך קטלוג וואטסאפ והודעות ישירות.",
   alternates: {
     canonical: "/about",
   },
@@ -29,12 +29,12 @@ export default function AboutPage() {
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-black text-emerald-700">אודות</p>
         <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
-          WaShop מרכז את חנויות הוואטסאפ הטובות בישראל
+          וואשופ מרכז את חנויות הוואטסאפ הטובות בישראל
         </h1>
         <div className="mt-6 space-y-5 text-lg leading-9 text-zinc-600">
           <p>
             הרבה עסקים ישראליים עובדים היום קודם כל דרך וואטסאפ: קטלוג, שיחה
-            קצרה, תמונות, מחיר וסגירת הזמנה ישירה. WaShop נועד להפוך את החנויות
+            קצרה, תמונות, מחיר וסגירת הזמנה ישירה. וואשופ נועד להפוך את החנויות
             האלה לקלות יותר לגילוי.
           </p>
           <p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </p>
           <p>
             כל חנות נבדקת ידנית לפני פרסום. המטרה היא איכות, אמינות, שירות
-            ונוחות — לא רשימה אינסופית של קישורים לא בדוקים.
+            ונוחות, לא רשימה אינסופית של קישורים לא בדוקים.
           </p>
         </div>
 

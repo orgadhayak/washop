@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "הצהרת נגישות",
-  description: "הצהרת הנגישות של WaShop.",
+  description: "הצהרת הנגישות של וואשופ.",
   alternates: {
     canonical: "/accessibility",
   },
@@ -18,7 +18,7 @@ export default function AccessibilityPage() {
         </h1>
         <div className="mt-8 space-y-5 text-lg leading-9 text-zinc-700 [&_a]:font-bold [&_a]:text-emerald-700">
           <p>
-            WaShop פועל כדי להנגיש את האתר לגולשים רבים ככל האפשר, כולל שימוש
+            וואשופ פועל כדי להנגיש את האתר לגולשים רבים ככל האפשר, כולל שימוש
             במבנה סמנטי, טקסטים קריאים, ניווט מקלדת, כפתורים עם תוויות ברורות
             וניגודיות צבעים טובה.
           </p>
@@ -32,7 +32,7 @@ export default function AccessibilityPage() {
           </p>
           <p>
             לפניות בנושא נגישות:{" "}
-            <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+            <a href={`mailto:${siteConfig.supportEmail}`}>שליחת מייל לוואשופ</a>.
           </p>
         </div>
       </div>

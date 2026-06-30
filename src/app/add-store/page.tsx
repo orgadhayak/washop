@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { AlertCircle, BadgeCheck, Mail } from "lucide-react";
 import { SubmitStoreForm } from "@/components/SubmitStoreForm";
-import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "הוספת חנות וואטסאפ",
   description:
-    "שלחו חנות וואטסאפ לבדיקה ידנית והצטרפות אפשרית לספריית WaShop.",
+    "שלחו חנות וואטסאפ לבדיקה ידנית והצטרפות אפשרית לספריית וואשופ.",
   alternates: {
     canonical: "/add-store",
   },
@@ -17,13 +16,13 @@ export default function AddStorePage() {
     <div className="py-12 sm:py-16">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div>
-          <p className="text-sm font-black text-emerald-700">הצטרפות ל-WaShop</p>
+          <p className="text-sm font-black text-emerald-700">הצטרפות לוואשופ</p>
           <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
-            הוספת חנות וואטסאפ ל-WaShop
+            הוספת חנות וואטסאפ לוואשופ
           </h1>
           <p className="mt-5 text-lg leading-9 text-zinc-600">
             יש לכם קטלוג וואטסאפ פעיל? מלאו את הפרטים ונבדוק אם החנות מתאימה
-            להופיע ב-WaShop.
+            להופיע בוואשופ.
           </p>
 
           <div className="mt-6 space-y-3">
@@ -48,7 +47,7 @@ export default function AddStorePage() {
                 <Mail className="size-4" aria-hidden="true" />
                 יעד השליחה
               </div>
-              הטופס נשלח לכתובת {siteConfig.supportEmail}.
+              הטופס נשלח לצוות וואשופ.
             </div>
           </div>
         </div>

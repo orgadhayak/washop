@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ShopPageProps): Promise<Metad
       canonical: `/shop/${shop.slug}`,
     },
     openGraph: {
-      title: `${shop.name} | WaShop.co.il`,
+      title: `${shop.name} | washop.co.il`,
       description: shop.description,
       url: `/shop/${shop.slug}`,
       type: "website",
@@ -175,7 +175,7 @@ export default async function ShopPage({ params }: ShopPageProps) {
                       className="size-4 text-emerald-600"
                       aria-hidden="true"
                     />
-                    נבדק ידנית על ידי WaShop
+                    נבדק ידנית על ידי וואשופ
                   </p>
                 </div>
 

@@ -1,25 +1,28 @@
 export const siteConfig = {
-  name: "WaShop.co.il",
-  shortName: "WaShop",
+  name: "washop.co.il",
+  shortName: "וואשופ",
   domain: "https://washop.co.il",
   brandLogo: "/brand/washop-logo.png",
-  brandIcon: "/brand/washop-icon.png",
+  brandIcon: "/brand/icon-512.png",
+  brandIcon192: "/brand/icon-192.png",
+  favicon16: "/brand/favicon-16x16.png",
+  favicon32: "/brand/favicon-32x32.png",
   brandSymbol: "/brand/washop-symbol.png",
   appleTouchIcon: "/brand/apple-touch-icon.png",
   ogImage: "/brand/washop-og.png",
-  title: "WaShop.co.il | חנויות וואטסאפ בישראל",
+  title: "washop.co.il | חנויות וואטסאפ בישראל",
   description:
-    "כל חנויות הוואטסאפ הכי טובות בישראל במקום אחד. גלו חנויות עם קטלוג וואטסאפ לפי קטגוריות, שירות, איכות ונוחות — וקנו ישירות מהמוכר.",
+    "כל חנויות הוואטסאפ הכי טובות בישראל במקום אחד. גלו חנויות עם קטלוג וואטסאפ לפי קטגוריות, שירות, איכות ונוחות, וקנו ישירות מהמוכר.",
   hebrewPositioning: "כל חנויות הוואטסאפ הכי טובות בישראל",
-  trustLine: "אמינות · איכות · שירות · נוחות",
+  trustLine: "אמינות • איכות • שירות • נוחות",
   supportEmail: "hello@navines.com",
   whatsappDisplayPhone: "050-780-8351",
   whatsappIntlPhone: "972507808351",
-  whatsappIntroMessage: "שלום, הגעתי דרך WaShop ואני רוצה פרטים.",
+  whatsappIntroMessage: "שלום, הגעתי דרך וואשופ ואני רוצה פרטים.",
   shopMessage:
-    "שלום, הגעתי דרך WaShop ורציתי לשאול לגבי החנות/המוצרים.",
+    "שלום, הגעתי דרך וואשופ ורציתי לשאול לגבי החנות/המוצרים.",
   disclaimer:
-    "WaShop הוא אתר עצמאי ואינו קשור או מזוהה עם WhatsApp או Meta.",
+    "וואשופ הוא אתר עצמאי ואינו קשור או מזוהה עם WhatsApp או Meta.",
 };
 
 export const mainNavigation = [

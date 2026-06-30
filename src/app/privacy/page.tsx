@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "מדיניות פרטיות",
-  description: "מדיניות הפרטיות של WaShop.",
+  description: "מדיניות הפרטיות של וואשופ.",
   alternates: {
     canonical: "/privacy",
   },
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage title="מדיניות פרטיות">
       <p>
-        WaShop הוא אתר גילוי וספרייה לחנויות וואטסאפ בישראל. אנחנו אוספים רק את
+        וואשופ הוא אתר גילוי וספרייה לחנויות וואטסאפ בישראל. אנחנו אוספים רק את
         המידע שנמסר לנו ישירות דרך טופס יצירת קשר או טופס הוספת חנות.
       </p>
       <p>
@@ -25,8 +25,8 @@ export default function PrivacyPage() {
         בשם הגולשים. רכישות ושיחות מתבצעות ישירות מול החנות הרלוונטית.
       </p>
       <p>
-        לבקשות בנושא פרטיות, תיקון או הסרת מידע ניתן לפנות אלינו בכתובת{" "}
-        <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+        לבקשות בנושא פרטיות, תיקון או הסרת מידע ניתן לפנות אלינו דרך{" "}
+        <a href={`mailto:${siteConfig.supportEmail}`}>שליחת מייל לוואשופ</a>.
       </p>
     </LegalPage>
   );

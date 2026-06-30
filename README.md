@@ -1,4 +1,4 @@
-# WaShop.co.il
+# washop.co.il
 
 אתר Next.js בעברית מלאה לגילוי חנויות ישראליות שמוכרות דרך קטלוג וואטסאפ או הודעות וואטסאפ.
 
@@ -26,7 +26,7 @@ npm run build
 
 ```bash
 RESEND_API_KEY=
-RESEND_FROM_EMAIL="WaShop <hello@navines.com>"
+RESEND_FROM_EMAIL="washop.co.il <hello@navines.com>"
 ```
 
 אפשרות 2, SMTP:
@@ -37,7 +37,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=
 SMTP_PASS=
-SMTP_FROM="WaShop <hello@navines.com>"
+SMTP_FROM="washop.co.il <hello@navines.com>"
 ```
 
 אם לא מוגדר Resend או SMTP, הטופס יחזיר שגיאת שרת ברורה ולא יפיל את האתר.

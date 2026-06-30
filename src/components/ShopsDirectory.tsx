@@ -111,11 +111,11 @@ export function ShopsDirectory({
       ) : (
         <div className="rounded-lg border border-dashed border-emerald-300 bg-emerald-50/60 p-8 text-center">
           <h2 className="text-2xl font-black text-zinc-950">
-            אין עדיין חנויות בקטגוריה הזו — רוצים להוסיף חנות?
+            אין עדיין חנויות בקטגוריה הזו. רוצים להוסיף חנות?
           </h2>
           <p className="mt-3 text-zinc-600">
             אפשר לשלוח חנות וואטסאפ לבדיקה, ואנחנו נבחן אם היא מתאימה לפרסום
-            ב-WaShop.
+            בוואשופ.
           </p>
         </div>
       )}
