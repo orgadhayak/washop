@@ -9,17 +9,14 @@ import { ShopCard } from "@/components/ShopCard";
 type ShopsDirectoryProps = {
   initialQuery?: string;
   initialCategory?: string;
-  initialNationwide?: boolean;
 };
 
 export function ShopsDirectory({
   initialQuery = "",
   initialCategory = "",
-  initialNationwide = false,
 }: ShopsDirectoryProps) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
-  const [nationwide, setNationwide] = useState(initialNationwide);
 
   const filteredShops = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -32,16 +29,15 @@ export function ShopsDirectory({
           .toLowerCase()
           .includes(normalizedQuery);
       const matchesCategory = !category || shop.categories.includes(category);
-      const matchesNationwide = !nationwide || shop.shipsNationwide;
 
-      return matchesQuery && matchesCategory && matchesNationwide;
+      return matchesQuery && matchesCategory;
     });
-  }, [category, nationwide, query]);
+  }, [category, query]);
 
   return (
     <div className="space-y-6">
       <div className="rounded-lg border border-emerald-950/10 bg-white p-4 shadow-sm">
-        <div className="grid gap-3 lg:grid-cols-[1fr_260px_auto]">
+        <div className="grid gap-3 lg:grid-cols-[1fr_260px]">
           <label className="relative block">
             <span className="sr-only">חיפוש חנות, קטגוריה או מוצר</span>
             <Search
@@ -72,15 +68,6 @@ export function ShopsDirectory({
             </select>
           </label>
 
-          <label className="flex h-12 items-center justify-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm font-bold text-zinc-800">
-            <input
-              type="checkbox"
-              checked={nationwide}
-              onChange={(event) => setNationwide(event.target.checked)}
-              className="size-4 accent-emerald-600"
-            />
-            משלוחים לכל הארץ
-          </label>
         </div>
       </div>
 
@@ -94,7 +81,6 @@ export function ShopsDirectory({
           onClick={() => {
             setQuery("");
             setCategory("");
-            setNationwide(false);
           }}
           className="rounded-full px-3 py-2 text-emerald-700 transition hover:bg-emerald-50"
         >
@@ -111,7 +97,7 @@ export function ShopsDirectory({
       ) : (
         <div className="rounded-lg border border-dashed border-emerald-300 bg-emerald-50/60 p-8 text-center">
           <h2 className="text-2xl font-black text-zinc-950">
-            אין עדיין חנויות בקטגוריה הזו. רוצים להוסיף חנות?
+            עדיין אין חנויות בקטגוריה הזו. יש לכם חנות וואטסאפ מתאימה? שלחו אותה לבדיקה.
           </h2>
           <p className="mt-3 text-zinc-600">
             אפשר לשלוח חנות וואטסאפ לבדיקה, ואנחנו נבחן אם היא מתאימה לפרסום

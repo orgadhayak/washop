@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowUpLeft,
   BadgeCheck,
   MessageCircle,
   Store,
@@ -64,7 +63,6 @@ export default function AboutPage() {
           href="/shops"
           className="mt-10 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
         >
-          <ArrowUpLeft className="size-5" aria-hidden="true" />
           מעבר לחנויות
         </Link>
       </div>

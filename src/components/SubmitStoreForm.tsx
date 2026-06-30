@@ -140,16 +140,6 @@ export function SubmitStoreForm() {
         />
       </div>
 
-      <label className="flex items-center gap-3 rounded-lg bg-emerald-50 p-4 text-sm font-bold text-zinc-800">
-        <input
-          type="checkbox"
-          checked={form.shipsNationwide}
-          onChange={(event) => updateField("shipsNationwide", event.target.checked)}
-          className="size-4 accent-emerald-600"
-        />
-        משלוחים לכל הארץ
-      </label>
-
       <fieldset className="space-y-3">
         <legend className="text-sm font-black text-zinc-950">קטגוריות</legend>
         <div className="grid gap-2 sm:grid-cols-2">

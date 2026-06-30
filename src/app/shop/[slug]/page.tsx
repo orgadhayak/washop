@@ -2,13 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  ArrowUpLeft,
   BadgeCheck,
-  ExternalLink,
   MapPin,
   MessageCircle,
+  Star,
   Store,
-  Truck,
 } from "lucide-react";
 import { categories } from "@/data/categories";
 import { getShopBySlug, shops } from "@/data/shops";
@@ -80,7 +78,6 @@ export default async function ShopPage({ params }: ShopPageProps) {
             href="/shops"
             className="inline-flex items-center gap-2 text-sm font-black text-emerald-700 hover:text-emerald-800"
           >
-            <ArrowUpLeft className="size-4" aria-hidden="true" />
             חזרה לכל החנויות
           </Link>
 
@@ -161,21 +158,23 @@ export default async function ShopPage({ params }: ShopPageProps) {
                     <MapPin className="size-4 text-emerald-600" aria-hidden="true" />
                     {shop.city}
                   </p>
-                  {shop.shipsNationwide ? (
-                    <p className="flex items-center gap-2">
-                      <Truck
-                        className="size-4 text-emerald-600"
-                        aria-hidden="true"
-                      />
-                      משלוחים לכל הארץ
-                    </p>
-                  ) : null}
                   <p className="flex items-center gap-2">
                     <BadgeCheck
                       className="size-4 text-emerald-600"
                       aria-hidden="true"
                     />
                     נבדק ידנית על ידי וואשופ
+                  </p>
+                </div>
+
+                <div className="mt-5 rounded-lg bg-emerald-50 px-4 py-3">
+                  <div className="flex items-center gap-1 text-emerald-600" aria-label="דירוג וואשופ חמישה כוכבים">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} className="size-4 fill-current" aria-hidden="true" />
+                    ))}
+                  </div>
+                  <p className="mt-1 text-sm font-black text-emerald-900">
+                    דירוג וואשופ: {shop.washopRating.toFixed(1)}
                   </p>
                 </div>
 
@@ -186,7 +185,6 @@ export default async function ShopPage({ params }: ShopPageProps) {
                     rel="noreferrer"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
                   >
-                    <ExternalLink className="size-4" aria-hidden="true" />
                     צפייה בקטלוג בוואטסאפ
                   </a>
                   <a

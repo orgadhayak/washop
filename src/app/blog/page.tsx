@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpLeft } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
@@ -30,8 +29,6 @@ export default function BlogPage() {
                 <span>{post.hebrewDate}</span>
                 <span aria-hidden="true">•</span>
                 <span>{post.gregorianDate}</span>
-                <span aria-hidden="true">•</span>
-                <span>{post.readTime}</span>
               </div>
               <h2 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
                 {post.title}
@@ -41,7 +38,6 @@ export default function BlogPage() {
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
                 {post.ctaLabel}
-                <ArrowUpLeft className="size-4" aria-hidden="true" />
               </span>
             </Link>
           ))}

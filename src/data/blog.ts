@@ -5,7 +5,6 @@ export type BlogPost = {
   publishedAt: string;
   hebrewDate: string;
   gregorianDate: string;
-  readTime: string;
   ctaLabel: string;
   paragraphs: string[];
 };
@@ -19,7 +18,6 @@ export const blogPosts = [
     publishedAt: "2026-06-30",
     hebrewDate: "ט״ו בתמוז תשפ״ו",
     gregorianDate: "30 ביוני 2026",
-    readTime: "4 דקות קריאה",
     ctaLabel: "קראו על ההשקה",
     paragraphs: [
       "בשנים האחרונות יותר ויותר עסקים ישראליים גילו שהחנות האמיתית שלהם לא חייבת להיות אתר מורכב. לפעמים היא פשוט קטלוג וואטסאפ מסודר, מספר פעיל וקשר ישיר עם הלקוח.",
@@ -39,7 +37,6 @@ export const blogPosts = [
     publishedAt: "2026-06-30",
     hebrewDate: "ט״ו בתמוז תשפ״ו",
     gregorianDate: "30 ביוני 2026",
-    readTime: "5 דקות קריאה",
     ctaLabel: "למה זה יכול להשתלם",
     paragraphs: [
       "אחד הדברים המעניינים בחנויות וואטסאפ הוא שמאחורי הקטלוג עומד בדרך כלל אדם אמיתי. לא מוקד גדול, לא מערכת מסורבלת ולא טופס שמרגיש רחוק. הרבה פעמים זה בעל העסק עצמו, מי שמכיר את המוצרים, יודע מה יש במלאי ויכול לענות מהר.",

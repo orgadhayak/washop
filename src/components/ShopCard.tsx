@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { BadgeCheck, ExternalLink, MapPin, MessageCircle, Store, Truck } from "lucide-react";
+import {
+  BadgeCheck,
+  MessageCircle,
+  Star,
+  Store,
+  Tags,
+} from "lucide-react";
 import { categories } from "@/data/categories";
 import type { Shop } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
@@ -26,15 +32,9 @@ export function ShopCard({ shop }: ShopCardProps) {
           </Link>
           <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
             <span className="inline-flex items-center gap-1">
-              <MapPin className="size-3.5" aria-hidden="true" />
-              {shop.city}
+              <Store className="size-3.5" aria-hidden="true" />
+              עסק נפרד עם קטלוג וואטסאפ משלו
             </span>
-            {shop.shipsNationwide ? (
-              <span className="inline-flex items-center gap-1">
-                <Truck className="size-3.5" aria-hidden="true" />
-                משלוחים לכל הארץ
-              </span>
-            ) : null}
           </div>
         </div>
       </div>
@@ -55,7 +55,34 @@ export function ShopCard({ shop }: ShopCardProps) {
         })}
       </div>
 
-      <p className="mt-4 flex-1 text-sm leading-7 text-zinc-600">{shop.description}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {shop.tags.map((tag) => (
+          <span
+            key={tag}
+            className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-bold text-zinc-700"
+          >
+            <Tags className="size-3.5 text-emerald-600" aria-hidden="true" />
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <p className="mt-4 text-sm font-bold text-emerald-800">
+        קטלוג וואטסאפ פעיל לעסק הזה
+      </p>
+
+      <p className="mt-2 flex-1 text-sm leading-7 text-zinc-600">{shop.description}</p>
+
+      <div className="mt-4 rounded-lg bg-emerald-50 px-4 py-3">
+        <div className="flex items-center gap-1 text-emerald-600" aria-label="דירוג וואשופ חמישה כוכבים">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Star key={index} className="size-4 fill-current" aria-hidden="true" />
+          ))}
+        </div>
+        <p className="mt-1 text-sm font-black text-emerald-900">
+          דירוג וואשופ: {shop.washopRating.toFixed(1)}
+        </p>
+      </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {shop.badges.map((badge) => (
@@ -82,7 +109,6 @@ export function ShopCard({ shop }: ShopCardProps) {
           rel="noreferrer"
           className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-black text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
         >
-          <ExternalLink className="size-4" aria-hidden="true" />
           צפייה בקטלוג
         </a>
         <a

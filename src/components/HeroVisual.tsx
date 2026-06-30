@@ -50,7 +50,7 @@ export function HeroVisual() {
           <MessageCircle className="size-4" />
           הודעה מהירה
         </div>
-        יש משלוחים לכל הארץ?
+        אפשר לשאול את העסק ישירות?
       </div>
 
       <div className="absolute bottom-8 left-0 hidden max-w-40 rotate-[-4deg] rounded-lg bg-zinc-950 p-3 text-sm font-bold text-white shadow-xl sm:block">

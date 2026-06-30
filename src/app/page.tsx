@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowUpLeft,
   BadgeCheck,
   MessageCircle,
   Search,
@@ -111,7 +110,6 @@ export default function Home() {
                 href="/add-store"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
-                <ArrowUpLeft className="size-5" aria-hidden="true" />
                 הוספת חנות וואטסאפ
               </Link>
             </div>
@@ -239,7 +237,6 @@ export default function Home() {
             href="/add-store"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
           >
-            <ArrowUpLeft className="size-5" aria-hidden="true" />
             שליחת חנות לבדיקה
           </Link>
         </div>
@@ -256,7 +253,7 @@ export default function Home() {
                 className="group rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
               >
                 <p className="text-sm font-bold text-emerald-700">
-                  {post.hebrewDate} • {post.gregorianDate} • {post.readTime}
+                  {post.hebrewDate} • {post.gregorianDate}
                 </p>
                 <h3 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
                   {post.title}
@@ -266,7 +263,6 @@ export default function Home() {
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
                   {post.ctaLabel}
-                  <ArrowUpLeft className="size-4" aria-hidden="true" />
                 </span>
               </Link>
             ))}

@@ -8,14 +8,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Assistant", "Rubik", "Segoe UI", Arial, sans-serif;
+  --font-sans: var(--font-assistant), "Assistant", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   --font-mono: "Segoe UI Mono", Consolas, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Assistant", "Rubik", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-assistant), "Assistant", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
 }
 

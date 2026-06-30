@@ -105,7 +105,6 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
     ["קישור לקטלוג וואטסאפ", data.catalogUrl],
     ["אימייל", data.email],
     ["עיר", data.city],
-    ["משלוחים לכל הארץ", data.shipsNationwide ? "כן" : "לא"],
     ["קטגוריות", categoryNames],
     ["תיאור קצר", data.description],
     ["למה החנות מתאימה לוואשופ", data.fitReason],

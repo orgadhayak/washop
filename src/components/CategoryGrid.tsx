@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpLeft, Boxes, GraduationCap, Home, Scissors, Sparkles, Store } from "lucide-react";
+import { Boxes, GraduationCap, Home, Scissors, Sparkles, Store } from "lucide-react";
 import { categories } from "@/data/categories";
 import { getShopsByCategory } from "@/data/shops";
 
@@ -22,10 +22,6 @@ export function CategoryGrid() {
               <span className="grid size-11 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
                 <Icon className="size-5" aria-hidden="true" />
               </span>
-              <ArrowUpLeft
-                className="size-5 text-zinc-300 transition group-hover:text-emerald-600"
-                aria-hidden="true"
-              />
             </div>
             <h3 className="mt-4 text-lg font-black text-zinc-950">{category.name}</h3>
             <p className="mt-2 min-h-14 text-sm leading-6 text-zinc-600">

@@ -1,5 +1,3 @@
-import { createCatalogUrl } from "@/lib/whatsapp";
-
 export type ShopStatus = "approved" | "pending";
 
 export type Shop = {
@@ -14,6 +12,7 @@ export type Shop = {
   categories: string[];
   tags: string[];
   badges: string[];
+  washopRating: number;
   image?: string;
   status: ShopStatus;
   featured: boolean;
@@ -25,16 +24,17 @@ export const shops = [
   {
     id: "tech-whatsapp-store",
     slug: "tech-whatsapp-store",
-    name: "חנות טכנולוגיה בוואטסאפ",
+    name: "נביא נס",
     description:
-      "חנות טכנולוגיה שמציגה מוצרים דרך קטלוג וואטסאפ. הפרטים הראשוניים יושלמו לאחר בדיקה ידנית של וואשופ.",
-    catalogUrl: createCatalogUrl("972548180200"),
+      "נביא נס הוא עסק ישראלי שמציג מוצרי טכנולוגיה, גאדג׳טים, טלפונים ואביזרי אלקטרוניקה דרך קטלוג וואטסאפ נפרד.",
+    catalogUrl: "https://wa.me/c/972548180200",
     phone: "972548180200",
     city: "ישראל",
-    shipsNationwide: true,
-    categories: ["technology-gadgets"],
-    tags: ["טכנולוגיה", "גאדג׳טים", "קטלוג וואטסאפ", "ישראל", "חנויות WhatsApp"],
+    shipsNationwide: false,
+    categories: ["technology-gadgets", "phones-accessories", "electronics-electricity"],
+    tags: ["טכנולוגיה", "גאדג׳טים", "קטלוג וואטסאפ", "חנות ישראלית"],
     badges: ["קטלוג וואטסאפ פעיל", "פנייה ישירה למוכר", "חנות ישראלית"],
+    washopRating: 5,
     status: "approved",
     featured: true,
     createdAt: "2026-06-30",
@@ -43,16 +43,17 @@ export const shops = [
   {
     id: "barber-courses-whatsapp",
     slug: "barber-courses-whatsapp",
-    name: "מספרה וקורסים בוואטסאפ",
+    name: "רוולושיין סטודיו",
     description:
-      "עסק שמציג שירותי מספרה ותוכן/קורסים דרך קטלוג וואטסאפ. הפרטים הראשוניים יושלמו לאחר בדיקה ידנית של וואשופ.",
-    catalogUrl: createCatalogUrl("972538771200"),
+      "רוולושיין סטודיו הוא עסק בתחום מספרות, טיפוח שיער וקורסים, עם קטלוג וואטסאפ נפרד ופנייה ישירה לעסק.",
+    catalogUrl: "https://wa.me/c/972538771200",
     phone: "972538771200",
     city: "ישראל",
     shipsNationwide: false,
     categories: ["hair-barbers", "beauty-care", "courses-training"],
-    tags: ["מספרה", "קורסים", "טיפוח", "קטלוג וואטסאפ", "ישראל", "חנויות ווטסאפ"],
+    tags: ["מספרה", "טיפוח שיער", "קורסים", "קטלוג וואטסאפ", "חנות ישראלית"],
     badges: ["קטלוג וואטסאפ פעיל", "פנייה ישירה למוכר", "מתאים למספר קטגוריות"],
+    washopRating: 5,
     status: "approved",
     featured: true,
     createdAt: "2026-06-30",

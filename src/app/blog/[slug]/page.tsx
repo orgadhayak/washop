@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpLeft } from "lucide-react";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 
 type BlogArticlePageProps = {
@@ -46,15 +45,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           href="/blog"
           className="inline-flex items-center gap-2 text-sm font-black text-emerald-700 hover:text-emerald-800"
         >
-          <ArrowUpLeft className="size-4" aria-hidden="true" />
           חזרה לבלוג
         </Link>
         <div className="mt-8 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-800">
           <span>{post.hebrewDate}</span>
           <span aria-hidden="true">•</span>
           <span>{post.gregorianDate}</span>
-          <span aria-hidden="true">•</span>
-          <span>{post.readTime}</span>
         </div>
         <h1 className="mt-5 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
           {post.title}
