@@ -23,136 +23,168 @@ export function ShopCard({ shop }: ShopCardProps) {
   const chatMessage = shop.hasWashopBenefit
     ? "שלום, הגעתי דרך וואשופ ורציתי לשאול על ההטבה ללקוחות וואשופ."
     : siteConfig.shopMessage;
+  const categoryItems = shop.categories
+    .map((categorySlug) => {
+      const category = categoryBySlug.get(categorySlug);
+
+      return category ? { slug: category.slug, name: category.name } : null;
+    })
+    .filter((category): category is { slug: string; name: string } =>
+      Boolean(category),
+    );
+  const visibleCategories = categoryItems.slice(0, 3);
+  const remainingCategories = categoryItems.length - visibleCategories.length;
+  const visibleTags = shop.tags.slice(0, 5);
+  const remainingTags = shop.tags.length - visibleTags.length;
 
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-emerald-300/50 bg-gradient-to-br from-emerald-700 via-emerald-600 to-green-500 p-4 text-white shadow-sm shadow-emerald-950/10 transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-900/15 sm:p-5">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-white/10" />
-
-      {shop.hasWashopBenefit ? (
-        <div className="relative mb-4 flex flex-wrap items-center justify-between gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
-            <Gift className="size-3.5" aria-hidden="true" />
-            {shop.benefitLabel ?? "הטבת וואשופ פעילה"}
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm shadow-emerald-950/5 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
+      <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/80 p-4 sm:p-5">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
+            <Store className="size-3.5" aria-hidden="true" />
+            קטלוג וואטסאפ פעיל
           </span>
-          <span className="text-xs font-bold text-emerald-50">
-            {shop.benefitText ?? "בקשו את ההטבה כשאתם פונים דרך וואשופ"}
-          </span>
+          {shop.hasWashopBenefit ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1.5 text-xs font-black text-white shadow-sm shadow-emerald-800/15">
+              <Gift className="size-3.5" aria-hidden="true" />
+              {shop.benefitLabel ?? "הטבת וואשופ פעילה"}
+            </span>
+          ) : null}
         </div>
-      ) : null}
 
-      <div className="flex items-start gap-3">
-        <div className="relative grid size-11 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25">
-          <Store className="size-5" aria-hidden="true" />
-        </div>
-        <div className="relative min-w-0 flex-1">
-          <Link href={`/shop/${shop.slug}`} className="group">
-            <h3 className="text-2xl font-black leading-tight text-white transition group-hover:text-emerald-100 sm:text-3xl">
-              {shop.name}
-            </h3>
-          </Link>
-          <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs font-bold text-emerald-50">
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="size-3.5" aria-hidden="true" />
-              {shop.city}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <Store className="size-3.5" aria-hidden="true" />
-              עסק נפרד עם קטלוג וואטסאפ משלו
-            </span>
+        <div className="flex items-start gap-3">
+          <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-emerald-600 text-white shadow-sm shadow-emerald-800/20">
+            <Store className="size-5" aria-hidden="true" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <Link href={`/shop/${shop.slug}`} className="group">
+              <h3 className="text-2xl font-black leading-tight text-zinc-950 transition group-hover:text-emerald-700 sm:text-3xl">
+                {shop.name}
+              </h3>
+            </Link>
+            <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs font-bold text-zinc-600">
+              <span className="inline-flex items-center gap-1">
+                <MapPin className="size-3.5 text-emerald-600" aria-hidden="true" />
+                {shop.city}
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Store className="size-3.5 text-emerald-600" aria-hidden="true" />
+                עסק נפרד עם קטלוג וואטסאפ משלו
+              </span>
+            </div>
           </div>
         </div>
+
+        {shop.hasWashopBenefit ? (
+          <p className="mt-3 text-xs font-bold leading-6 text-emerald-800">
+            {shop.benefitText ?? "בקשו את ההטבה כשאתם פונים דרך וואשופ"}
+          </p>
+        ) : null}
       </div>
 
-      <p className="relative mt-4 inline-flex w-fit rounded-full bg-white/15 px-3 py-1.5 text-sm font-black text-white ring-1 ring-white/15">
-        קטלוג וואטסאפ פעיל לעסק הזה
-      </p>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="text-sm leading-6 text-zinc-600">{shop.description}</p>
 
-      <p className="relative mt-3 flex-1 text-sm leading-6 text-emerald-50">
-        {shop.description}
-      </p>
-
-      <div className="relative mt-4 flex flex-wrap gap-1.5">
-        {shop.categories.map((categorySlug) => {
-          const category = categoryBySlug.get(categorySlug);
-
-          return category ? (
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {visibleCategories.map((category) => (
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}
-              className="rounded-full bg-white px-2.5 py-1 text-xs font-black text-emerald-800 transition hover:bg-emerald-50"
+              className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-black text-emerald-800 transition hover:bg-emerald-100"
             >
               {category.name}
             </Link>
-          ) : null;
-        })}
-      </div>
+          ))}
+          {remainingCategories > 0 ? (
+            <span className="rounded-full border border-emerald-200 bg-white px-2.5 py-1 text-xs font-black text-emerald-700">
+              +{remainingCategories} קטגוריות
+            </span>
+          ) : null}
+        </div>
 
-      <div className="relative mt-2.5 flex flex-wrap gap-1.5">
-        {shop.tags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-bold text-white"
-          >
-            <Tags className="size-3.5 text-emerald-100" aria-hidden="true" />
-            {tag}
-          </span>
-        ))}
-      </div>
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {visibleTags.map((tag) => (
+            <span
+              key={tag}
+              className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-bold text-zinc-700"
+            >
+              <Tags className="size-3.5 text-emerald-600" aria-hidden="true" />
+              {tag}
+            </span>
+          ))}
+          {remainingTags > 0 ? (
+            <span className="rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs font-bold text-zinc-600">
+              +{remainingTags} תגיות
+            </span>
+          ) : null}
+        </div>
 
-      <div className="relative mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white px-3 py-2.5 text-emerald-950 shadow-sm">
-        <div className="flex items-center gap-1 text-emerald-600" aria-label="דירוג וואשופ חמישה כוכבים">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} className="size-3.5 fill-current" aria-hidden="true" />
+        <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto] sm:items-center">
+          <div className="flex flex-wrap items-center gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-emerald-950">
+            <div
+              className="flex items-center gap-1 text-emerald-600"
+              aria-label="דירוג וואשופ חמישה כוכבים"
+            >
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star
+                  key={index}
+                  className="size-3.5 fill-current"
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+            <p className="text-sm font-black">
+              דירוג וואשופ: {shop.washopRating.toFixed(1)}
+            </p>
+          </div>
+
+          {shop.status === "approved" ? (
+            <p className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-2 text-xs font-black text-emerald-700 ring-1 ring-emerald-200">
+              <BadgeCheck className="size-3.5" aria-hidden="true" />
+              נבדק ידנית על ידי וואשופ
+            </p>
+          ) : null}
+        </div>
+
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {shop.badges.map((badge) => (
+            <span
+              key={badge}
+              className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700"
+            >
+              <BadgeCheck className="size-3.5 text-emerald-600" aria-hidden="true" />
+              {badge}
+            </span>
           ))}
         </div>
-        <p className="text-sm font-black">
-          דירוג וואשופ: {shop.washopRating.toFixed(1)}
-        </p>
-      </div>
 
-      <div className="relative mt-3 flex flex-wrap gap-1.5">
-        {shop.badges.map((badge) => (
-          <span
-            key={badge}
-            className="inline-flex items-center gap-1 rounded-full bg-emerald-950/20 px-2.5 py-1 text-xs font-bold text-emerald-50 ring-1 ring-white/10"
+        <p className="mt-3 rounded-lg border border-emerald-100 bg-emerald-50/70 p-2.5 text-xs font-bold leading-5 text-zinc-700">
+          פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי.{" "}
+          {shop.hasWashopBenefit
+            ? "בקשו את הטבת וואשופ, והמטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."
+            : "המטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."}
+        </p>
+
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          <a
+            href={shop.catalogUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-black text-white shadow-sm shadow-emerald-800/15 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
           >
-            <BadgeCheck className="size-3.5 text-emerald-100" aria-hidden="true" />
-            {badge}
-          </span>
-        ))}
-      </div>
-
-      {shop.status === "approved" ? (
-        <p className="relative mt-3 text-xs font-black text-emerald-50">
-          נבדק ידנית על ידי וואשופ
-        </p>
-      ) : null}
-
-      <p className="relative mt-2.5 rounded-lg bg-emerald-950/20 p-2.5 text-xs font-bold leading-5 text-emerald-50 ring-1 ring-white/10">
-        פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי.{" "}
-        {shop.hasWashopBenefit
-          ? "בקשו את הטבת וואשופ, והמטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."
-          : "המטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."}
-      </p>
-
-      <div className="relative mt-4 grid gap-2 sm:grid-cols-2">
-        <a
-          href={shop.catalogUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-black text-emerald-800 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-600"
-        >
-          צפייה בקטלוג
-        </a>
-        <a
-          href={createChatUrl(shop.phone, chatMessage)}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-4 text-sm font-black text-white transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-600"
-        >
-          <MessageCircle className="size-4" aria-hidden="true" />
-          שליחת הודעה
-        </a>
+            צפייה בקטלוג
+          </a>
+          <a
+            href={createChatUrl(shop.phone, chatMessage)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-4 text-sm font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+          >
+            <MessageCircle className="size-4" aria-hidden="true" />
+            שליחת הודעה
+          </a>
+        </div>
       </div>
     </article>
   );
