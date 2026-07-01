@@ -8,11 +8,9 @@ type FormState = {
   storeName: string;
   contactName: string;
   phone: string;
-  catalogUrl: string;
   email: string;
   city: string;
   description: string;
-  optionalLink: string;
   legalConfirmed: boolean;
   confirmEmail: string;
 };
@@ -24,11 +22,9 @@ const initialState: FormState = {
   storeName: "",
   contactName: "",
   phone: "",
-  catalogUrl: "",
   email: "",
   city: "",
   description: "",
-  optionalLink: "",
   legalConfirmed: false,
   confirmEmail: "",
 };
@@ -88,17 +84,12 @@ export function SubmitStoreForm() {
       </div>
 
       <div className="rounded-lg bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-900">
-        אין צורך לבחור קטגוריות. צוות וואשופ יעבור על החנות, יבין לאן היא
-        מתאימה וישייך אותה לקטגוריות הנכונות לאחר בדיקה.
+        מייל חובה בלבד. כל שאר הפרטים יעזרו לנו להבין את העסק, אבל אינם חובה.
+        אין צורך לבחור קטגוריות. צוות וואשופ יעבור על החנות וישייך אותה
+        לקטגוריות הנכונות לאחר בדיקה.
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <TextInput
-          label="קישור לקטלוג וואטסאפ"
-          value={form.catalogUrl}
-          onChange={(value) => updateField("catalogUrl", value)}
-          dir="ltr"
-        />
         <TextInput
           label="מספר וואטסאפ / טלפון"
           value={form.phone}
@@ -136,13 +127,6 @@ export function SubmitStoreForm() {
         onChange={(value) => updateField("description", value)}
       />
 
-      <TextInput
-        label="קישור נוסף אם יש: אינסטגרם / אתר / פייסבוק"
-        value={form.optionalLink}
-        onChange={(value) => updateField("optionalLink", value)}
-        dir="ltr"
-      />
-
       <label className="flex items-start gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm font-bold leading-7 text-zinc-800">
         <input
           type="checkbox"
@@ -152,7 +136,7 @@ export function SubmitStoreForm() {
           className="mt-1 size-4 shrink-0 accent-emerald-600"
         />
         <span>
-          אני מאשר/ת שהפרטים שנשלחו נכונים, ושאם מדובר בחנות או עסק — הפעילות
+          אני מאשר/ת שהפרטים שנשלחו נכונים, ושאם מדובר בחנות או עסק, הפעילות
           היא חוקית ועומדת ב
           <Link href="/seller-rules" className="text-emerald-700 underline">
             תנאי הפרסום של וואשופ

@@ -1,21 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { siteConfig } from "@/lib/site";
-import {
-  extractPhoneFromWhatsappUrl,
-  normalizeCatalogUrl,
-  normalizePhone,
-} from "@/lib/whatsapp";
+import { normalizePhone } from "@/lib/whatsapp";
 
 type StoreSubmission = {
   storeName?: string;
   contactName?: string;
   phone?: string;
-  catalogUrl?: string;
   email?: string;
   city?: string;
   description?: string;
-  optionalLink?: string;
   legalConfirmed?: boolean;
   confirmEmail?: string;
 };
@@ -41,8 +35,6 @@ function validateSubmission(payload: StoreSubmission) {
   const contactName = asText(payload.contactName);
   const rawPhone = asText(payload.phone);
   const phone = rawPhone ? normalizePhone(rawPhone) : "";
-  const catalogUrl = asText(payload.catalogUrl);
-  const catalogPhone = catalogUrl ? extractPhoneFromWhatsappUrl(catalogUrl) : "";
   const email = asText(payload.email);
   const city = asText(payload.city);
   const description = asText(payload.description);
@@ -59,10 +51,6 @@ function validateSubmission(payload: StoreSubmission) {
     return { error: "מספר הוואטסאפ אינו תקין." };
   }
 
-  if (catalogUrl && !catalogPhone && !/^\+?[\d\s().-]+$/.test(catalogUrl)) {
-    return { error: "קישור הקטלוג צריך להיות wa.me/c, wa.me או מספר טלפון." };
-  }
-
   if (!payload.legalConfirmed) {
     return {
       error:
@@ -75,28 +63,38 @@ function validateSubmission(payload: StoreSubmission) {
       storeName,
       contactName,
       phone: rawPhone,
-      catalogUrl: catalogUrl ? normalizeCatalogUrl(catalogUrl) : "",
       email,
       city,
       description,
-      optionalLink: asText(payload.optionalLink),
       legalConfirmed: true,
     },
   };
 }
 
 function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>["data"]>) {
-  const rows = [
-    ["שם החנות", data.storeName || "לא נמסר"],
-    ["שם איש קשר", data.contactName || "לא נמסר"],
-    ["מספר וואטסאפ", data.phone || "לא נשלח מספר טלפון"],
-    ["קישור לקטלוג וואטסאפ", data.catalogUrl || "לא נשלח קישור לקטלוג"],
-    ["אימייל", data.email],
-    ["עיר", data.city || "לא נמסרה"],
-    ["ספרו לנו על החנות ומה חשוב שנדע", data.description || "לא נכתב פירוט נוסף"],
-    ["קישור אופציונלי", data.optionalLink || "לא נמסר"],
-    ["אישור תנאי פרסום וחוקיות", data.legalConfirmed ? "כן" : "לא"],
-  ];
+  const rows = [["אימייל", data.email]];
+
+  if (data.phone) {
+    rows.push(["מספר טלפון", data.phone]);
+  }
+
+  if (data.storeName) {
+    rows.push(["שם החנות", data.storeName]);
+  }
+
+  if (data.contactName) {
+    rows.push(["שם איש קשר", data.contactName]);
+  }
+
+  if (data.city) {
+    rows.push(["עיר", data.city]);
+  }
+
+  if (data.description) {
+    rows.push(["הודעה חופשית", data.description]);
+  }
+
+  rows.push(["אישור תנאי פרסום וחוקיות", data.legalConfirmed ? "כן" : "לא"]);
 
   const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
   const htmlRows = rows

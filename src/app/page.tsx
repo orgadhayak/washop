@@ -239,7 +239,7 @@ export default function Home() {
               יש לכם חנות וואטסאפ?
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-600">
-              שלחו קישור ומספר — ואנחנו נבדוק אם היא מתאימה.
+              שלחו פרטים, ואנחנו נבדוק אם היא מתאימה.
             </p>
           </div>
           <Link

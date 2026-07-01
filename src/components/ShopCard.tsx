@@ -108,7 +108,7 @@ export function ShopCard({ shop }: ShopCardProps) {
       ) : null}
 
       <p className="mt-3 rounded-lg bg-zinc-50 p-3 text-xs font-bold leading-6 text-zinc-600">
-        פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי — המטרה היא שתקבלו
+        פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי. המטרה היא שתקבלו
         יחס רציני, שירות טוב ומחיר הוגן ככל האפשר.
       </p>
 
