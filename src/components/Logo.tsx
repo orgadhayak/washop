@@ -1,20 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 export function Logo() {
   return (
     <Link
       href="/"
       dir="ltr"
-      className="brand-logo inline-flex items-center gap-1.5 text-lg font-black tracking-normal text-zinc-950 sm:gap-2 sm:text-2xl"
+      className="brand-logo inline-flex items-center gap-2 text-lg font-black tracking-normal text-zinc-950 sm:gap-2.5 sm:text-2xl"
       aria-label="washop.co.il"
     >
       <Image
-        src="/brand/washop-symbol.png"
+        src={siteConfig.brandSymbol}
         alt=""
-        width={40}
-        height={40}
-        className="brand-symbol size-8 sm:size-10"
+        width={56}
+        height={56}
+        className="brand-symbol size-11 sm:size-14"
         aria-hidden="true"
         priority
       />
