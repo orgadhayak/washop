@@ -7,15 +7,15 @@ export function Logo() {
     <Link
       href="/"
       dir="ltr"
-      className="brand-logo inline-flex items-center gap-2 text-lg font-black tracking-normal text-zinc-950 sm:gap-2.5 sm:text-2xl"
+      className="brand-logo inline-flex items-center gap-2.5 text-lg font-black tracking-normal text-zinc-950 sm:gap-3 sm:text-2xl"
       aria-label="washop.co.il"
     >
       <Image
         src={siteConfig.brandSymbol}
         alt=""
-        width={56}
-        height={56}
-        className="brand-symbol size-11 sm:size-14"
+        width={64}
+        height={64}
+        className="brand-symbol size-12 sm:size-16"
         aria-hidden="true"
         priority
       />
