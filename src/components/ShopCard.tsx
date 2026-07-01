@@ -1,9 +1,11 @@
 import Link from "next/link";
 import {
   BadgeCheck,
+  CheckCircle2,
   Gift,
   MapPin,
   MessageCircle,
+  ShieldCheck,
   Star,
   Store,
   Tags,
@@ -14,6 +16,10 @@ import { siteConfig } from "@/lib/site";
 import { createChatUrl } from "@/lib/whatsapp";
 
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
+const verificationBadges = [
+  { label: "מאומת על ידי וואשופ", icon: BadgeCheck },
+  { label: "נבדק ידנית", icon: ShieldCheck },
+];
 
 type ShopCardProps = {
   shop: Shop;
@@ -36,16 +42,16 @@ export function ShopCard({ shop }: ShopCardProps) {
   const remainingCategories = categoryItems.length - visibleCategories.length;
   const visibleTags = shop.tags.slice(0, 3);
   const remainingTags = shop.tags.length - visibleTags.length;
-  const visibleBadges = shop.badges
-    .filter((badge) => badge !== "קטלוג וואטסאפ פעיל")
-    .slice(0, 2);
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm shadow-emerald-950/5 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
-      <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/80 p-4 sm:p-5">
+      <Link
+        href={`/shop/${shop.slug}`}
+        className="group block cursor-pointer border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/80 p-4 transition hover:from-emerald-100/80 hover:to-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-inset sm:p-5"
+      >
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
-            <Store className="size-3.5" aria-hidden="true" />
+            <CheckCircle2 className="size-3.5" aria-hidden="true" />
             קטלוג וואטסאפ פעיל
           </span>
           {shop.hasWashopBenefit ? (
@@ -61,11 +67,9 @@ export function ShopCard({ shop }: ShopCardProps) {
             <Store className="size-5" aria-hidden="true" />
           </div>
           <div className="min-w-0 flex-1">
-            <Link href={`/shop/${shop.slug}`} className="group">
-              <h3 className="text-2xl font-black leading-tight text-zinc-950 transition group-hover:text-emerald-700 sm:text-3xl">
-                {shop.name}
-              </h3>
-            </Link>
+            <h3 className="text-2xl font-black leading-tight text-zinc-950 transition group-hover:text-emerald-700 sm:text-3xl">
+              {shop.name}
+            </h3>
             <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs font-bold text-zinc-600">
               <span className="inline-flex items-center gap-1">
                 <MapPin className="size-3.5 text-emerald-600" aria-hidden="true" />
@@ -84,7 +88,7 @@ export function ShopCard({ shop }: ShopCardProps) {
             {shop.benefitText ?? "בקשו את ההטבה כשאתם פונים דרך וואשופ"}
           </p>
         ) : null}
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <p className="overflow-hidden text-sm leading-6 text-zinc-600 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
@@ -144,36 +148,18 @@ export function ShopCard({ shop }: ShopCardProps) {
             </p>
           </div>
 
-          {shop.status === "approved" ? (
-            <p className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-2 text-xs font-black text-emerald-700 ring-1 ring-emerald-200">
-              <BadgeCheck className="size-3.5" aria-hidden="true" />
-              נבדק ידנית על ידי וואשופ
-            </p>
-          ) : null}
-        </div>
-
-        {visibleBadges.length ? (
-          <div className="mt-2.5 flex flex-wrap gap-1.5">
-            {visibleBadges.map((badge) => (
+          <div className="flex flex-wrap gap-1.5">
+            {verificationBadges.map(({ label, icon: Icon }) => (
               <span
-                key={badge}
-                className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700"
+                key={label}
+                className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-2 text-xs font-black text-emerald-700 ring-1 ring-emerald-200"
               >
-                <BadgeCheck
-                  className="size-3.5 text-emerald-600"
-                  aria-hidden="true"
-                />
-                {badge}
+                <Icon className="size-3.5" aria-hidden="true" />
+                {label}
               </span>
             ))}
           </div>
-        ) : null}
-
-        <p className="mt-3 rounded-lg border border-emerald-100 bg-emerald-50/70 p-2.5 text-xs font-bold leading-5 text-zinc-700">
-          {shop.hasWashopBenefit
-            ? "בקשו את הטבת וואשופ בפנייה. וואשופ מבקשת מהחנויות יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."
-            : "וואשופ מבקשת מהחנויות יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."}
-        </p>
+        </div>
 
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
           <a

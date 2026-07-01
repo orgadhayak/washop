@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
-import { Logo } from "@/components/Logo";
 import { categories } from "@/data/categories";
 import { createChatUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/lib/site";
@@ -21,7 +21,19 @@ export function Footer() {
     <footer className="border-t border-emerald-950/10 bg-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
-          <Logo />
+          <Link
+            href="/"
+            aria-label="וואשופ"
+            className="inline-flex w-fit rounded-2xl transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+          >
+            <Image
+              src="/brand/washop-footer-logo.png"
+              alt="וואשופ"
+              width={180}
+              height={180}
+              className="h-28 w-auto object-contain sm:h-32"
+            />
+          </Link>
           <p className="max-w-md text-sm leading-7 text-zinc-600">
             וואשופ מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
             פעילים, פנייה ישירה למוכר וחוויית קנייה פשוטה.
