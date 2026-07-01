@@ -25,6 +25,36 @@ export const categories = [
     description: "מחשבים, ציוד עבודה, אביזרי משרד ופתרונות לעסק ולבית.",
   },
   {
+    id: "website-building",
+    slug: "website-building",
+    name: "בניית אתרים",
+    description: "בניית אתרים, דפי נחיתה ופתרונות נוכחות דיגיטלית לעסקים.",
+  },
+  {
+    id: "ai-tools",
+    slug: "ai-tools",
+    name: "כלים ובינה מלאכותית",
+    description: "כלים מבוססי בינה מלאכותית, אוטומציות ופתרונות חכמים לעסק.",
+  },
+  {
+    id: "software-digital",
+    slug: "software-digital",
+    name: "תוכנה ודיגיטל",
+    description: "שירותי תוכנה, דיגיטל, מערכות וכלים טכנולוגיים לעסקים.",
+  },
+  {
+    id: "app-development",
+    slug: "app-development",
+    name: "אפליקציות ופיתוח",
+    description: "פיתוח אפליקציות, מערכות וכלים מותאמים לצרכים עסקיים.",
+  },
+  {
+    id: "technical-services-businesses",
+    slug: "technical-services-businesses",
+    name: "שירותים טכניים לעסקים",
+    description: "טיפול בתקלות טכניות, תמיכה וכלים דיגיטליים לעסקים.",
+  },
+  {
     id: "electronics-electricity",
     slug: "electronics-electricity",
     name: "חשמל ואלקטרוניקה",
@@ -47,6 +77,18 @@ export const categories = [
     slug: "cosmetics-perfumes",
     name: "קוסמטיקה ובשמים",
     description: "בשמים, מוצרי קוסמטיקה וטיפוח אישי בקטלוג וואטסאפ.",
+  },
+  {
+    id: "hair-care-products",
+    slug: "hair-care-products",
+    name: "מוצרי טיפוח שיער",
+    description: "מוצרי טיפוח שיער, חומרים מקצועיים ופתרונות לשיער.",
+  },
+  {
+    id: "barber-equipment-accessories",
+    slug: "barber-equipment-accessories",
+    name: "ציוד ואביזרים לספרים",
+    description: "ציוד לספרים, אביזרים מקצועיים ומוצרים לעבודה במספרה.",
   },
   {
     id: "courses-training",
