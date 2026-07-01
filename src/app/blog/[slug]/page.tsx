@@ -61,6 +61,29 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+        {post.sections?.map((section) => (
+          <section
+            key={section.title}
+            className="mt-10 rounded-lg border border-emerald-200 bg-white p-6 shadow-sm"
+          >
+            <h2 className="text-3xl font-black leading-tight text-zinc-950">
+              {section.title}
+            </h2>
+            <div className="mt-5 space-y-5 text-lg leading-9 text-zinc-700">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            {section.ctaLabel && section.ctaHref ? (
+              <Link
+                href={section.ctaHref}
+                className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-sm font-black text-white transition hover:bg-emerald-700"
+              >
+                {section.ctaLabel}
+              </Link>
+            ) : null}
+          </section>
+        ))}
         <div className="mt-10 rounded-lg bg-emerald-50 p-6">
           <h2 className="text-2xl font-black text-zinc-950">
             {post.articleCtaTitle ?? "רוצים להוסיף חנות וואטסאפ?"}

@@ -13,6 +13,9 @@ export type Shop = {
   tags: string[];
   badges: string[];
   washopRating: number;
+  hasWashopBenefit: boolean;
+  benefitLabel?: string;
+  benefitText?: string;
   image?: string;
   status: ShopStatus;
   featured: boolean;
@@ -53,6 +56,9 @@ export const shops = [
     ],
     badges: ["קטלוג וואטסאפ פעיל", "פנייה ישירה למוכר", "חנות ישראלית"],
     washopRating: 5,
+    hasWashopBenefit: true,
+    benefitLabel: "הטבת וואשופ פעילה",
+    benefitText: "בקשו את ההטבה כשאתם פונים דרך וואשופ",
     status: "approved",
     featured: true,
     createdAt: "2026-06-30",
@@ -88,6 +94,9 @@ export const shops = [
     ],
     badges: ["קטלוג וואטסאפ פעיל", "פנייה ישירה למוכר", "מתאים למספר קטגוריות"],
     washopRating: 5,
+    hasWashopBenefit: true,
+    benefitLabel: "הטבת וואשופ פעילה",
+    benefitText: "בקשו את ההטבה כשאתם פונים דרך וואשופ",
     status: "approved",
     featured: true,
     createdAt: "2026-06-30",

@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         />
         <div className="mt-10">
           {shops.length ? (
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
               {shops.map((shop) => (
                 <ShopCard key={shop.id} shop={shop} />
               ))}

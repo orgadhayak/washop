@@ -98,7 +98,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               גלו חנויות ישראליות שמוכרות ישירות דרך קטלוג וואטסאפ, בלי אתר
-              מסובך, בלי עמלות מיותרות ועם קשר ישיר למוכר.
+              מסובך, עם פחות חיכוך וקשר ישיר למוכר.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -161,7 +161,29 @@ export default function Home() {
             title="חנויות וואטסאפ שכבר אפשר לגלות"
             description="התחלה נקייה עם חנויות מאושרות, קטגוריות פעילות ומקום להוסיף עוד עסקים איכותיים."
           />
-          <div className="mx-auto mt-10 grid max-w-6xl gap-6 lg:grid-cols-2">
+          <div className="mx-auto mt-8 grid max-w-6xl gap-4 rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/80 to-white p-5 shadow-sm shadow-emerald-950/5 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-black text-emerald-800 ring-1 ring-emerald-200">
+                <Sparkles className="size-3.5" aria-hidden="true" />
+                הטבת וואשופ
+              </p>
+              <h3 className="mt-3 text-2xl font-black text-zinc-950">
+                הטבות מיוחדות ללקוחות וואשופ
+              </h3>
+              <p className="mt-2 max-w-3xl text-sm font-bold leading-7 text-zinc-600">
+                בחלק מהחנויות תוכלו לבקש הטבה מיוחדת כשאתם פונים דרך וואשופ.
+                המטרה שלנו היא לעודד קשר ישיר, שירות טוב ומחיר הוגן יותר בין
+                הלקוח לבית העסק.
+              </p>
+            </div>
+            <Link
+              href="/shops"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
+            >
+              גלו חנויות עם הטבת וואשופ
+            </Link>
+          </div>
+          <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-2">
             {featuredShops.map((shop) => (
               <ShopCard key={shop.id} shop={shop} />
             ))}
