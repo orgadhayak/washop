@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeCheck,
@@ -54,7 +55,8 @@ export default function PartnersPage() {
   return (
     <div className="py-12 sm:py-16">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-3xl">
           <p className="text-sm font-black text-emerald-700">תוכנית שותפים</p>
           <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
             תוכנית שותפים של וואשופ
@@ -79,6 +81,17 @@ export default function PartnersPage() {
             >
               תנאי פרסום בוואשופ
             </Link>
+          </div>
+          </div>
+          <div className="flex justify-center lg:justify-start">
+            <Image
+              src="/brand/washop-partners-mascot.png"
+              alt="וואשופ"
+              width={560}
+              height={560}
+              className="h-auto w-full max-w-sm object-contain drop-shadow-[0_24px_40px_rgba(5,150,105,0.16)] sm:max-w-md lg:max-w-lg"
+              priority
+            />
           </div>
         </div>
 

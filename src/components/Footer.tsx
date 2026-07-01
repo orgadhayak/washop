@@ -24,15 +24,26 @@ export function Footer() {
           <Link
             href="/"
             aria-label="וואשופ"
-            className="inline-flex w-fit rounded-2xl transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+            className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
           >
             <Image
-              src="/brand/washop-footer-logo.png"
+              src="/brand/washop-footer-mascot.png"
               alt="וואשופ"
-              width={180}
-              height={180}
-              className="h-28 w-auto object-contain sm:h-32"
+              width={112}
+              height={112}
+              className="size-20 shrink-0 object-contain sm:size-24"
             />
+            <span
+              dir="ltr"
+              className="inline-flex items-baseline text-2xl font-black tracking-normal sm:text-3xl"
+              style={{ unicodeBidi: "isolate" }}
+            >
+              <span className="text-[#232326]">wa</span>
+              <span className="text-[#00bf36]">shop</span>
+              <span className="text-base font-bold text-[#2f2f32] sm:text-lg">
+                .co.il
+              </span>
+            </span>
           </Link>
           <p className="max-w-md text-sm leading-7 text-zinc-600">
             וואשופ מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
