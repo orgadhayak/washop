@@ -16,7 +16,6 @@ export const siteConfig = {
   hebrewPositioning: "כל חנויות הוואטסאפ הכי טובות בישראל",
   trustLine: "אמינות • איכות • שירות • נוחות",
   supportEmail: "hello@navines.com",
-  whatsappDisplayPhone: "050-780-8351",
   whatsappIntlPhone: "972507808351",
   whatsappIntroMessage: "שלום, הגעתי דרך וואשופ ואני רוצה פרטים.",
   shopMessage:
@@ -31,6 +30,7 @@ export const mainNavigation = [
   { label: "קטגוריות", href: "/#categories" },
   { label: "הוספת חנות", href: "/add-store" },
   { label: "מי יכול לפרסם?", href: "/seller-rules" },
+  { label: "שותפים", href: "/partners" },
   { label: "בלוג", href: "/blog" },
   { label: "צור קשר", href: "/contact" },
 ];

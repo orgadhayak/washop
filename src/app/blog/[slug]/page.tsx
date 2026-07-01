@@ -63,14 +63,14 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
         </div>
         <div className="mt-10 rounded-lg bg-emerald-50 p-6">
           <h2 className="text-2xl font-black text-zinc-950">
-            רוצים להוסיף חנות וואטסאפ?
+            {post.articleCtaTitle ?? "רוצים להוסיף חנות וואטסאפ?"}
           </h2>
           <p className="mt-3 text-zinc-700">
-            שלחו פרטים לבדיקה ידנית, ונחזור אליכם אם החנות מתאימה לפרסום
-            בוואשופ.
+            {post.articleCtaDescription ??
+              "שלחו פרטים לבדיקה ידנית, ונחזור אליכם אם החנות מתאימה לפרסום בוואשופ."}
           </p>
           <Link
-            href="/add-store"
+            href={post.articleCtaHref ?? "/add-store"}
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-sm font-black text-white transition hover:bg-emerald-700"
           >
             {post.articleCtaLabel ?? "שליחת חנות לבדיקה"}

@@ -11,6 +11,7 @@ const footerLinks = [
   { label: "פרטיות", href: "/privacy" },
   { label: "תנאי שימוש", href: "/terms" },
   { label: "מי יכול לפרסם?", href: "/seller-rules" },
+  { label: "תוכנית שותפים", href: "/partners" },
   { label: "נגישות", href: "/accessibility" },
   { label: "בלוג", href: "/blog" },
 ];
@@ -56,7 +57,7 @@ export function Footer() {
               rel="noreferrer"
             >
               <MessageCircle className="size-4" aria-hidden="true" />
-              {siteConfig.whatsappDisplayPhone}
+              שליחת הודעה בוואטסאפ
             </a>
             <a
               href={`mailto:${siteConfig.supportEmail}`}

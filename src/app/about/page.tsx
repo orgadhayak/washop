@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   BadgeCheck,
+  Handshake,
   MessageCircle,
   Store,
   type LucideIcon,
@@ -59,12 +60,21 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <Link
-          href="/shops"
-          className="mt-10 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
-        >
-          מעבר לחנויות
-        </Link>
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/shops"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
+          >
+            מעבר לחנויות
+          </Link>
+          <Link
+            href="/partners"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50"
+          >
+            <Handshake className="size-5" aria-hidden="true" />
+            תוכנית שותפים
+          </Link>
+        </div>
       </div>
     </div>
   );

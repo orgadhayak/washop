@@ -40,7 +40,7 @@ export default function ContactPage() {
               וואטסאפ / שירות לקוחות
             </h2>
             <p className="mt-2 text-lg font-bold text-emerald-700">
-              {siteConfig.whatsappDisplayPhone}
+              שליחת הודעה בוואטסאפ
             </p>
           </a>
           <a
