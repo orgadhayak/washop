@@ -24,23 +24,23 @@ export function Footer() {
         <div className="space-y-4">
           <HomeLogoLink
             aria-label="וואשופ"
-            className="inline-flex w-fit items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+            className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:gap-4"
           >
             <Image
               src="/brand/washop-footer-mascot.png"
               alt="וואשופ"
-              width={144}
-              height={144}
-              className="size-24 shrink-0 object-contain sm:size-28"
+              width={224}
+              height={224}
+              className="size-36 shrink-0 object-contain sm:size-44 lg:size-48"
             />
             <span
               dir="ltr"
-              className="inline-flex items-baseline text-xl font-black leading-none tracking-normal sm:text-2xl"
+              className="inline-flex items-baseline text-2xl font-black leading-none tracking-normal sm:text-4xl"
               style={{ unicodeBidi: "isolate" }}
             >
               <span className="text-[#232326]">wa</span>
               <span className="text-[#00bf36]">shop</span>
-              <span className="text-xs font-bold text-[#2f2f32] sm:text-sm">
+              <span className="text-sm font-bold text-[#2f2f32] sm:text-lg">
                 .co.il
               </span>
             </span>
