@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ShopsDirectory } from "@/components/ShopsDirectory";
+import { ShopsStatusBanner } from "@/components/ShopsStatusBanner";
 import { SectionHeader } from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
@@ -37,6 +38,9 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
           title="כל חנויות הוואטסאפ בישראל"
           description="חפשו חנות, עיר או קטגוריה ומצאו עסקים ישראליים שמוכרים ישירות דרך קטלוג וואטסאפ או הודעות."
         />
+        <div className="mt-8">
+          <ShopsStatusBanner />
+        </div>
         <div className="mt-10">
           <ShopsDirectory
             initialQuery={initialQuery}
