@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { HeroVisual } from "@/components/HeroVisual";
+import { HomeStoresMomentum } from "@/components/HomeStoresMomentum";
 import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ShopCard } from "@/components/ShopCard";
@@ -122,6 +123,8 @@ export default function Home() {
           <HeroVisual />
         </div>
       </section>
+
+      <HomeStoresMomentum />
 
       <section className="bg-white py-6">
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
