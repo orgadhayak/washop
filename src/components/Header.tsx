@@ -31,7 +31,7 @@ export function Header() {
         </Link>
       </div>
       <nav
-        className="flex gap-1 overflow-x-auto border-t border-emerald-950/5 px-4 py-2 text-sm font-semibold text-zinc-700 lg:hidden"
+        className="green-scrollbar flex gap-1 overflow-x-auto border-t border-emerald-950/5 px-4 py-2 text-sm font-semibold text-zinc-700 lg:hidden"
         aria-label="ניווט משני"
       >
         {mainNavigation.map((item) => (

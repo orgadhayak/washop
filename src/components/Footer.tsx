@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { categories } from "@/data/categories";
+import { HomeLogoLink } from "@/components/HomeLogoLink";
 import { createChatUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/lib/site";
 
@@ -21,30 +22,29 @@ export function Footer() {
     <footer className="border-t border-emerald-950/10 bg-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
-          <Link
-            href="/"
+          <HomeLogoLink
             aria-label="וואשופ"
-            className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+            className="inline-flex w-fit items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
           >
             <Image
               src="/brand/washop-footer-mascot.png"
               alt="וואשופ"
-              width={112}
-              height={112}
-              className="size-20 shrink-0 object-contain sm:size-24"
+              width={144}
+              height={144}
+              className="size-24 shrink-0 object-contain sm:size-28"
             />
             <span
               dir="ltr"
-              className="inline-flex items-baseline text-2xl font-black tracking-normal sm:text-3xl"
+              className="inline-flex items-baseline text-xl font-black leading-none tracking-normal sm:text-2xl"
               style={{ unicodeBidi: "isolate" }}
             >
               <span className="text-[#232326]">wa</span>
               <span className="text-[#00bf36]">shop</span>
-              <span className="text-base font-bold text-[#2f2f32] sm:text-lg">
+              <span className="text-xs font-bold text-[#2f2f32] sm:text-sm">
                 .co.il
               </span>
             </span>
-          </Link>
+          </HomeLogoLink>
           <p className="max-w-md text-sm leading-7 text-zinc-600">
             וואשופ מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
             פעילים, פנייה ישירה למוכר וחוויית קנייה פשוטה.
