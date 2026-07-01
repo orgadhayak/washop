@@ -34,8 +34,11 @@ export function ShopCard({ shop }: ShopCardProps) {
     );
   const visibleCategories = categoryItems.slice(0, 3);
   const remainingCategories = categoryItems.length - visibleCategories.length;
-  const visibleTags = shop.tags.slice(0, 5);
+  const visibleTags = shop.tags.slice(0, 3);
   const remainingTags = shop.tags.length - visibleTags.length;
+  const visibleBadges = shop.badges
+    .filter((badge) => badge !== "קטלוג וואטסאפ פעיל")
+    .slice(0, 2);
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm shadow-emerald-950/5 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
@@ -77,14 +80,16 @@ export function ShopCard({ shop }: ShopCardProps) {
         </div>
 
         {shop.hasWashopBenefit ? (
-          <p className="mt-3 text-xs font-bold leading-6 text-emerald-800">
+          <p className="mt-2 text-xs font-bold leading-6 text-emerald-800">
             {shop.benefitText ?? "בקשו את ההטבה כשאתם פונים דרך וואשופ"}
           </p>
         ) : null}
       </div>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-sm leading-6 text-zinc-600">{shop.description}</p>
+        <p className="overflow-hidden text-sm leading-6 text-zinc-600 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+          {shop.description}
+        </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {visibleCategories.map((category) => (
@@ -147,23 +152,27 @@ export function ShopCard({ shop }: ShopCardProps) {
           ) : null}
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          {shop.badges.map((badge) => (
-            <span
-              key={badge}
-              className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700"
-            >
-              <BadgeCheck className="size-3.5 text-emerald-600" aria-hidden="true" />
-              {badge}
-            </span>
-          ))}
-        </div>
+        {visibleBadges.length ? (
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            {visibleBadges.map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700"
+              >
+                <BadgeCheck
+                  className="size-3.5 text-emerald-600"
+                  aria-hidden="true"
+                />
+                {badge}
+              </span>
+            ))}
+          </div>
+        ) : null}
 
         <p className="mt-3 rounded-lg border border-emerald-100 bg-emerald-50/70 p-2.5 text-xs font-bold leading-5 text-zinc-700">
-          פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי.{" "}
           {shop.hasWashopBenefit
-            ? "בקשו את הטבת וואשופ, והמטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."
-            : "המטרה היא שתקבלו יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."}
+            ? "בקשו את הטבת וואשופ בפנייה. וואשופ מבקשת מהחנויות יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."
+            : "וואשופ מבקשת מהחנויות יחס רציני, שירות טוב ומחיר הוגן ככל האפשר."}
         </p>
 
         <div className="mt-4 grid gap-2 sm:grid-cols-2">

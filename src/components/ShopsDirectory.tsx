@@ -6,6 +6,7 @@ import { categories } from "@/data/categories";
 import { approvedShops } from "@/data/shops";
 import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { ShopCard } from "@/components/ShopCard";
+import { ShopsStatusBanner } from "@/components/ShopsStatusBanner";
 
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
 const cityOptions = Array.from(new Set(approvedShops.map((shop) => shop.city).filter(Boolean))).sort(
@@ -48,8 +49,16 @@ export function ShopsDirectory({
   }, [category, city, query]);
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-lg border border-emerald-950/10 bg-white p-4 shadow-sm">
+    <div className="space-y-5">
+      <div className="mx-auto max-w-6xl rounded-xl border border-emerald-200 bg-white p-4 shadow-sm shadow-emerald-950/5 sm:p-5">
+        <div className="mb-4">
+          <h2 className="text-2xl font-black leading-tight text-zinc-950">
+            חפשו חנות וואטסאפ לפי עיר, קטגוריה או מוצר
+          </h2>
+          <p className="mt-1 text-sm font-bold leading-6 text-zinc-600">
+            אפשר לחפש לפי שם חנות, תחום, תגית, מוצר או עיר.
+          </p>
+        </div>
         <div className="grid gap-3 lg:grid-cols-[1fr_240px_220px]">
           <label className="relative block">
             <span className="sr-only">חיפוש חנות, קטגוריה, עיר או מוצר</span>
@@ -60,10 +69,10 @@ export function ShopsDirectory({
             <ResponsiveSearchInput
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              desktopPlaceholder="חפשו חנות, קטגוריה, עיר או מוצר"
+              desktopPlaceholder="חפשו עיר, מוצר או חנות"
               mobilePlaceholder="חפשו עיר, מוצר או חנות"
               dir="rtl"
-              className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 pr-12 pl-4 text-sm text-zinc-950 outline-none transition placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100 sm:text-base sm:placeholder:text-base"
+              className="h-12 w-full rounded-full border border-emerald-200 bg-emerald-50/50 pr-12 pl-4 text-sm font-bold text-zinc-950 outline-none transition placeholder:text-sm placeholder:font-bold placeholder:text-zinc-400 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100 sm:text-base sm:placeholder:text-base"
             />
           </label>
 
@@ -101,7 +110,7 @@ export function ShopsDirectory({
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-3 text-sm font-bold text-zinc-600">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 text-sm font-bold text-zinc-600">
         <span className="inline-flex items-center gap-2">
           <SlidersHorizontal className="size-4" aria-hidden="true" />
           נמצאו {filteredShops.length} חנויות
@@ -117,6 +126,10 @@ export function ShopsDirectory({
         >
           ניקוי סינון
         </button>
+      </div>
+
+      <div className="mx-auto max-w-6xl">
+        <ShopsStatusBanner />
       </div>
 
       {filteredShops.length ? (

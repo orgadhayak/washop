@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ShopsDirectory } from "@/components/ShopsDirectory";
-import { ShopsStatusBanner } from "@/components/ShopsStatusBanner";
 import { SectionHeader } from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
@@ -31,17 +30,14 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
   const initialCity = readParam(params, "city");
 
   return (
-    <div className="py-12 sm:py-16">
+    <div className="py-8 sm:py-12">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="ספריית חנויות"
           title="כל חנויות הוואטסאפ בישראל"
-          description="חפשו חנות, עיר או קטגוריה ומצאו עסקים ישראליים שמוכרים ישירות דרך קטלוג וואטסאפ או הודעות."
+          description="חפשו עסקים ישראליים שמוכרים ישירות דרך קטלוג וואטסאפ או הודעות."
         />
-        <div className="mt-8">
-          <ShopsStatusBanner />
-        </div>
-        <div className="mt-10">
+        <div className="mt-7">
           <ShopsDirectory
             initialQuery={initialQuery}
             initialCategory={initialCategory}
