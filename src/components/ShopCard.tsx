@@ -20,18 +20,18 @@ type ShopCardProps = {
 
 export function ShopCard({ shop }: ShopCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-lg border border-emerald-950/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
+    <article className="flex h-full flex-col rounded-lg border border-emerald-950/10 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md sm:p-5">
       <div className="flex items-start gap-3">
-        <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 text-white">
-          <Store className="size-6" aria-hidden="true" />
+        <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 text-white">
+          <Store className="size-5" aria-hidden="true" />
         </div>
         <div className="min-w-0 flex-1">
           <Link href={`/shop/${shop.slug}`} className="group">
-            <h3 className="text-xl font-black leading-tight text-zinc-950 group-hover:text-emerald-700">
+            <h3 className="text-lg font-black leading-tight text-zinc-950 group-hover:text-emerald-700">
               {shop.name}
             </h3>
           </Link>
-          <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-zinc-600">
+          <div className="mt-1.5 flex flex-wrap gap-x-2 gap-y-1 text-xs font-bold text-zinc-600">
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5 text-emerald-600" aria-hidden="true" />
               {shop.city}
@@ -44,7 +44,7 @@ export function ShopCard({ shop }: ShopCardProps) {
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap gap-1.5">
         {shop.categories.map((categorySlug) => {
           const category = categoryBySlug.get(categorySlug);
 
@@ -52,7 +52,7 @@ export function ShopCard({ shop }: ShopCardProps) {
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}
-              className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800 transition hover:bg-emerald-100"
+              className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-800 transition hover:bg-emerald-100"
             >
               {category.name}
             </Link>
@@ -60,11 +60,11 @@ export function ShopCard({ shop }: ShopCardProps) {
         })}
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-2.5 flex flex-wrap gap-1.5">
         {shop.tags.map((tag) => (
           <span
             key={tag}
-            className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-bold text-zinc-700"
+            className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-bold text-zinc-700"
           >
             <Tags className="size-3.5 text-emerald-600" aria-hidden="true" />
             {tag}
@@ -76,24 +76,24 @@ export function ShopCard({ shop }: ShopCardProps) {
         קטלוג וואטסאפ פעיל לעסק הזה
       </p>
 
-      <p className="mt-2 flex-1 text-sm leading-7 text-zinc-600">{shop.description}</p>
+      <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600">{shop.description}</p>
 
-      <div className="mt-4 rounded-lg bg-emerald-50 px-4 py-3">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-emerald-50 px-3 py-2.5">
         <div className="flex items-center gap-1 text-emerald-600" aria-label="דירוג וואשופ חמישה כוכבים">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} className="size-4 fill-current" aria-hidden="true" />
+            <Star key={index} className="size-3.5 fill-current" aria-hidden="true" />
           ))}
         </div>
-        <p className="mt-1 text-sm font-black text-emerald-900">
+        <p className="text-sm font-black text-emerald-900">
           דירוג וואשופ: {shop.washopRating.toFixed(1)}
         </p>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap gap-1.5">
         {shop.badges.map((badge) => (
           <span
             key={badge}
-            className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-3 py-1 text-xs font-bold text-zinc-700"
+            className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700"
           >
             <BadgeCheck className="size-3.5 text-emerald-600" aria-hidden="true" />
             {badge}
@@ -102,22 +102,22 @@ export function ShopCard({ shop }: ShopCardProps) {
       </div>
 
       {shop.status === "approved" ? (
-        <p className="mt-4 text-xs font-bold text-emerald-700">
+        <p className="mt-3 text-xs font-bold text-emerald-700">
           נבדק ידנית על ידי וואשופ
         </p>
       ) : null}
 
-      <p className="mt-3 rounded-lg bg-zinc-50 p-3 text-xs font-bold leading-6 text-zinc-600">
+      <p className="mt-2.5 rounded-lg bg-zinc-50 p-2.5 text-xs font-bold leading-5 text-zinc-600">
         פנייה דרך וואשופ מסמנת לבעל העסק שהגעתם מאתר איכותי. המטרה היא שתקבלו
         יחס רציני, שירות טוב ומחיר הוגן ככל האפשר.
       </p>
 
-      <div className="mt-5 grid gap-2 sm:grid-cols-2">
+      <div className="mt-4 grid gap-2 sm:grid-cols-2">
         <a
           href={shop.catalogUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-black text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-black text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
         >
           צפייה בקטלוג
         </a>
@@ -125,7 +125,7 @@ export function ShopCard({ shop }: ShopCardProps) {
           href={createChatUrl(shop.phone, siteConfig.shopMessage)}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-4 text-sm font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-4 text-sm font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
         >
           <MessageCircle className="size-4" aria-hidden="true" />
           שליחת הודעה

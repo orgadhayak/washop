@@ -120,7 +120,7 @@ export function ShopsDirectory({
       </div>
 
       {filteredShops.length ? (
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
           {filteredShops.map((shop) => (
             <ShopCard key={shop.id} shop={shop} />
           ))}

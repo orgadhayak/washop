@@ -26,54 +26,54 @@ const stats = [
 
 export function HomeStoresMomentum() {
   return (
-    <section className="bg-white py-8 sm:py-10">
+    <section className="bg-white py-6 sm:py-8">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-emerald-200 bg-zinc-950 text-white shadow-xl shadow-emerald-950/10">
-          <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="p-6 sm:p-8 lg:p-10">
-              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-400/12 px-4 py-2 text-sm font-black text-emerald-200 ring-1 ring-emerald-300/25">
+        <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/70 to-white p-4 shadow-sm shadow-emerald-950/5 sm:p-5">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-sm font-black text-emerald-800 shadow-sm">
                 <TrendingUp className="size-4" aria-hidden="true" />
                 וואשופ מתרחב בזהירות
               </div>
-              <h2 className="mt-5 max-w-2xl text-3xl font-black leading-tight sm:text-4xl">
+              <h2 className="mt-3 max-w-2xl text-2xl font-black leading-tight text-zinc-950 sm:text-3xl">
                 וואשופ כבר באוויר ועוד חנויות בדרך
               </h2>
-              <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-200">
+              <p className="mt-3 max-w-3xl text-base font-bold leading-8 text-zinc-700">
                 כרגע יש באתר {liveStoresCount} חנויות פעילות, ועוד{" "}
                 {pendingApprovalCount} חנויות ממתינות לאישור והשלמת בדיקה לפני
                 עלייה לאתר.
               </p>
-              <p className="mt-3 max-w-3xl leading-8 text-zinc-300">
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-zinc-600">
                 צוות וואשופ בודק כל חנות ידנית ובוחן התאמה, אמינות, רצינות
                 ואיכות לפני פרסום. חנויות חדשות עולות בהדרגה לאחר בדיקה
                 ואישור.
               </p>
-              <div className="mt-6 flex flex-col gap-3 text-sm font-bold text-zinc-300 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-4 flex flex-col gap-1 text-xs font-bold leading-6 text-zinc-600 sm:flex-row sm:items-center sm:gap-4">
                 <span>אנחנו מקפידים על סטנדרט גבוה. לא כל חנות נכנסת לוואשופ.</span>
-                <span className="text-emerald-200">
+                <span className="text-emerald-700">
                   המספרים מתעדכנים בהתאם למצב הבדיקות באתר.
                 </span>
               </div>
             </div>
 
-            <div className="grid gap-3 bg-white/5 p-4 sm:grid-cols-3 lg:grid-cols-1 lg:p-6">
+            <div className="grid gap-3 sm:grid-cols-3">
               {stats.map(({ label, value, icon: Icon }) => (
                 <div
                   key={label}
-                  className="rounded-xl border border-white/10 bg-white px-5 py-4 text-zinc-950 shadow-sm"
+                  className="rounded-xl border border-emerald-100 bg-white px-4 py-3 text-zinc-950 shadow-sm"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="grid size-11 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
-                      <Icon className="size-6" aria-hidden="true" />
+                    <span className="grid size-9 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
+                      <Icon className="size-5" aria-hidden="true" />
                     </span>
-                    <span className="text-4xl font-black">{value}</span>
+                    <span className="text-3xl font-black">{value}</span>
                   </div>
-                  <p className="mt-4 text-sm font-black text-zinc-950">{label}</p>
+                  <p className="mt-3 text-xs font-black text-zinc-700">{label}</p>
                 </div>
               ))}
               <Link
                 href="/shops"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-500 px-6 text-sm font-black text-zinc-950 transition hover:bg-emerald-400 sm:col-span-3 lg:col-span-1"
+                className="inline-flex min-h-10 items-center justify-center rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700 sm:col-span-3"
               >
                 צפייה בחנויות הפעילות
               </Link>

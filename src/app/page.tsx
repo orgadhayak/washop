@@ -161,7 +161,7 @@ export default function Home() {
             title="חנויות וואטסאפ שכבר אפשר לגלות"
             description="התחלה נקייה עם חנויות מאושרות, קטגוריות פעילות ומקום להוסיף עוד עסקים איכותיים."
           />
-          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-6xl gap-6 lg:grid-cols-2">
             {featuredShops.map((shop) => (
               <ShopCard key={shop.id} shop={shop} />
             ))}
