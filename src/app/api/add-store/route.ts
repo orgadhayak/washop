@@ -21,7 +21,7 @@ type StoreSubmission = {
 };
 
 const successMessage =
-  "הבקשה נשלחה בהצלחה וממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם החנות תתאים לרמת האיכות והאמינות הנדרשת, ניצור איתכם קשר.";
+  "הפרטים נשלחו בהצלחה. הבקשה ממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם חסרים פרטים או שאין לכם עדיין קטלוג וואטסאפ, נחזור אליכם וננסה לעזור בהכוונה ראשונית.";
 
 function asText(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -39,33 +39,34 @@ function escapeHtml(value: string) {
 function validateSubmission(payload: StoreSubmission) {
   const storeName = asText(payload.storeName);
   const contactName = asText(payload.contactName);
-  const phone = normalizePhone(asText(payload.phone));
+  const rawPhone = asText(payload.phone);
+  const phone = rawPhone ? normalizePhone(rawPhone) : "";
   const catalogUrl = asText(payload.catalogUrl);
-  const catalogPhone = extractPhoneFromWhatsappUrl(catalogUrl);
+  const catalogPhone = catalogUrl ? extractPhoneFromWhatsappUrl(catalogUrl) : "";
   const email = asText(payload.email);
   const city = asText(payload.city);
   const description = asText(payload.description);
 
-  if (!phone || !catalogUrl || !description) {
-    return { error: "יש למלא את כל שדות החובה." };
+  if (!email) {
+    return { error: "יש למלא כתובת אימייל." };
   }
 
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: "כתובת האימייל אינה תקינה." };
   }
 
-  if (!/^\d{9,15}$/.test(phone)) {
+  if (rawPhone && !/^\d{9,15}$/.test(phone)) {
     return { error: "מספר הוואטסאפ אינו תקין." };
   }
 
-  if (!catalogPhone && !/^\+?[\d\s().-]+$/.test(catalogUrl)) {
+  if (catalogUrl && !catalogPhone && !/^\+?[\d\s().-]+$/.test(catalogUrl)) {
     return { error: "קישור הקטלוג צריך להיות wa.me/c, wa.me או מספר טלפון." };
   }
 
   if (!payload.legalConfirmed) {
     return {
       error:
-        "יש לאשר שהחנות עוסקת במוצרים או שירותים חוקיים בלבד ושקראתם את תנאי הפרסום.",
+        "יש לאשר שהפרטים שנשלחו נכונים ועומדים בתנאי הפרסום של וואשופ.",
     };
   }
 
@@ -73,8 +74,8 @@ function validateSubmission(payload: StoreSubmission) {
     data: {
       storeName,
       contactName,
-      phone,
-      catalogUrl: normalizeCatalogUrl(catalogUrl),
+      phone: rawPhone,
+      catalogUrl: catalogUrl ? normalizeCatalogUrl(catalogUrl) : "",
       email,
       city,
       description,
@@ -88,11 +89,11 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
   const rows = [
     ["שם החנות", data.storeName || "לא נמסר"],
     ["שם איש קשר", data.contactName || "לא נמסר"],
-    ["מספר וואטסאפ", data.phone],
-    ["קישור לקטלוג וואטסאפ", data.catalogUrl],
-    ["אימייל", data.email || "לא נמסר"],
+    ["מספר וואטסאפ", data.phone || "לא נשלח מספר טלפון"],
+    ["קישור לקטלוג וואטסאפ", data.catalogUrl || "לא נשלח קישור לקטלוג"],
+    ["אימייל", data.email],
     ["עיר", data.city || "לא נמסרה"],
-    ["ספרו לנו על החנות ומה חשוב שנדע", data.description],
+    ["ספרו לנו על החנות ומה חשוב שנדע", data.description || "לא נכתב פירוט נוסף"],
     ["קישור אופציונלי", data.optionalLink || "לא נמסר"],
     ["אישור תנאי פרסום וחוקיות", data.legalConfirmed ? "כן" : "לא"],
   ];
@@ -111,7 +112,7 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
 
   return {
     text,
-    html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>בקשת הצטרפות חדשה לוואשופ</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
+    html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>פנייה חדשה מהאתר לוואשופ</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
   };
 }
 
@@ -185,9 +186,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: validated.error }, { status: 400 });
   }
 
-  const subject = `[WaShop] בקשת הצטרפות חדשה - ${
-    validated.data.storeName || validated.data.phone
-  }`;
+  const subject = `[WaShop] פנייה חדשה מהאתר - ${validated.data.email}`;
   const body = createEmailBody(validated.data);
 
   try {

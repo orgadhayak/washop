@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { HeroVisual } from "@/components/HeroVisual";
+import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ShopCard } from "@/components/ShopCard";
 import { blogPosts } from "@/data/blog";
@@ -132,11 +133,13 @@ export default function Home() {
               className="pointer-events-none absolute right-5 top-1/2 size-6 -translate-y-1/2 text-zinc-400"
               aria-hidden="true"
             />
-            <input
+            <ResponsiveSearchInput
               id="home-search"
               name="q"
-              placeholder="חפשו חנות, קטגוריה, עיר או מוצר"
-              className="h-16 w-full rounded-full border border-emerald-200 bg-white pr-14 pl-32 text-lg font-bold text-zinc-950 shadow-lg shadow-emerald-950/5 outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100"
+              desktopPlaceholder="חפשו חנות, קטגוריה, עיר או מוצר"
+              mobilePlaceholder="חפשו עיר, מוצר או חנות"
+              dir="rtl"
+              className="h-16 w-full rounded-full border border-emerald-200 bg-white pr-14 pl-24 text-sm font-bold text-zinc-950 shadow-lg shadow-emerald-950/5 outline-none transition placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 sm:pl-32 sm:text-lg sm:placeholder:text-lg"
             />
             <button
               type="submit"

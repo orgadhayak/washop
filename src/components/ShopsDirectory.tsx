@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { categories } from "@/data/categories";
 import { approvedShops } from "@/data/shops";
+import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { ShopCard } from "@/components/ShopCard";
 
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
@@ -56,11 +57,13 @@ export function ShopsDirectory({
               className="pointer-events-none absolute right-4 top-1/2 size-5 -translate-y-1/2 text-zinc-400"
               aria-hidden="true"
             />
-            <input
+            <ResponsiveSearchInput
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="חפשו חנות, קטגוריה, עיר או מוצר"
-              className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 pr-12 pl-4 text-base text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
+              desktopPlaceholder="חפשו חנות, קטגוריה, עיר או מוצר"
+              mobilePlaceholder="חפשו עיר, מוצר או חנות"
+              dir="rtl"
+              className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 pr-12 pl-4 text-sm text-zinc-950 outline-none transition placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100 sm:text-base sm:placeholder:text-base"
             />
           </label>
 

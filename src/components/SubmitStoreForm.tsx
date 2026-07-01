@@ -18,7 +18,7 @@ type FormState = {
 };
 
 const successMessage =
-  "הבקשה נשלחה בהצלחה וממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם החנות תתאים לרמת האיכות והאמינות הנדרשת, ניצור איתכם קשר.";
+  "הפרטים נשלחו בהצלחה. הבקשה ממתינה לבדיקה, אימות ואישור של צוות וואשופ. אם חסרים פרטים או שאין לכם עדיין קטלוג וואטסאפ, נחזור אליכם וננסה לעזור בהכוונה ראשונית.";
 
 const initialState: FormState = {
   storeName: "",
@@ -98,14 +98,12 @@ export function SubmitStoreForm() {
           value={form.catalogUrl}
           onChange={(value) => updateField("catalogUrl", value)}
           dir="ltr"
-          required
         />
         <TextInput
           label="מספר וואטסאפ / טלפון"
           value={form.phone}
           onChange={(value) => updateField("phone", value)}
           inputMode="tel"
-          required
         />
         <TextInput
           label="שם החנות"
@@ -128,6 +126,7 @@ export function SubmitStoreForm() {
           onChange={(value) => updateField("email", value)}
           inputMode="email"
           dir="ltr"
+          required
         />
       </div>
 
@@ -135,7 +134,6 @@ export function SubmitStoreForm() {
         label="ספרו לנו על החנות ומה חשוב שנדע"
         value={form.description}
         onChange={(value) => updateField("description", value)}
-        required
       />
 
       <TextInput
@@ -154,9 +152,10 @@ export function SubmitStoreForm() {
           className="mt-1 size-4 shrink-0 accent-emerald-600"
         />
         <span>
-          אני מאשר/ת שהחנות עוסקת במוצרים או שירותים חוקיים בלבד, ושקראתי את{" "}
+          אני מאשר/ת שהפרטים שנשלחו נכונים, ושאם מדובר בחנות או עסק — הפעילות
+          היא חוקית ועומדת ב
           <Link href="/seller-rules" className="text-emerald-700 underline">
-            תנאי הפרסום בוואשופ
+            תנאי הפרסום של וואשופ
           </Link>
           .
         </span>
@@ -187,7 +186,7 @@ export function SubmitStoreForm() {
         ) : (
           <Send className="size-5" aria-hidden="true" />
         )}
-        שליחת חנות לבדיקה
+        שליחת פרטים לוואשופ
       </button>
     </form>
   );

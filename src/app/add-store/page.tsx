@@ -21,12 +21,26 @@ export default function AddStorePage() {
             הוספת חנות וואטסאפ לוואשופ
           </h1>
           <p className="mt-5 text-lg leading-9 text-zinc-600">
-            יש לכם חנות וואטסאפ איכותית? שלחו לנו קישור לקטלוג, מספר וואטסאפ
-            וכמה מילים על העסק. צוות וואשופ יבדוק את החנות, יאמת שהיא מתאימה,
-            וישייך אותה לקטגוריות הנכונות באתר.
+            יש לכם חנות וואטסאפ איכותית או רעיון לחנות כזו? השאירו מייל וכמה
+            מילים, וצוות וואשופ יבדוק איך אפשר להתקדם.
           </p>
 
           <div className="mt-6 space-y-3">
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-7 text-emerald-900">
+              <div className="mb-2 font-black">
+                אין לכם עדיין קטלוג וואטסאפ? אין בעיה
+              </div>
+              <p>
+                גם אם אין לכם עדיין קטלוג וואטסאפ מסודר, אפשר להשאיר פרטים.
+                וואשופ מיועד לעזור לעסקים ישראליים להיכנס לעולם של חנויות
+                וואטסאפ בצורה פשוטה. נשמח לעזור בהכוונה ראשונית בחינם, להבין מה
+                צריך להכין, ואיך אפשר להופיע באתר אחרי בדיקה ואישור.
+              </p>
+              <p className="mt-2 font-bold">
+                לא חייבים להיות טכנולוגיים. מספיק להשאיר מייל וכמה מילים, ואנחנו
+                נחזור אליכם.
+              </p>
+            </div>
             <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-7 text-amber-900">
               <div className="mb-2 flex items-center gap-2 font-black">
                 <AlertCircle className="size-4" aria-hidden="true" />
@@ -40,8 +54,9 @@ export default function AddStorePage() {
                 <BadgeCheck className="size-4" aria-hidden="true" />
                 מה אנחנו בודקים
               </div>
-              התהליך פשוט: שולחים קישור לקטלוג, מספר וואטסאפ והסבר קצר. את
-              הקטגוריות צוות וואשופ יקבע לאחר הבדיקה.
+              התהליך פשוט: משאירים מייל, ואם יש כבר קטלוג וואטסאפ או מספר
+              טלפון אפשר להוסיף גם אותם. את הקטגוריות צוות וואשופ יקבע לאחר
+              הבדיקה.
             </div>
             <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm leading-7 text-zinc-700">
               <div className="mb-2 flex items-center gap-2 font-black text-zinc-950">
