@@ -70,9 +70,9 @@ function createEmailBody(data: PartnerData) {
   const rows = [
     ["אימייל", data.email],
     ["שם מלא", data.fullName || "לא נמסר"],
-    ["עיר או אזור", data.area || "לא נמסר"],
+    ["עיר / אזור", data.area || "לא נמסר"],
     ["במה תרצו לעזור", data.helpWith || "לא נמסר"],
-    ["ספרו לנו קצת עליכם", data.about || "לא נמסר"],
+    ["קצת עליכם", data.about || "לא נמסר"],
     ["קישור רלוונטי", data.relevantLink || "לא נמסר"],
     ["תאריך ושעה", submittedAt],
   ];
