@@ -9,8 +9,8 @@ export function HeroVisual() {
       <Image
         src="/brand/washop-home-hero.png"
         alt=""
-        width={900}
-        height={900}
+        width={1263}
+        height={968}
         className="h-auto w-full max-w-[560px] select-none object-contain"
         priority
       />
