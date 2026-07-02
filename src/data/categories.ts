@@ -127,6 +127,12 @@ export const categories = [
     description: "מארזים, מתנות, הפקות קטנות ושירותים לאירועים.",
   },
   {
+    id: "personalized-prints-gifts",
+    slug: "personalized-prints-gifts",
+    name: "הדפסות ומתנות אישיות",
+    description: "הדפסות אישיות, בלוקי זכוכית, מארזים ומתנות בעיצוב אישי דרך קטלוג וואטסאפ.",
+  },
+  {
     id: "flowers-event-design",
     slug: "flowers-event-design",
     name: "פרחים ועיצוב אירועים",

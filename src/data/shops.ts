@@ -25,9 +25,9 @@ export type Shop = {
 
 export const shops = [
   {
-    id: "tech-whatsapp-store",
-    slug: "tech-whatsapp-store",
-    name: "נביא נס ישראל",
+    id: "navines",
+    slug: "navines",
+    name: "נביא נס",
     description:
       "נביא נס ישראל היא עסק ישראלי בתחום התוכנה והדיגיטל. דרך קטלוג הוואטסאפ ניתן להתרשם משירותים כמו בניית אתרים, פיתוח כלים לעסקים, פתרונות בינה מלאכותית, טיפול בתקלות טכניות, פיתוח אפליקציות ושירותים דיגיטליים נוספים. החנות מתאימה לבעלי עסקים שרוצים פתרון טכנולוגי ישיר, ברור ונגיש דרך וואטסאפ.",
     catalogUrl: "https://wa.me/c/972548180200",
@@ -65,8 +65,8 @@ export const shops = [
     updatedAt: "2026-06-30",
   },
   {
-    id: "barber-courses-whatsapp",
-    slug: "barber-courses-whatsapp",
+    id: "revolution-studio",
+    slug: "revolution-studio",
     name: "רוולושיין סטודיו",
     description:
       "רוולושיין סטודיו הוא עסק ישראלי בתחום המספרות וטיפוח השיער. דרך קטלוג הוואטסאפ אפשר למצוא שירותי מספרה, מוצרים ואביזרים הקשורים לטיפוח שיער, ציוד ומוצרים לספרים, וגם קורסים והכשרות למי שרוצה ללמוד את תחום הספרות והתספורות.",
@@ -101,6 +101,44 @@ export const shops = [
     featured: true,
     createdAt: "2026-06-30",
     updatedAt: "2026-06-30",
+  },
+  {
+    id: "liel-gifts-and-blocks",
+    slug: "liel-gifts-and-blocks",
+    name: "ליאל",
+    description:
+      "ליאל היא חנות מתנות והדפסות אישיות בוואטסאפ, עם מוצרים כמו בלוקי זכוכית, מתנות בעיצוב אישי, מארזים, מחזיקים, כוסות, כיפות, סידורים ומוצרים מודפסים בהתאמה אישית.",
+    catalogUrl: "https://wa.me/c/972538262133",
+    phone: "972538262133",
+    city: "לא צוין",
+    shipsNationwide: false,
+    categories: [
+      "gifts-events",
+      "personalized-prints-gifts",
+      "judaica-shabbat",
+      "home-design",
+    ],
+    tags: [
+      "מתנות",
+      "הדפסה אישית",
+      "בלוקי זכוכית",
+      "מארזים",
+      "מתנות לאירועים",
+      "קטלוג וואטסאפ",
+      "חנות ישראלית",
+      "Liel",
+      "gifts",
+      "blocks",
+    ],
+    badges: ["קטלוג וואטסאפ פעיל", "מאומת על ידי וואשופ", "נבדק ידנית"],
+    washopRating: 5,
+    hasWashopBenefit: true,
+    benefitLabel: "הטבת וואשופ פעילה",
+    benefitText: "בקשו את ההטבה כשאתם פונים דרך וואשופ",
+    status: "approved",
+    featured: true,
+    createdAt: "2026-07-02",
+    updatedAt: "2026-07-02",
   },
 ] satisfies Shop[];
 
