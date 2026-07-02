@@ -92,7 +92,7 @@ export function ShopCard({ shop }: ShopCardProps) {
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <p className="overflow-hidden text-sm leading-6 text-zinc-600 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
-          {shop.description}
+          {shop.cardDescription ?? shop.description}
         </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">

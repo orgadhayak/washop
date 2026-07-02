@@ -5,6 +5,11 @@ export type Shop = {
   slug: string;
   name: string;
   description: string;
+  shortDescription?: string;
+  cardDescription?: string;
+  searchAliases?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
   catalogUrl: string;
   phone: string;
   city: string;
@@ -105,12 +110,26 @@ export const shops = [
   {
     id: "liel-gifts-and-blocks",
     slug: "liel-gifts-and-blocks",
-    name: "ליאל",
+    name: "אל אי מארזים מתנות והדפסות",
     description:
-      "ליאל היא חנות מתנות והדפסות אישיות בוואטסאפ, עם מוצרים כמו בלוקי זכוכית, מתנות בעיצוב אישי, מארזים, מחזיקים, כוסות, כיפות, סידורים ומוצרים מודפסים בהתאמה אישית.",
+      "אל אי מארזים מתנות והדפסות היא חנות מתנות בוואטסאפ, עם מארזי מתנה בעיצוב אישי, הדפסות, בלוקי זכוכית, כוסות, מחזיקים, סידורים ומוצרים מודפסים בהתאמה אישית.",
+    shortDescription: "מארזי מתנה בעיצוב אישי",
+    cardDescription:
+      "מארזי מתנה בעיצוב אישי, הדפסות ומוצרים מיוחדים דרך קטלוג וואטסאפ.",
+    searchAliases: [
+      "ליאל",
+      "Liel",
+      "gifts",
+      "blocks",
+      "אל אי",
+      "אל אי מארזים",
+    ],
+    metaTitle: "אל אי מארזים מתנות והדפסות | חנות וואטסאפ ביהוד | וואשופ",
+    metaDescription:
+      "מארזי מתנה בעיצוב אישי, הדפסות ומוצרים מיוחדים דרך קטלוג וואטסאפ. אל אי מארזים מתנות והדפסות ביהוד — נבדקת ידנית על ידי וואשופ.",
     catalogUrl: "https://wa.me/c/972538262133",
     phone: "972538262133",
-    city: "לא צוין",
+    city: "יהוד",
     shipsNationwide: false,
     categories: [
       "gifts-events",
@@ -119,16 +138,16 @@ export const shops = [
       "home-design",
     ],
     tags: [
-      "מתנות",
+      "מארזי מתנה",
+      "מתנות בעיצוב אישי",
       "הדפסה אישית",
       "בלוקי זכוכית",
-      "מארזים",
+      "כוסות",
+      "מחזיקים",
       "מתנות לאירועים",
+      "יהוד",
       "קטלוג וואטסאפ",
       "חנות ישראלית",
-      "Liel",
-      "gifts",
-      "blocks",
     ],
     badges: ["קטלוג וואטסאפ פעיל", "מאומת על ידי וואשופ", "נבדק ידנית"],
     washopRating: 5,

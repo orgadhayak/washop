@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: ShopPageProps): Promise<Metad
   }
 
   return {
-    title: `${shop.name} | חנות וואטסאפ`,
-    description: shop.description,
+    title: shop.metaTitle ?? `${shop.name} | חנות וואטסאפ`,
+    description: shop.metaDescription ?? shop.description,
     alternates: {
       canonical: `/shop/${shop.slug}`,
     },
     openGraph: {
-      title: `${shop.name} | washop.co.il`,
-      description: shop.description,
+      title: shop.metaTitle ?? `${shop.name} | washop.co.il`,
+      description: shop.metaDescription ?? shop.description,
       url: `/shop/${shop.slug}`,
       type: "website",
     },
@@ -87,18 +87,34 @@ export default async function ShopPage({ params }: ShopPageProps) {
           </Link>
 
           <article className="mt-6 overflow-hidden rounded-lg border border-emerald-950/10 bg-white shadow-sm">
-            <div className="bg-gradient-to-l from-emerald-600 to-teal-500 p-6 text-white sm:p-8">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-                <div className="grid size-16 place-items-center rounded-lg bg-white/18">
-                  <Store className="size-9" aria-hidden="true" />
+            <div className="bg-gradient-to-l from-emerald-700 to-teal-500 p-4 text-white sm:p-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25 sm:size-16">
+                  <Store className="size-7 sm:size-9" aria-hidden="true" />
                 </div>
-                <div>
-                  <p className="text-sm font-black text-emerald-50">
+                <div className="min-w-0">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/25">
+                    <BadgeCheck className="size-3.5" aria-hidden="true" />
                     חנות וואטסאפ מאושרת
-                  </p>
-                  <h1 className="mt-2 text-3xl font-black leading-tight sm:text-5xl">
+                  </span>
+                  <h1 className="mt-3 max-w-full break-words text-3xl font-black leading-tight sm:text-5xl">
                     {shop.name}
                   </h1>
+                  {shop.shortDescription ? (
+                    <p className="mt-2 text-sm font-bold leading-6 text-emerald-50 sm:text-base">
+                      {shop.shortDescription}
+                    </p>
+                  ) : null}
+                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold text-emerald-50 sm:text-sm">
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="size-3.5" aria-hidden="true" />
+                      {shop.city}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <BadgeCheck className="size-3.5" aria-hidden="true" />
+                      קטלוג וואטסאפ פעיל
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -37,7 +37,16 @@ export function ShopsDirectory({
         .join(" ");
       const matchesQuery =
         !normalizedQuery ||
-        [shop.name, shop.description, shop.city, categoryNames, ...shop.tags]
+        [
+          shop.name,
+          shop.description,
+          shop.cardDescription ?? "",
+          shop.shortDescription ?? "",
+          shop.city,
+          categoryNames,
+          ...shop.tags,
+          ...(shop.searchAliases ?? []),
+        ]
           .join(" ")
           .toLowerCase()
           .includes(normalizedQuery);
