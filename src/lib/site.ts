@@ -9,7 +9,7 @@ export const siteConfig = {
   favicon32: "/brand/favicon-32x32.png",
   brandSymbol: "/brand/washop-mascot.png",
   appleTouchIcon: "/brand/apple-touch-icon.png",
-  ogImage: "/brand/washop-og.png",
+  ogImage: "https://washop.co.il/brand/washop-og-v3.png",
   title: "washop.co.il | חנויות וואטסאפ בישראל",
   description:
     "כל חנויות הוואטסאפ הכי טובות בישראל במקום אחד. גלו חנויות עם קטלוג וואטסאפ לפי קטגוריות, שירות, איכות ונוחות, וקנו ישירות מהמוכר.",
