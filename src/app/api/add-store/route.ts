@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import { siteConfig } from "@/lib/site";
+import {
+  EmailConfigurationError,
+  EmailDeliveryError,
+  sendSiteEmail,
+} from "@/lib/email";
 import { normalizePhone } from "@/lib/whatsapp";
 
 type StoreSubmission = {
@@ -9,6 +12,8 @@ type StoreSubmission = {
   phone?: string;
   email?: string;
   city?: string;
+  catalogUrl?: string;
+  additionalLink?: string;
   description?: string;
   legalConfirmed?: boolean;
   confirmEmail?: string;
@@ -37,6 +42,8 @@ function validateSubmission(payload: StoreSubmission) {
   const phone = rawPhone ? normalizePhone(rawPhone) : "";
   const email = asText(payload.email);
   const city = asText(payload.city);
+  const catalogUrl = asText(payload.catalogUrl);
+  const additionalLink = asText(payload.additionalLink);
   const description = asText(payload.description);
 
   if (!email) {
@@ -65,6 +72,8 @@ function validateSubmission(payload: StoreSubmission) {
       phone: rawPhone,
       email,
       city,
+      catalogUrl,
+      additionalLink,
       description,
       legalConfirmed: true,
     },
@@ -72,29 +81,24 @@ function validateSubmission(payload: StoreSubmission) {
 }
 
 function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>["data"]>) {
-  const rows = [["אימייל", data.email]];
-
-  if (data.phone) {
-    rows.push(["מספר טלפון", data.phone]);
-  }
-
-  if (data.storeName) {
-    rows.push(["שם החנות", data.storeName]);
-  }
-
-  if (data.contactName) {
-    rows.push(["שם איש קשר", data.contactName]);
-  }
-
-  if (data.city) {
-    rows.push(["עיר", data.city]);
-  }
-
-  if (data.description) {
-    rows.push(["הודעה חופשית", data.description]);
-  }
-
-  rows.push(["אישור תנאי פרסום וחוקיות", data.legalConfirmed ? "כן" : "לא"]);
+  const missing = "לא נמסר";
+  const submittedAt = new Intl.DateTimeFormat("he-IL", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "Asia/Jerusalem",
+  }).format(new Date());
+  const rows = [
+    ["אימייל", data.email],
+    ["שם חנות", data.storeName || missing],
+    ["שם איש קשר", data.contactName || missing],
+    ["עיר", data.city || missing],
+    ["מספר וואטסאפ / טלפון", data.phone || missing],
+    ["קישור לקטלוג", data.catalogUrl || missing],
+    ["קישור נוסף", data.additionalLink || missing],
+    ["פירוט חופשי", data.description || missing],
+    ["אישור תנאי פרסום", data.legalConfirmed ? "כן" : "לא"],
+    ["תאריך ושעה", submittedAt],
+  ];
 
   const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
   const htmlRows = rows
@@ -112,57 +116,6 @@ function createEmailBody(data: NonNullable<ReturnType<typeof validateSubmission>
     text,
     html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>פנייה חדשה מהאתר לוואשופ</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
   };
-}
-
-async function sendEmail(
-  subject: string,
-  body: { text: string; html: string },
-) {
-  if (process.env.RESEND_API_KEY) {
-    const { Resend } = await import("resend");
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? `washop.co.il <${siteConfig.supportEmail}>`,
-      to: siteConfig.supportEmail,
-      subject,
-      text: body.text,
-      html: body.html,
-    });
-
-    return;
-  }
-
-  if (
-    process.env.SMTP_HOST &&
-    process.env.SMTP_PORT &&
-    process.env.SMTP_USER &&
-    process.env.SMTP_PASS
-  ) {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM ?? process.env.SMTP_USER,
-      to: siteConfig.supportEmail,
-      subject,
-      text: body.text,
-      html: body.html,
-    });
-
-    return;
-  }
-
-  throw new Error(
-    "לא הוגדרה שליחת מייל. יש להגדיר RESEND_API_KEY או SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS.",
-  );
 }
 
 export async function POST(request: NextRequest) {
@@ -188,18 +141,30 @@ export async function POST(request: NextRequest) {
   const body = createEmailBody(validated.data);
 
   try {
-    await sendEmail(subject, body);
+    await sendSiteEmail({
+      subject,
+      text: body.text,
+      html: body.html,
+      replyTo: validated.data.email,
+    });
 
     return NextResponse.json({
+      success: true,
       message: successMessage,
     });
   } catch (error) {
+    const isKnownEmailError =
+      error instanceof EmailConfigurationError || error instanceof EmailDeliveryError;
+
+    if (!isKnownEmailError) {
+      console.error("Unexpected add-store email error", error);
+    }
+
     return NextResponse.json(
       {
-        error:
-          error instanceof Error
-            ? error.message
-            : "אירעה שגיאה בשליחת המייל. נסו שוב מאוחר יותר.",
+        error: isKnownEmailError
+          ? error.userMessage
+          : "אירעה שגיאה בשליחת הטופס. נסו שוב מאוחר יותר.",
       },
       { status: 503 },
     );

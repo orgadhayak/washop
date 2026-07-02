@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import { siteConfig } from "@/lib/site";
+import {
+  EmailConfigurationError,
+  EmailDeliveryError,
+  sendSiteEmail,
+} from "@/lib/email";
 
 type PartnerSubmission = {
   fullName?: string;
@@ -59,6 +62,11 @@ function validateSubmission(payload: PartnerSubmission) {
 }
 
 function createEmailBody(data: PartnerData) {
+  const submittedAt = new Intl.DateTimeFormat("he-IL", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "Asia/Jerusalem",
+  }).format(new Date());
   const rows = [
     ["אימייל", data.email],
     ["שם מלא", data.fullName || "לא נמסר"],
@@ -66,6 +74,7 @@ function createEmailBody(data: PartnerData) {
     ["במה תרצו לעזור", data.helpWith || "לא נמסר"],
     ["ספרו לנו קצת עליכם", data.about || "לא נמסר"],
     ["קישור רלוונטי", data.relevantLink || "לא נמסר"],
+    ["תאריך ושעה", submittedAt],
   ];
 
   const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
@@ -84,57 +93,6 @@ function createEmailBody(data: PartnerData) {
     text,
     html: `<div dir="rtl" style="font-family:Arial,sans-serif;line-height:1.7;color:#18181b"><h1>פנייה חדשה לתוכנית שותפים של וואשופ</h1><table cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;max-width:720px">${htmlRows}</table></div>`,
   };
-}
-
-async function sendEmail(
-  subject: string,
-  body: { text: string; html: string },
-) {
-  if (process.env.RESEND_API_KEY) {
-    const { Resend } = await import("resend");
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? `washop.co.il <${siteConfig.supportEmail}>`,
-      to: siteConfig.supportEmail,
-      subject,
-      text: body.text,
-      html: body.html,
-    });
-
-    return;
-  }
-
-  if (
-    process.env.SMTP_HOST &&
-    process.env.SMTP_PORT &&
-    process.env.SMTP_USER &&
-    process.env.SMTP_PASS
-  ) {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM ?? process.env.SMTP_USER,
-      to: siteConfig.supportEmail,
-      subject,
-      text: body.text,
-      html: body.html,
-    });
-
-    return;
-  }
-
-  throw new Error(
-    "לא הוגדרה שליחת מייל. יש להגדיר RESEND_API_KEY או SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS.",
-  );
 }
 
 export async function POST(request: NextRequest) {
@@ -162,18 +120,30 @@ export async function POST(request: NextRequest) {
   const body = createEmailBody(validated.data);
 
   try {
-    await sendEmail(subject, body);
+    await sendSiteEmail({
+      subject,
+      text: body.text,
+      html: body.html,
+      replyTo: validated.data.email,
+    });
 
     return NextResponse.json({
+      success: true,
       message: successMessage,
     });
   } catch (error) {
+    const isKnownEmailError =
+      error instanceof EmailConfigurationError || error instanceof EmailDeliveryError;
+
+    if (!isKnownEmailError) {
+      console.error("Unexpected partners email error", error);
+    }
+
     return NextResponse.json(
       {
-        error:
-          error instanceof Error
-            ? error.message
-            : "אירעה שגיאה בשליחת המייל. נסו שוב מאוחר יותר.",
+        error: isKnownEmailError
+          ? error.userMessage
+          : "אירעה שגיאה בשליחת הטופס. נסו שוב מאוחר יותר.",
       },
       { status: 503 },
     );
