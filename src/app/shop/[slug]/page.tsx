@@ -87,25 +87,25 @@ export default async function ShopPage({ params }: ShopPageProps) {
           </Link>
 
           <article className="mt-6 overflow-hidden rounded-lg border border-emerald-950/10 bg-white shadow-sm">
-            <div className="bg-gradient-to-l from-emerald-700 to-teal-500 p-4 text-white sm:p-8">
+            <div className="shop-hero-safe p-4 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25 sm:size-16">
+                <div className="shop-hero-icon-safe grid size-12 shrink-0 place-items-center rounded-xl sm:size-16">
                   <Store className="size-7 sm:size-9" aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/25">
+                  <span className="shop-hero-pill-safe inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-black">
                     <BadgeCheck className="size-3.5" aria-hidden="true" />
                     חנות וואטסאפ מאושרת
                   </span>
-                  <h1 className="mt-3 max-w-full break-words text-3xl font-black leading-tight sm:text-5xl">
+                  <h1 className="shop-hero-title-safe mt-3 max-w-full break-words text-3xl font-black leading-tight sm:text-5xl">
                     {shop.name}
                   </h1>
                   {shop.shortDescription ? (
-                    <p className="mt-2 text-sm font-bold leading-6 text-emerald-50 sm:text-base">
+                    <p className="shop-hero-muted-safe mt-2 text-sm font-bold leading-6 sm:text-base">
                       {shop.shortDescription}
                     </p>
                   ) : null}
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold text-emerald-50 sm:text-sm">
+                  <div className="shop-hero-muted-safe mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold sm:text-sm">
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="size-3.5" aria-hidden="true" />
                       {shop.city}

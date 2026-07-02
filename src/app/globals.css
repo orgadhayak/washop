@@ -88,6 +88,56 @@ html {
   background: #008f72;
 }
 
+.shop-hero-safe {
+  background: #00a884;
+  background-image: linear-gradient(135deg, #00a884 0%, #009b72 100%);
+  color: #ffffff;
+}
+
+.shop-hero-icon-safe {
+  background: #008f72;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.shop-hero-pill-safe {
+  background: #007f62;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: #ffffff;
+}
+
+.shop-hero-title-safe {
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.shop-hero-muted-safe {
+  color: #effff7;
+}
+
+@media (max-width: 640px) {
+  .shop-hero-safe {
+    background: #00a884 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+  }
+
+  .shop-hero-icon-safe {
+    background: #008f72 !important;
+    color: #ffffff !important;
+  }
+
+  .shop-hero-pill-safe {
+    background: #007f62 !important;
+    color: #ffffff !important;
+  }
+
+  .shop-hero-muted-safe,
+  .shop-hero-title-safe {
+    color: #ffffff !important;
+  }
+}
+
 .brand-logo {
   direction: ltr;
   unicode-bidi: isolate;
