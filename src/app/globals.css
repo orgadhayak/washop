@@ -89,52 +89,78 @@ html {
 }
 
 .shop-hero-safe {
+  box-sizing: border-box;
   background: #00a884;
+  background-color: #00a884;
   background-image: linear-gradient(135deg, #00a884 0%, #009b72 100%);
   color: #ffffff;
+  max-width: 100%;
 }
 
 .shop-hero-icon-safe {
+  box-sizing: border-box;
   background: #008f72;
+  background-color: #008f72;
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: #ffffff;
 }
 
 .shop-hero-pill-safe {
+  box-sizing: border-box;
   background: #007f62;
+  background-color: #007f62;
   border: 1px solid rgba(255, 255, 255, 0.42);
   color: #ffffff;
+  line-height: 1.4;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .shop-hero-title-safe {
   color: #ffffff;
+  max-width: 100%;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .shop-hero-muted-safe {
   color: #effff7;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-@media (max-width: 640px) {
+@media screen and (max-width: 640px), screen and (max-device-width: 640px), screen and (hover: none) and (pointer: coarse) {
   .shop-hero-safe {
     background: #00a884 !important;
+    background-color: #00a884 !important;
     background-image: none !important;
     color: #ffffff !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .shop-hero-icon-safe {
     background: #008f72 !important;
+    background-color: #008f72 !important;
     color: #ffffff !important;
   }
 
   .shop-hero-pill-safe {
     background: #007f62 !important;
+    background-color: #007f62 !important;
     color: #ffffff !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
   }
 
   .shop-hero-muted-safe,
   .shop-hero-title-safe {
     color: #ffffff !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
   }
 }
 
