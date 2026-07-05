@@ -185,7 +185,11 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-2">
             {featuredShops.map((shop) => (
-              <ShopCard key={shop.id} shop={shop} />
+              <ShopCard
+                key={shop.id}
+                shop={shop}
+                description={shop.featuredDescription}
+              />
             ))}
           </div>
         </div>

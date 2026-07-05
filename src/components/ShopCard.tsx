@@ -9,6 +9,7 @@ import {
   Star,
   Store,
   Tags,
+  Truck,
 } from "lucide-react";
 import { categories } from "@/data/categories";
 import type { Shop } from "@/data/shops";
@@ -23,9 +24,10 @@ const verificationBadges = [
 
 type ShopCardProps = {
   shop: Shop;
+  description?: string;
 };
 
-export function ShopCard({ shop }: ShopCardProps) {
+export function ShopCard({ shop, description }: ShopCardProps) {
   const chatMessage = shop.hasWashopBenefit
     ? "שלום, הגעתי דרך וואשופ ורציתי לשאול על ההטבה ללקוחות וואשופ."
     : siteConfig.shopMessage;
@@ -50,10 +52,16 @@ export function ShopCard({ shop }: ShopCardProps) {
         className="group block cursor-pointer border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/80 p-4 transition hover:from-emerald-100/80 hover:to-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-inset sm:p-5"
       >
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
-            <CheckCircle2 className="size-3.5" aria-hidden="true" />
-            קטלוג וואטסאפ פעיל
-          </span>
+          <div className="flex flex-wrap gap-1.5">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
+              <CheckCircle2 className="size-3.5" aria-hidden="true" />
+              קטלוג וואטסאפ פעיל
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-black text-emerald-800 shadow-sm">
+              <Truck className="size-3.5" aria-hidden="true" />
+              משלוחים לכל הארץ
+            </span>
+          </div>
           {shop.hasWashopBenefit ? (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1.5 text-xs font-black text-white shadow-sm shadow-emerald-800/15">
               <Gift className="size-3.5" aria-hidden="true" />
@@ -92,7 +100,7 @@ export function ShopCard({ shop }: ShopCardProps) {
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <p className="overflow-hidden text-sm leading-6 text-zinc-600 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
-          {shop.cardDescription ?? shop.description}
+          {description ?? shop.cardDescription ?? shop.description}
         </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">

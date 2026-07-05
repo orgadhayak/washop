@@ -7,6 +7,7 @@ export type Shop = {
   description: string;
   shortDescription?: string;
   cardDescription?: string;
+  featuredDescription?: string;
   searchAliases?: string[];
   metaTitle?: string;
   metaDescription?: string;
@@ -38,7 +39,7 @@ export const shops = [
     catalogUrl: "https://wa.me/c/972548180200",
     phone: "972548180200",
     city: "פתח תקווה",
-    shipsNationwide: false,
+    shipsNationwide: true,
     categories: [
       "website-building",
       "ai-tools",
@@ -78,7 +79,7 @@ export const shops = [
     catalogUrl: "https://wa.me/c/972538771200",
     phone: "972538771200",
     city: "פתח תקווה",
-    shipsNationwide: false,
+    shipsNationwide: true,
     categories: [
       "hair-barbers",
       "beauty-care",
@@ -116,6 +117,8 @@ export const shops = [
     shortDescription: "מארזי מתנה בעיצוב אישי",
     cardDescription:
       "מארזי מתנה בעיצוב אישי, הדפסות ומוצרים מיוחדים דרך קטלוג וואטסאפ.",
+    featuredDescription:
+      "מתנות אישיות עם טאץ׳ חם ויצירתי: מארזים, מזכרות, בלוקי זכוכית, כוסות ומוצרים מודפסים שמרגישים אישיים באמת.",
     searchAliases: [
       "ליאל",
       "Liel",
@@ -128,7 +131,7 @@ export const shops = [
     catalogUrl: "https://wa.me/c/972538262133",
     phone: "972538262133",
     city: "יהוד",
-    shipsNationwide: false,
+    shipsNationwide: true,
     categories: [
       "gifts-events",
       "personalized-prints-gifts",
@@ -167,6 +170,8 @@ export const shops = [
     shortDescription: "כפכפי עיסוי ונעלי נוחות מראשון לציון",
     cardDescription:
       "כפכפי עיסוי, נעלי נוחות וקולקציות לגברים, נשים ונוער דרך קטלוג וואטסאפ.",
+    featuredDescription:
+      "מותג הנעלה לנוחות יומיומית עם כפכפי עיסוי ונעלי נוחות לגברים ולנשים, מתאים להליכה, לשגרה ולמי שמחפש שימוש פרקטי ונעים.",
     searchAliases: [
       "Bumpers",
       "bumpers massage",
@@ -183,7 +188,7 @@ export const shops = [
     catalogUrl: "https://wa.me/c/972548222116",
     phone: "972548222116",
     city: "ראשון לציון",
-    shipsNationwide: false,
+    shipsNationwide: true,
     categories: [
       "fashion-shoes",
       "health-lifestyle",

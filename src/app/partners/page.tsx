@@ -111,10 +111,10 @@ export default function PartnersPage() {
         </section>
 
         <section className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-lg bg-zinc-950 p-6 text-white sm:p-8">
-            <ShieldCheck className="size-8 text-emerald-300" aria-hidden="true" />
+          <div className="rounded-lg border border-emerald-500/30 bg-emerald-700 p-6 text-white shadow-sm shadow-emerald-950/10">
+            <ShieldCheck className="size-8 text-emerald-100" aria-hidden="true" />
             <h2 className="mt-4 text-2xl font-black">איך זה עובד</h2>
-            <div className="mt-5 space-y-4 text-base leading-8 text-zinc-200">
+            <div className="mt-5 space-y-4 text-base leading-8 text-emerald-50">
               <p>
                 משאירים מייל וכמה מילים עליכם, על האזור או התחום שאתם מכירים,
                 ועל הדרך שבה תרצו לעזור. צוות וואשופ יעבור על הפנייה ויבדוק אם

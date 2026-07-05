@@ -7,6 +7,7 @@ import {
   MessageCircle,
   Star,
   Store,
+  Truck,
 } from "lucide-react";
 import { categories } from "@/data/categories";
 import { getShopBySlug, shops } from "@/data/shops";
@@ -114,6 +115,10 @@ export default async function ShopPage({ params }: ShopPageProps) {
                       <BadgeCheck className="size-3.5" aria-hidden="true" />
                       קטלוג וואטסאפ פעיל
                     </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Truck className="size-3.5" aria-hidden="true" />
+                      משלוחים לכל הארץ
+                    </span>
                   </div>
                 </div>
               </div>
@@ -185,6 +190,10 @@ export default async function ShopPage({ params }: ShopPageProps) {
                       aria-hidden="true"
                     />
                     נבדק ידנית על ידי וואשופ
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Truck className="size-4 text-emerald-600" aria-hidden="true" />
+                    משלוחים לכל הארץ
                   </p>
                 </div>
 
