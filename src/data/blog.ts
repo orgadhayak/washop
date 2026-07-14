@@ -13,10 +13,18 @@ export type BlogPost = {
   hebrewDate: string;
   gregorianDate: string;
   ctaLabel: string;
+  locale?: "he" | "en";
+  direction?: "rtl" | "ltr";
+  metaTitle?: string;
+  metaDescription?: string;
   articleCtaTitle?: string;
   articleCtaDescription?: string;
   articleCtaLabel?: string;
   articleCtaHref?: string;
+  relatedLinks?: Array<{
+    label: string;
+    href: string;
+  }>;
   paragraphs: string[];
   sections?: BlogPostSection[];
 };
@@ -102,6 +110,62 @@ export const blogPosts = [
         ],
         ctaLabel: "גלו חנויות וואטסאפ עם הטבות וואשופ",
         ctaHref: "/shops",
+      },
+    ],
+  },
+  {
+    slug: "washop-global-whatsapp-store-directory",
+    title: "WaShop Global: A New Way to Discover Stores and Shop by Chat",
+    excerpt:
+      "WaShop Global helps customers discover carefully reviewed WhatsApp stores, open their catalogs and connect directly with sellers without turning WaShop into a marketplace middleman.",
+    publishedAt: "2026-07-14",
+    hebrewDate: "July 14, 2026",
+    gregorianDate: "",
+    ctaLabel: "Read about WaShop Global",
+    locale: "en",
+    direction: "ltr",
+    metaTitle: "WaShop Global WhatsApp Store Directory",
+    metaDescription:
+      "Learn how WaShop Global helps customers discover reviewed WhatsApp stores, contact sellers directly and understand the difference between global visibility and worldwide delivery.",
+    articleCtaTitle: "Explore WaShop Global",
+    articleCtaDescription:
+      "Browse reviewed stores, learn how direct chat commerce works and apply if your store may fit WaShop.",
+    articleCtaLabel: "Go to WaShop Global",
+    articleCtaHref: "/global",
+    relatedLinks: [
+      { label: "Open WaShop Global", href: "/global" },
+      { label: "Browse the store directory", href: "/shops" },
+      { label: "Read seller rules", href: "/seller-rules" },
+      { label: "Apply through the Hebrew seller flow", href: "/add-store" },
+    ],
+    paragraphs: [
+      "WaShop Global is an English gateway to the same idea that powers the Israeli WaShop site: help people discover useful stores, open a catalog and talk directly with the seller. The goal is discovery and connection, not replacing the seller with a marketplace checkout.",
+      "Direct chat-based commerce is useful because many buying decisions need a human answer before payment. Customers may want to ask about size, color, availability, delivery, customization, language support or timing. A WhatsApp catalog gives the customer a starting point, and the chat lets the seller respond in context.",
+      "WaShop does not publish every link it receives. Stores are reviewed manually before they appear, and approval is not guaranteed. We look for real businesses, clear catalogs, active contact details, legal products or services and a level of seriousness that makes the store suitable for public discovery.",
+      "For customers, the flow is simple. Browse the directory, filter by category or location, open a store card, then choose whether to view the catalog or start a chat. From that point, the conversation and any transaction happen directly between the buyer and the seller.",
+      "For Israeli sellers, WaShop Global can create an additional layer of visibility. A store approved for WaShop may also appear on the English gateway, where international customers can discover it. This is visibility, not a promise of traffic, sales or international delivery.",
+      "That distinction matters. Global exposure does not mean that every seller ships worldwide. Product availability, delivery destinations, payment, returns, warranty and customer service must be confirmed directly with the seller before the buyer pays.",
+      "Sellers from Israel and other countries can apply from the Global page. The application asks for practical information: store name, country, city or region, WhatsApp number, catalog link, categories, description, shipping coverage, languages and contact details. The review remains manual, and submission does not guarantee placement.",
+      "WaShop is independent and is not officially affiliated with WhatsApp or Meta. The platform is built as a directory and discovery layer for stores that use WhatsApp as a communication and catalog channel.",
+    ],
+    sections: [
+      {
+        title: "What buyers should confirm before paying",
+        paragraphs: [
+          "Before paying any seller, buyers should confirm the exact product, price, payment method, delivery destination, delivery timing, return policy, warranty and who provides customer service after the purchase.",
+          "WaShop helps with discovery, but it does not process payments, hold funds, ship products or guarantee the outcome of a transaction. The buyer and seller are responsible for agreeing on the details directly.",
+        ],
+        ctaLabel: "Browse reviewed stores",
+        ctaHref: "/global#stores",
+      },
+      {
+        title: "What sellers should know",
+        paragraphs: [
+          "A good WaShop candidate is a real business with clear contact details, a useful catalog, legal products or services and a willingness to answer customers respectfully.",
+          "Global visibility can help more people discover a store, but it also requires clarity. Sellers should be honest about shipping coverage, supported languages, availability and service terms.",
+        ],
+        ctaLabel: "Apply on WaShop Global",
+        ctaHref: "/global#apply",
       },
     ],
   },

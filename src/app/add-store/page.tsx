@@ -52,6 +52,14 @@ export default function AddStorePage() {
               התהליך פשוט: משאירים מייל, ואם יש עוד פרטים אפשר להוסיף אותם.
               את הקטגוריות צוות וואשופ יקבע לאחר הבדיקה.
             </div>
+            <div className="rounded-lg border border-emerald-200 bg-white p-4 text-sm leading-7 text-zinc-700">
+              <div className="mb-2 font-black text-zinc-950">
+                חשיפה גם ב־WaShop Global
+              </div>
+              חנות שאושרה ל־WaShop יכולה להופיע גם בעמוד הגלובלי באנגלית. אין
+              בכך הבטחה לפניות, מכירות או משלוח בינלאומי. זמינות, יעדי משלוח,
+              תשלום והחזרות מסוכמים ישירות בין המוכר ללקוח.
+            </div>
             <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm leading-7 text-zinc-700">
               <div className="mb-2 flex items-center gap-2 font-black text-zinc-950">
                 <Mail className="size-4" aria-hidden="true" />

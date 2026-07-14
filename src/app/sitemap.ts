@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
   "",
+  "/global",
   "/shops",
   "/add-store",
   "/about",

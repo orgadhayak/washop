@@ -19,28 +19,37 @@ export default function BlogPage() {
           עדכונים ומחשבות על חנויות וואטסאפ
         </h1>
         <div className="mt-10 grid gap-4">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
-            >
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-bold text-emerald-700">
-                <span>{post.hebrewDate}</span>
-                <span aria-hidden="true">•</span>
-                <span>{post.gregorianDate}</span>
-              </div>
-              <h2 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
-                {post.title}
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-7 text-zinc-600">
-                {post.excerpt}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
-                {post.ctaLabel}
-              </span>
-            </Link>
-          ))}
+          {blogPosts.map((post) => {
+            const dateParts = [post.hebrewDate, post.gregorianDate].filter(Boolean);
+
+            return (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                dir={post.direction ?? "rtl"}
+                lang={post.locale ?? "he"}
+                className="group rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+              >
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-bold text-emerald-700">
+                  {dateParts.map((part, index) => (
+                    <span key={part} className="inline-flex items-center gap-3">
+                      {index > 0 ? <span aria-hidden="true">•</span> : null}
+                      <span>{part}</span>
+                    </span>
+                  ))}
+                </div>
+                <h2 className="mt-2 text-2xl font-black text-zinc-950 group-hover:text-emerald-700">
+                  {post.title}
+                </h2>
+                <p className="mt-3 max-w-3xl text-base leading-7 text-zinc-600">
+                  {post.excerpt}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-emerald-700">
+                  {post.ctaLabel}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

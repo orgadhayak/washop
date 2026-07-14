@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   alternates: {
     canonical: "/",
+    languages: {
+      he: "/",
+      en: "/global",
+      "x-default": "/",
+    },
   },
 };
 
@@ -114,6 +119,12 @@ export default function Home() {
               >
                 הוספת חנות וואטסאפ
               </Link>
+              <Link
+                href="/global"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-zinc-200 bg-white px-6 text-base font-black text-zinc-800 transition hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+              >
+                Global · English
+              </Link>
             </div>
             <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-zinc-600">
               <BadgeCheck className="size-4 text-emerald-600" aria-hidden="true" />
@@ -125,6 +136,33 @@ export default function Home() {
       </section>
 
       <HomeStoresMomentum />
+
+      <section className="bg-white py-10">
+        <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
+            <h2 className="text-2xl font-black text-zinc-950">
+              אנחנו כאן כדי להישאר
+            </h2>
+            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
+              WaShop נבנית לטווח ארוך. במהלך השנים נמשיך לצרף לכאן את החנויות
+              והמוכרים הטובים ביותר. אנחנו לא ממהרים למלא את האינדקס — כל מוכר
+              נבדק בפינצטה, כדי לתת ללקוחות אפשרות לגלות חנויות טובות יותר
+              ולהגיע אליהן בביטחון.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm shadow-emerald-950/5">
+            <h2 className="text-2xl font-black text-zinc-950">
+              נרשמים בישראל. נחשפים גם לעולם.
+            </h2>
+            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
+              חנות שאושרה ל־WaShop יכולה להופיע גם ב־WaShop Global ולהיחשף
+              ללקוחות מחוץ לישראל. אין בכך הבטחה לפניות, למכירות או למשלוח
+              בינלאומי. זמינות, יעדי משלוח, תשלום והחזרות מסוכמים ישירות בין
+              המוכר ללקוח.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white py-6">
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
@@ -268,7 +306,9 @@ export default function Home() {
               יש לכם חנות וואטסאפ?
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-600">
-              שלחו פרטים, ואנחנו נבדוק אם היא מתאימה.
+              שלחו פרטים, ואנחנו נבדוק אם היא מתאימה. חנות שאושרה יכולה לקבל
+              חשיפה גם ב־WaShop Global, בלי הבטחה לפניות, מכירות או משלוח
+              בינלאומי.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">

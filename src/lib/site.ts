@@ -33,4 +33,5 @@ export const mainNavigation = [
   { label: "שותפים", href: "/partners" },
   { label: "בלוג", href: "/blog" },
   { label: "צור קשר", href: "/contact" },
+  { label: "Global · English", href: "/global" },
 ];
