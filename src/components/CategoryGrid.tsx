@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Boxes, GraduationCap, Home, Scissors, Sparkles, Store } from "lucide-react";
 import { categories } from "@/data/categories";
-import { getShopsByCategory } from "@/data/shops";
+import { getApprovedStoreCountForCategory } from "@/lib/category-stats";
 
 const icons = [Store, Scissors, GraduationCap, Sparkles, Boxes, Home];
 
@@ -10,7 +10,7 @@ export function CategoryGrid() {
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {categories.map((category, index) => {
         const Icon = icons[index % icons.length];
-        const shopCount = getShopsByCategory(category.slug).length;
+        const shopCount = getApprovedStoreCountForCategory(category.slug);
 
         return (
           <Link

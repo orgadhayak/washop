@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog";
-import { categories } from "@/data/categories";
 import { shops } from "@/data/shops";
+import {
+  getActiveCategoriesWithCounts,
+  getCategoryLastModified,
+} from "@/lib/category-stats";
 import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
@@ -20,22 +23,23 @@ const staticRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const activeCategories = getActiveCategoriesWithCounts();
 
   return [
     ...staticRoutes.map((route) => ({
       url: `${siteConfig.domain}${route}`,
-      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: route === "" ? 1 : 0.7,
     })),
-    ...categories.map((category) => ({
+    ...activeCategories.map((category) => ({
       url: `${siteConfig.domain}/category/${category.slug}`,
-      lastModified: now,
+      lastModified: getCategoryLastModified(category.slug),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-    ...shops.map((shop) => ({
+    ...shops
+      .filter((shop) => shop.status === "approved")
+      .map((shop) => ({
       url: `${siteConfig.domain}/shop/${shop.slug}`,
       lastModified: new Date(shop.updatedAt),
       changeFrequency: "weekly" as const,

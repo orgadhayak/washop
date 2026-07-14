@@ -7,8 +7,10 @@ import { approvedShops } from "@/data/shops";
 import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { ShopCard } from "@/components/ShopCard";
 import { ShopsStatusBanner } from "@/components/ShopsStatusBanner";
+import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
+const activeCategories = getActiveCategoriesWithCounts();
 const cityOptions = Array.from(new Set(approvedShops.map((shop) => shop.city).filter(Boolean))).sort(
   (a, b) => a.localeCompare(b, "he"),
 );
@@ -93,9 +95,9 @@ export function ShopsDirectory({
               className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm font-bold text-zinc-800 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
             >
               <option value="">כל הקטגוריות</option>
-              {categories.map((item) => (
+              {activeCategories.map((item) => (
                 <option key={item.slug} value={item.slug}>
-                  {item.name}
+                  {item.name} ({item.approvedStoreCount})
                 </option>
               ))}
             </select>

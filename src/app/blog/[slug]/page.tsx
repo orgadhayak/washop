@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
+import { siteConfig } from "@/lib/site";
+import { absoluteUrl } from "@/lib/utils";
 
 type BlogArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -54,9 +56,75 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
   const locale = post.locale ?? "he";
   const isEnglish = locale === "en";
   const dateParts = [post.hebrewDate, post.gregorianDate].filter(Boolean);
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.metaDescription ?? post.excerpt,
+      datePublished: post.publishedAt,
+      dateModified: post.publishedAt,
+      inLanguage: isEnglish ? "en" : "he-IL",
+      mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+      author: {
+        "@type": "Organization",
+        name: siteConfig.shortName,
+        url: siteConfig.domain,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: siteConfig.shortName,
+        url: siteConfig.domain,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isEnglish ? "WaShop" : "וואשופ",
+          item: siteConfig.domain,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isEnglish ? "Blog" : "בלוג",
+          item: absoluteUrl("/blog"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: absoluteUrl(`/blog/${post.slug}`),
+        },
+      ],
+    },
+    ...(post.faqs?.length
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
+  ];
 
   return (
     <article className="py-12 sm:py-16" dir={direction} lang={locale}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
         <Link
           href="/blog"
@@ -76,14 +144,37 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           {post.title}
         </h1>
         <p className="mt-5 text-xl leading-9 text-zinc-600">{post.excerpt}</p>
+        {post.showTableOfContents && post.sections?.length ? (
+          <nav
+            aria-label={isEnglish ? "Table of contents" : "תוכן עניינים"}
+            className="mt-8 rounded-lg border border-emerald-200 bg-emerald-50 p-5"
+          >
+            <h2 className="text-xl font-black text-zinc-950">
+              {isEnglish ? "In this guide" : "במדריך הזה"}
+            </h2>
+            <ol className="mt-3 grid gap-2 text-sm font-bold text-emerald-800">
+              {post.sections.map((section, index) => (
+                <li key={section.title}>
+                  <Link
+                    href={`#section-${index + 1}`}
+                    className="transition hover:text-emerald-950"
+                  >
+                    {section.title}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : null}
         <div className="mt-10 space-y-6 text-lg leading-9 text-zinc-700">
           {post.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-        {post.sections?.map((section) => (
+        {post.sections?.map((section, index) => (
           <section
             key={section.title}
+            id={`section-${index + 1}`}
             className="mt-10 rounded-lg border border-emerald-200 bg-white p-6 shadow-sm"
           >
             <h2 className="text-3xl font-black leading-tight text-zinc-950">
@@ -104,6 +195,23 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             ) : null}
           </section>
         ))}
+        {post.faqs?.length ? (
+          <section className="mt-10 rounded-lg border border-emerald-200 bg-white p-6 shadow-sm">
+            <h2 className="text-3xl font-black leading-tight text-zinc-950">
+              שאלות נפוצות
+            </h2>
+            <div className="mt-5 grid gap-4">
+              {post.faqs.map((faq) => (
+                <div key={faq.question} className="rounded-lg bg-emerald-50 p-5">
+                  <h3 className="text-xl font-black text-zinc-950">
+                    {faq.question}
+                  </h3>
+                  <p className="mt-3 leading-8 text-zinc-700">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
         {post.relatedLinks?.length ? (
           <section className="mt-10 rounded-lg border border-emerald-200 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-zinc-950">

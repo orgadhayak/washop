@@ -130,6 +130,16 @@ export default function Home() {
               <BadgeCheck className="size-4 text-emerald-600" aria-hidden="true" />
               כל חנות נבדקת ידנית לפני שהיא מופיעה באתר.
             </p>
+            <p className="mt-3 text-sm font-bold text-zinc-600">
+              מוכרים דרך וואטסאפ?{" "}
+              <Link
+                href="/blog/hanut-virtualit-bewhatsapp"
+                className="text-emerald-700 underline decoration-emerald-200 underline-offset-4 transition hover:text-emerald-800"
+              >
+                קראו איך פותחים קטלוג ומקבלים הזמנות
+              </Link>
+              .
+            </p>
           </div>
           <HeroVisual />
         </div>
@@ -238,7 +248,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="קטגוריות"
             title="גלו חנויות לפי תחום"
-            description="גם קטגוריות שעדיין ריקות מוכנות לקליטת חנויות חדשות, כדי שהאתר ירגיש חי ומתפתח מהיום הראשון."
+            description="עברו בין תחומים שבהם כבר יש חנויות ועסקים שאושרו ידנית, או שלחו חנות מתאימה לבדיקה כדי שנבחן אם היא יכולה להצטרף."
           />
           <div className="mt-10">
             <CategoryGrid />
