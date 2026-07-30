@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...blogPosts.map((post) => ({
       url: `${siteConfig.domain}/blog/${post.slug}`,
-      lastModified: new Date(post.publishedAt),
+      lastModified: new Date(post.modifiedAt ?? post.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

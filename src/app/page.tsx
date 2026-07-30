@@ -24,8 +24,11 @@ import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "washop.co.il | חנויות וואטסאפ בישראל",
-  description: siteConfig.description,
+  title: {
+    absolute: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+  },
+  description:
+    "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
   alternates: {
     canonical: "/",
     languages: {
@@ -33,6 +36,19 @@ export const metadata: Metadata = {
       en: "/global",
       "x-default": "/",
     },
+  },
+  openGraph: {
+    title: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+    description:
+      "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+    description:
+      "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
   },
 };
 
@@ -53,11 +69,6 @@ export default function Home() {
       url: siteConfig.domain,
       inLanguage: "he-IL",
       description: siteConfig.description,
-      potentialAction: {
-        "@type": "SearchAction",
-        target: `${siteConfig.domain}/shops?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
     },
     {
       "@context": "https://schema.org",
@@ -99,11 +110,12 @@ export default function Home() {
               {siteConfig.trustLine}
             </div>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              כל חנויות הוואטסאפ הכי טובות בישראל
+              מגלים חנויות וואטסאפ ישראליות במקום אחד
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
-              גלו חנויות ישראליות שמוכרות ישירות דרך קטלוג וואטסאפ, בלי אתר
-              מסובך, עם פחות חיכוך וקשר ישיר למוכר.
+              וואשופ היא ספרייה של חנויות ונותני שירות ישראליים שנבדקים ידנית.
+              מחפשים לפי תחום, עיר או מוצר, פותחים קטלוג וואטסאפ ופונים ישירות
+              לעסק. וואשופ אינה חנות, מערכת סליקה או צד בעסקה.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -111,13 +123,13 @@ export default function Home() {
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
                 <Store className="size-5" aria-hidden="true" />
-                גלה חנויות עכשיו
+                חנויות וואטסאפ בישראל
               </Link>
               <Link
                 href="/add-store"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
-                הוספת חנות וואטסאפ
+                שליחת חנות וואטסאפ לבדיקה
               </Link>
               <Link
                 href="/global"
@@ -142,35 +154,6 @@ export default function Home() {
             </p>
           </div>
           <HeroVisual />
-        </div>
-      </section>
-
-      <HomeStoresMomentum />
-
-      <section className="bg-white py-10">
-        <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
-            <h2 className="text-2xl font-black text-zinc-950">
-              אנחנו כאן כדי להישאר
-            </h2>
-            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
-              WaShop נבנית לטווח ארוך. במהלך השנים נמשיך לצרף לכאן את החנויות
-              והמוכרים הטובים ביותר. אנחנו לא ממהרים למלא את האינדקס — כל מוכר
-              נבדק בפינצטה, כדי לתת ללקוחות אפשרות לגלות חנויות טובות יותר
-              ולהגיע אליהן בביטחון.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm shadow-emerald-950/5">
-            <h2 className="text-2xl font-black text-zinc-950">
-              נרשמים בישראל. נחשפים גם לעולם.
-            </h2>
-            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
-              חנות שאושרה ל־WaShop יכולה להופיע גם ב־WaShop Global ולהיחשף
-              ללקוחות מחוץ לישראל. אין בכך הבטחה לפניות, למכירות או למשלוח
-              בינלאומי. זמינות, יעדי משלוח, תשלום והחזרות מסוכמים ישירות בין
-              המוכר ללקוח.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -243,6 +226,35 @@ export default function Home() {
         </div>
       </section>
 
+      <HomeStoresMomentum />
+
+      <section className="bg-white py-8 sm:py-10">
+        <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
+            <h2 className="text-2xl font-black text-zinc-950">
+              אנחנו כאן כדי להישאר
+            </h2>
+            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
+              וואשופ נבנית לטווח ארוך. במהלך השנים נמשיך לצרף לכאן חנויות
+              ומוכרים שנבדקים בקפידה. אנחנו לא ממהרים למלא את האינדקס: כל עסק
+              נבדק ידנית, כדי שללקוחות תהיה אפשרות לגלות חנויות טובות יותר
+              ולפנות אליהן בביטחון.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm shadow-emerald-950/5">
+            <h2 className="text-2xl font-black text-zinc-950">
+              נרשמים בישראל. נחשפים גם לעולם.
+            </h2>
+            <p className="mt-3 text-base font-bold leading-8 text-zinc-700">
+              חנות שאושרה לוואשופ יכולה להופיע גם ב־WaShop Global ולהיחשף
+              ללקוחות מחוץ לישראל. אין בכך הבטחה לפניות, למכירות או למשלוח
+              בינלאומי. זמינות, יעדי משלוח, תשלום והחזרות מסוכמים ישירות בין
+              המוכר ללקוח.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="categories" className="bg-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -252,6 +264,58 @@ export default function Home() {
           />
           <div className="mt-10">
             <CategoryGrid />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-emerald-50/50 py-14 sm:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="מדריך קצר"
+            title="איך מגלים חנויות וואטסאפ בוואשופ?"
+            description="הספרייה נועדה לעזור ללקוחות למצוא עסקים פעילים ולפנות אליהם ישירות, בלי להפוך את וואשופ לצד בעסקה."
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xl font-black text-zinc-950">מהי חנות וואטסאפ?</h3>
+              <p className="mt-3 leading-8 text-zinc-700">
+                עסק שמציג מוצרים או שירותים בקטלוג וואטסאפ ומאפשר ללקוחות לשאול,
+                לברר ולהתקדם ישירות מול המוכר.
+              </p>
+              <Link href="/blog/hanut-virtualit-bewhatsapp" className="mt-4 inline-flex text-sm font-black text-emerald-700 hover:text-emerald-800">
+                מדריך לחנות וירטואלית בעברית
+              </Link>
+            </div>
+            <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xl font-black text-zinc-950">אינדקס חנויות וואטסאפ בישראל</h3>
+              <p className="mt-3 leading-8 text-zinc-700">
+                מחפשים לפי תחום, עיר או מוצר, קוראים על העסק ופותחים את הקטלוג
+                או השיחה הישירה כשמוצאים חנות מתאימה.
+              </p>
+              <Link href="/shops" className="mt-4 inline-flex text-sm font-black text-emerald-700 hover:text-emerald-800">
+                חנויות וואטסאפ בישראל
+              </Link>
+            </div>
+            <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xl font-black text-zinc-950">מוכרים דרך קטלוג וואטסאפ?</h3>
+              <p className="mt-3 leading-8 text-zinc-700">
+                אפשר להשאיר פרטים לבדיקה ידנית. הקטגוריות נקבעות לאחר בחינת
+                העסק, ופרסום אינו אוטומטי.
+              </p>
+              <Link href="/add-store" className="mt-4 inline-flex text-sm font-black text-emerald-700 hover:text-emerald-800">
+                שליחת חנות וואטסאפ לבדיקה
+              </Link>
+            </div>
+            <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xl font-black text-zinc-950">שירות ישיר וברור</h3>
+              <p className="mt-3 leading-8 text-zinc-700">
+                החנות אחראית למחיר, לזמינות, לתשלום, למשלוח ולשירות. מדריך
+                השירות מסביר איך עסקים יכולים לשמור על תקשורת מסודרת בוואטסאפ.
+              </p>
+              <Link href="/blog/sherut-lakohot-bewhatsapp-laasakim" className="mt-4 inline-flex text-sm font-black text-emerald-700 hover:text-emerald-800">
+                שירות לקוחות בוואטסאפ
+              </Link>
+            </div>
           </div>
         </div>
       </section>

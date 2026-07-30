@@ -9,9 +9,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "אודות וואשופ",
+  title: {
+    absolute: "אודות WaShop – אינדקס חנויות וואטסאפ בישראל",
+  },
   description:
-    "וואשופ הוא אתר ישראלי לגילוי חנויות שמוכרות דרך קטלוג וואטסאפ והודעות ישירות.",
+    "WaShop הוא אינדקס ישראלי לחנויות ולעסקים שפועלים דרך וואטסאפ, עם בדיקה ידנית ופנייה ישירה בין הלקוח למוכר.",
   alternates: {
     canonical: "/about",
   },
@@ -29,7 +31,7 @@ export default function AboutPage() {
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-black text-emerald-700">אודות</p>
         <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
-          וואשופ מרכז את חנויות הוואטסאפ הטובות בישראל
+          וואשופ הוא אינדקס לחנויות וואטסאפ שנבדקות ידנית
         </h1>
         <div className="mt-6 space-y-5 text-lg leading-9 text-zinc-600">
           <p>
@@ -43,8 +45,14 @@ export default function AboutPage() {
             ישירות מול החנות.
           </p>
           <p>
-            כל חנות נבדקת ידנית לפני פרסום. המטרה היא איכות, אמינות, שירות
-            ונוחות, לא רשימה אינסופית של קישורים לא בדוקים.
+            כל חנות נבדקת ידנית לפני פרסום. המטרה היא להציג ספרייה שימושית של
+            חנויות עם פרטים ברורים, ולא רשימה אינסופית של קישורים לא בדוקים.
+          </p>
+          <p>
+            וואשופ אינו בונה חנויות, אינו מנהל שירות לקוחות עבור עסקים ואינו
+            צד לתשלום, למשלוח או להחזרות. העסק והלקוח מסכמים ביניהם את תנאי
+            העסקה, ווואשופ נשארת שכבת גילוי עצמאית שאינה קשורה ל־WhatsApp או
+            Meta.
           </p>
         </div>
 

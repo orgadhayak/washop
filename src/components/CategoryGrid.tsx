@@ -1,16 +1,15 @@
 import Link from "next/link";
 import { Boxes, GraduationCap, Home, Scissors, Sparkles, Store } from "lucide-react";
-import { categories } from "@/data/categories";
-import { getApprovedStoreCountForCategory } from "@/lib/category-stats";
+import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 
 const icons = [Store, Scissors, GraduationCap, Sparkles, Boxes, Home];
+const activeCategories = getActiveCategoriesWithCounts();
 
 export function CategoryGrid() {
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {categories.map((category, index) => {
+      {activeCategories.map((category, index) => {
         const Icon = icons[index % icons.length];
-        const shopCount = getApprovedStoreCountForCategory(category.slug);
 
         return (
           <Link
@@ -28,7 +27,7 @@ export function CategoryGrid() {
               {category.description}
             </p>
             <p className="mt-4 text-sm font-bold text-emerald-700">
-              {shopCount ? `${shopCount} חנויות פעילות` : "פתוח להצטרפות"}
+              {category.approvedStoreCount} חנויות פעילות
             </p>
           </Link>
         );

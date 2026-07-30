@@ -7,7 +7,9 @@ import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "חנויות וואטסאפ בישראל – קטלוגים וקנייה ישירה | WaShop",
+  title: {
+    absolute: "חנויות וואטסאפ בישראל – קטלוגים וקנייה ישירה | WaShop",
+  },
   description:
     "גלו חנויות וואטסאפ בישראל לפי קטגוריה, עיר ומוצרים. פתחו את הקטלוג, בדקו משלוחים ופנו ישירות למוכר דרך וואטסאפ.",
   alternates: {

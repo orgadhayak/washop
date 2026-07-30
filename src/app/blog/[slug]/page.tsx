@@ -24,7 +24,9 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.metaTitle ?? post.title,
+    title: {
+      absolute: post.metaTitle ?? post.title,
+    },
     description: post.metaDescription ?? post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -35,6 +37,7 @@ export async function generateMetadata({
       url: `/blog/${post.slug}`,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.modifiedAt ?? post.publishedAt,
     },
     twitter: {
       card: "summary_large_image",
@@ -63,7 +66,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
       headline: post.title,
       description: post.metaDescription ?? post.excerpt,
       datePublished: post.publishedAt,
-      dateModified: post.publishedAt,
+      dateModified: post.modifiedAt ?? post.publishedAt,
       inLanguage: isEnglish ? "en" : "he-IL",
       mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
       author: {
@@ -171,6 +174,42 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+        {post.comparison ? (
+          <section className="mt-10 rounded-lg border border-emerald-200 bg-white p-6 shadow-sm">
+            <h2 className="text-3xl font-black leading-tight text-zinc-950">
+              {post.comparison.title}
+            </h2>
+            <div className="green-scrollbar mt-5 overflow-x-auto">
+              <table className="min-w-[640px] w-full border-collapse text-right text-sm leading-7 text-zinc-700">
+                <thead className="bg-emerald-50 text-zinc-950">
+                  <tr>
+                    {post.comparison.columns.map((column) => (
+                      <th key={column} scope="col" className="border border-emerald-100 px-4 py-3 font-black">
+                        {column}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {post.comparison.rows.map((row) => (
+                    <tr key={row[0]}>
+                      {row.map((cell, index) => (
+                        <td
+                          key={cell}
+                          className={`border border-emerald-100 px-4 py-3 align-top ${
+                            index === 0 ? "font-black text-zinc-950" : ""
+                          }`}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        ) : null}
         {post.sections?.map((section, index) => (
           <section
             key={section.title}
