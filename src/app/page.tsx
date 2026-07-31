@@ -102,7 +102,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="overflow-hidden border-b border-emerald-950/10 bg-white">
+      <section className="home-hero-shell overflow-hidden border-b border-emerald-950/10">
         <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800">
@@ -110,7 +110,11 @@ export default function Home() {
               {siteConfig.trustLine}
             </div>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              מגלים חנויות וואטסאפ ישראליות במקום אחד
+              מגלים{" "}
+              <span className="text-emerald-700">
+                חנויות וואטסאפ ישראליות
+              </span>{" "}
+              במקום אחד
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               וואשופ היא ספרייה של חנויות ונותני שירות ישראליים שנבדקים ידנית.
@@ -157,7 +161,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-6">
+      <section className="home-search-band py-7 sm:py-8">
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
           <form action="/shops" className="relative">
             <label className="sr-only" htmlFor="home-search">
@@ -173,7 +177,7 @@ export default function Home() {
               desktopPlaceholder="חפשו חנות, קטגוריה, עיר או מוצר"
               mobilePlaceholder="חפשו עיר, מוצר או חנות"
               dir="rtl"
-              className="h-16 w-full rounded-full border border-emerald-200 bg-white pr-14 pl-24 text-sm font-bold text-zinc-950 shadow-lg shadow-emerald-950/5 outline-none transition placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 sm:pl-32 sm:text-lg sm:placeholder:text-lg"
+              className="h-16 w-full rounded-full border border-white/80 bg-white pr-14 pl-24 text-sm font-bold text-zinc-950 shadow-2xl shadow-emerald-950/20 outline-none transition placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-300 focus:ring-4 focus:ring-white/35 sm:pl-32 sm:text-lg sm:placeholder:text-lg"
             />
             <button
               type="submit"
@@ -185,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-18">
+      <section className="bg-gradient-to-b from-emerald-50/95 via-[#f4fbf6] to-emerald-50/70 py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="חנויות מומלצות"
@@ -228,7 +232,7 @@ export default function Home() {
 
       <HomeStoresMomentum />
 
-      <section className="bg-white py-8 sm:py-10">
+      <section className="bg-emerald-100/55 py-8 sm:py-10">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
             <h2 className="text-2xl font-black text-zinc-950">
@@ -268,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-emerald-50/50 py-14 sm:py-18">
+      <section className="bg-gradient-to-br from-emerald-100/80 via-emerald-50 to-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="מדריך קצר"
@@ -320,7 +324,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-18">
+      <section className="bg-[#f1faf4] py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="למה וואטסאפ"
@@ -349,7 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-zinc-950 py-14 text-white sm:py-18">
+      <section className="bg-emerald-950 py-14 text-white sm:py-18">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
             <p className="text-sm font-black text-emerald-300">סטנדרט פרסום</p>
@@ -373,37 +377,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-18">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
-          <div>
-            <h2 className="text-3xl font-black leading-tight text-zinc-950 sm:text-4xl">
-              יש לכם חנות וואטסאפ?
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-9 text-zinc-600">
-              שלחו פרטים, ואנחנו נבדוק אם היא מתאימה. חנות שאושרה יכולה לקבל
-              חשיפה גם ב־WaShop Global, בלי הבטחה לפניות, מכירות או משלוח
-              בינלאומי.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/add-store"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
-            >
-              שליחת חנות לבדיקה
-            </Link>
-            <Link
-              href="/partners"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50"
-            >
-              <Handshake className="size-5" aria-hidden="true" />
-              תוכנית שותפים
-            </Link>
+      <section className="bg-emerald-50 py-14 sm:py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-emerald-700/20 bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-950 p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
+            <div>
+              <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
+                יש לכם חנות וואטסאפ?
+              </h2>
+              <p className="mt-4 max-w-3xl text-lg leading-9 text-emerald-50">
+                שלחו פרטים, ואנחנו נבדוק אם היא מתאימה. חנות שאושרה יכולה לקבל
+                חשיפה גם ב־WaShop Global, בלי הבטחה לפניות, מכירות או משלוח
+                בינלאומי.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/add-store"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-base font-black text-emerald-800 shadow-lg shadow-emerald-950/20 transition hover:bg-emerald-50"
+              >
+                שליחת חנות לבדיקה
+              </Link>
+              <Link
+                href="/partners"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 text-base font-black text-white transition hover:bg-white/20"
+              >
+                <Handshake className="size-5" aria-hidden="true" />
+                תוכנית שותפים
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-14 sm:py-18">
+      <section className="bg-gradient-to-b from-[#f4fbf6] to-emerald-50/70 py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="מהבלוג" title="מחשבות על קנייה ישירה בוואטסאפ" />
           <div className="mt-10 grid gap-4">
