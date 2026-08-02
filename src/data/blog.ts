@@ -46,6 +46,186 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "mochrei-whatsapp-indeks-bereshet",
+    title: "מחנות וואטסאפ לאינדקס ברשת: איך מוכרים טובים יכולים להתגלות",
+    excerpt:
+      "מוכרים רבים בונים עסק אמיתי דרך וואטסאפ, אבל נשארים כמעט בלתי נראים מחוץ לקבוצות ולקישורים פרטיים. וואשופ נבנית כדי לתת לחנויות מתאימות מקום מסודר ברשת, שבו לקוחות יכולים לגלות אותן ולפנות ישירות.",
+    publishedAt: "2026-08-02",
+    hebrewDate: "י״ט באב תשפ״ו",
+    gregorianDate: "2 באוגוסט 2026",
+    ctaLabel: "על האינדקס שנבנה",
+    metaTitle: "אינדקס חנויות וואטסאפ ברשת למוכרים איכותיים | WaShop",
+    metaDescription:
+      "איך אינדקס חנויות וואטסאפ יכול לעזור למוכרים איכותיים להתגלות ברחבי הרשת, לקבל פניות ישירות ולהופיע במקום מסודר לאחר בדיקה ידנית.",
+    articleCtaTitle: "מוכרים דרך וואטסאפ ורוצים שיגלו אתכם?",
+    articleCtaDescription:
+      "שלחו את העסק לבדיקה. אם הוא מתאים לסטנדרט של וואשופ, נוכל לבחון את צירופו לאינדקס ולחבר אליו לקוחות בצורה ישירה וברורה.",
+    articleCtaLabel: "שליחת חנות לבדיקה",
+    articleCtaHref: "/add-store",
+    relatedLinks: [
+      { label: "חנויות וואטסאפ שכבר מופיעות באינדקס", href: "/shops" },
+      { label: "מי יכול לפרסם בוואשופ?", href: "/seller-rules" },
+      { label: "איך פותחים קטלוג וואטסאפ", href: "/blog/hanut-virtualit-bewhatsapp" },
+      {
+        label: "Read the English article",
+        href: "/blog/whatsapp-store-discovery-index-for-quality-sellers",
+      },
+    ],
+    showTableOfContents: true,
+    paragraphs: [
+      "יש בישראל עסקים מצוינים שמנהלים את רוב המכירה והשירות שלהם דרך וואטסאפ. הם מציגים מוצרים, עונים לשאלות, שולחים תמונות, מסכמים הזמנות ושומרים על קשר אישי עם הלקוחות. הבעיה היא שמחוץ למעגל הלקוחות הקיים, לקבוצות ולקישורים פרטיים, לפעמים קשה מאוד לגלות אותם.",
+      "וואשופ נבנית כדי לשנות את נקודת הפתיחה הזו. הרעיון הוא ליצור אינדקס מסודר של חנויות וואטסאפ ועסקים מתאימים, עם עמוד ברור לכל חנות, קטגוריות, עיר, תיאור וקישור ישיר לקטלוג או לשיחה. כך חנות שפועלת בעיקר בוואטסאפ יכולה לקבל נוכחות ברשת שאפשר למצוא, להבין ולשתף.",
+      "המטרה היא לא להבטיח לכל עסק זרם קבוע של פניות או מכירות. המטרה היא לבנות דרך אמינה יותר לגילוי: אדם שמחפש מוצר, שירות, קטגוריה או עסק באזור מסוים יוכל להגיע לעמוד מתאים, להתרשם ולבחור אם לפנות ישירות למוכר.",
+    ],
+    sections: [
+      {
+        title: "הבעיה של חנות טובה שקשה למצוא",
+        paragraphs: [
+          "קטלוג וואטסאפ יכול להיות נוח מאוד ללקוחות שכבר מכירים את העסק, אבל הקישור אליו לא תמיד מספר למנועי חיפוש ולגולשים מה החנות מציעה, באיזו עיר היא פועלת ולמי היא מתאימה.",
+          "כאשר אין עמוד ציבורי מסודר, גם מוכר רציני יכול להישאר תלוי בהמלצות מפה לאוזן, בקבוצות או בפרסום ממומן. אלה ערוצים חשובים, אבל הם לא תמיד יוצרים נוכחות יציבה שאנשים יכולים למצוא שוב בהמשך.",
+        ],
+      },
+      {
+        title: "איך אינדקס מסודר פותח עוד דלתות ברשת",
+        paragraphs: [
+          "עמוד חנות בוואשופ מוסיף הקשר לקישור הוואטסאפ: שם העסק, תחום, קטגוריות, עיר ותיאור ברור. המידע הזה עוזר ללקוחות להבין במהירות מי עומד מאחורי הקטלוג ומה אפשר לבדוק מולו.",
+          "עם הזמן, עמודים מסודרים יכולים להתגלות דרך חיפוש, קישורים פנימיים, קטגוריות ושיתופים של אנשים. זו אינה הבטחה לדירוג מסוים או לכמות פניות, אלא תשתית טובה יותר לנוכחות ולגילוי ברחבי הרשת.",
+        ],
+      },
+      {
+        title: "מהי פנייה מעניינת עבור מוכר",
+        paragraphs: [
+          "פנייה מעניינת היא לא בהכרח הודעה שמסתיימת מיד ברכישה. היא יכולה להיות שאלה על מידה, זמינות, התאמה אישית, שירות באזור מסוים או מוצר שהלקוח חיפש ולא מצא במקום אחר.",
+          "כאשר הגולש מגיע אחרי שקרא תיאור והבין את תחום העסק, השיחה יכולה להתחיל מנקודה ברורה יותר. המוכר עדיין אחראי למחיר, לזמינות, לתשלום, למשלוח ולשירות, והלקוח מחליט מולו אם ההצעה מתאימה.",
+        ],
+      },
+      {
+        title: "למה איכות קודמת לכמות",
+        paragraphs: [
+          "וואשופ אינה לוח קישורים פתוח. כל עסק נבדק ידנית לפני פרסום, ושליחת בקשה אינה מבטיחה שהחנות תופיע. אנחנו בודקים אם מדובר בעסק אמיתי, אם הפעילות חוקית, אם פרטי הקשר עובדים ואם ההצגה מתאימה לאינדקס ציבורי.",
+          "אנחנו רוצים לבנות אינדקס שאנשים ירצו לחזור אליו, ולכן עדיף לצרף בהדרגה עסקים רציניים וברורים מאשר למלא את האתר במהירות. איננו יכולים להבטיח שכל עסק יהיה מושלם, אבל אנחנו מתחייבים לתהליך בדיקה ולסטנדרט פרסום שאינו אוטומטי.",
+        ],
+      },
+      {
+        title: "מה כדאי למוכר להכין",
+        paragraphs: [
+          "כדאי להכין שם עסק ברור, עיר או אזור שירות, תיאור קצר של המוצרים או השירותים, פרטי קשר פעילים וקישור לקטלוג אם כבר קיים. גם עסק שעדיין בונה את הקטלוג יכול להשאיר פרטים ולקבל הכוונה ראשונית.",
+          "המידע לא צריך להיות שיווקי מדי. תיאור מדויק, תמונות ברורות ומענה מכבד יעזרו ללקוחות להבין את העסק ולפתוח שיחה עניינית יותר.",
+        ],
+        ctaLabel: "הגישו את העסק לבדיקה",
+        ctaHref: "/add-store",
+      },
+    ],
+    faqs: [
+      {
+        question: "האם הופעה בוואשופ מבטיחה פניות או מכירות?",
+        answer:
+          "לא. וואשופ בונה תשתית לגילוי ולפנייה ישירה, אבל אינה יכולה להבטיח חשיפה, דירוג בחיפוש, כמות פניות או מכירות.",
+      },
+      {
+        question: "האם כל חנות שנשלחת מתפרסמת?",
+        answer:
+          "לא. כל בקשה נבדקת ידנית, ווואשופ רשאית לאשר, לדחות, לערוך או להסיר חנות בהתאם לתנאי הפרסום ולרמת ההתאמה לאינדקס.",
+      },
+      {
+        question: "האם חייבים קטלוג וואטסאפ מוכן כדי לפנות?",
+        answer:
+          "לא חייבים קטלוג מוכן כדי להשאיר פרטים. עם זאת, לפני פרסום נצטרך להבין את העסק, לבדוק את פרטי הקשר ולוודא שיש דרך ברורה ורצינית ללקוחות לפנות אליו.",
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-store-discovery-index-for-quality-sellers",
+    title: "From WhatsApp Stores to Web Discovery: Building an Index for Quality Sellers",
+    excerpt:
+      "Many serious sellers run their business through WhatsApp but remain difficult to discover outside private links and existing customer circles. WaShop is building a reviewed directory that gives suitable stores a clearer place on the open web.",
+    publishedAt: "2026-08-02",
+    hebrewDate: "August 2, 2026",
+    gregorianDate: "",
+    ctaLabel: "How the discovery index works",
+    locale: "en",
+    direction: "ltr",
+    metaTitle: "WhatsApp Store Discovery Index for Quality Sellers | WaShop",
+    metaDescription:
+      "Learn how WaShop is building a reviewed WhatsApp store directory that helps suitable sellers become easier to discover online and receive direct, relevant inquiries.",
+    articleCtaTitle: "Run a serious store through WhatsApp?",
+    articleCtaDescription:
+      "Submit your store for manual review. Suitable businesses may be added to WaShop's local or global discovery pages after approval.",
+    articleCtaLabel: "Apply through WaShop Global",
+    articleCtaHref: "/global#apply",
+    relatedLinks: [
+      { label: "Explore WaShop Global", href: "/global" },
+      { label: "Browse approved stores", href: "/shops" },
+      { label: "Read the seller rules", href: "/seller-rules" },
+      {
+        label: "קראו את המאמר בעברית",
+        href: "/blog/mochrei-whatsapp-indeks-bereshet",
+      },
+    ],
+    showTableOfContents: true,
+    paragraphs: [
+      "WhatsApp has become a practical storefront for many independent sellers. Products are presented in a catalog, questions are answered in chat, and customers can speak directly with the person behind the business. Yet a strong WhatsApp store can still be almost invisible to people who do not already have its link.",
+      "WaShop is building a discovery layer for those businesses. The idea is to give suitable stores a structured public page with a clear name, description, location, categories and direct catalog or chat links. That page can be understood, shared and discovered across the web more easily than an isolated WhatsApp link.",
+      "This is not a promise of traffic, search rankings, leads or sales. It is an effort to create better discovery infrastructure, so a person searching for a product, service or local business has a clearer path to a relevant seller.",
+    ],
+    sections: [
+      {
+        title: "Why good WhatsApp stores can be hard to discover",
+        paragraphs: [
+          "A WhatsApp catalog works well for people who already know the business, but the catalog link alone may provide little context about the seller, location, product range or service standards.",
+          "Without a structured public page, even a serious seller may depend almost entirely on referrals, groups, social posts or paid advertising. WaShop adds a stable discovery page that can support those channels rather than replace them.",
+        ],
+      },
+      {
+        title: "What a web directory adds",
+        paragraphs: [
+          "A directory page connects the store to useful context: category pages, location, descriptive text and internal links. Customers can understand the offer before opening WhatsApp and can choose whether the business appears relevant to their needs.",
+          "Over time, structured pages may be discovered through search engines, shared links and category browsing. No specific visibility or ranking is guaranteed, but the store gains a clearer and more useful presence on the web.",
+        ],
+      },
+      {
+        title: "Relevant inquiries begin with context",
+        paragraphs: [
+          "A valuable inquiry may be a question about availability, size, customization, delivery coverage or a service requirement. It does not always become an immediate sale, but it can begin a real conversation between a customer and a suitable seller.",
+          "Because customers can read about the store first, the chat may begin with more context. The seller remains responsible for product information, pricing, payment, delivery, returns and customer service.",
+        ],
+      },
+      {
+        title: "Why WaShop reviews stores manually",
+        paragraphs: [
+          "WaShop is not an open link dump. Every submission is reviewed, and applying does not guarantee publication. We look for legitimate businesses, legal products or services, active contact details and a level of clarity suitable for a public directory.",
+          "The directory is being built gradually because quality matters more than filling pages quickly. Manual review does not guarantee that every transaction will be perfect, but it creates a more deliberate standard for who can appear.",
+        ],
+      },
+      {
+        title: "How sellers can prepare",
+        paragraphs: [
+          "Prepare a clear business name, location or service area, a short description, active contact details and a catalog link if one is available. Be accurate about shipping coverage, languages, availability and how customers should contact you.",
+          "Sellers in Israel and other countries can apply. Approved placement, international visibility and customer inquiries are never automatic, and worldwide delivery must not be assumed unless the seller confirms it directly.",
+        ],
+        ctaLabel: "Submit a store for review",
+        ctaHref: "/global#apply",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does a WaShop listing guarantee leads or sales?",
+        answer:
+          "No. WaShop provides discovery infrastructure and direct links, but it does not guarantee search rankings, traffic, inquiries or sales.",
+      },
+      {
+        question: "Is every submitted store published?",
+        answer:
+          "No. Submissions are reviewed manually, and WaShop may approve, reject, edit or remove a listing based on its rules and suitability for the directory.",
+      },
+      {
+        question: "Does global visibility mean worldwide shipping?",
+        answer:
+          "No. Buyers must confirm availability, shipping destinations, payment, returns and service directly with each seller before purchasing.",
+      },
+    ],
+  },
+  {
     slug: "hanut-virtualit-bewhatsapp",
     title: "חנות וירטואלית בוואטסאפ: איך פותחים קטלוג ומקבלים הזמנות",
     excerpt:
