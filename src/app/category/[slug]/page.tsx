@@ -38,7 +38,11 @@ const appDevelopmentContent = {
 };
 
 function getCategoryHeading(category: Category) {
-  return category.slug === "app-development" ? appDevelopmentContent.h1 : category.name;
+  if (category.slug === "app-development") {
+    return "עסקים לפיתוח אפליקציות";
+  }
+
+  return category.name;
 }
 
 function getCategoryDescription(category: Category, approvedStoreCount: number) {
@@ -114,10 +118,12 @@ export async function generateMetadata({
   }
 
   const approvedStoreCount = getApprovedStoreCountForCategory(category.slug);
-  const title =
-    category.slug === "app-development"
-      ? "נותני שירות לפיתוח אפליקציות בוואטסאפ | WaShop"
-      : `${category.name} | חנויות וואטסאפ מאושרות`;
+  const titleBySlug: Record<string, string> = {
+    "app-development": "עסקים לפיתוח אפליקציות | אינדקס Washop",
+    "website-building": "עסקים לבניית אתרים | אינדקס Washop",
+    "technical-services-businesses": "שירותים טכניים לעסקים | אינדקס Washop",
+  };
+  const title = titleBySlug[category.slug] ?? `${category.name} | חנויות וואטסאפ מאושרות`;
   const description = getCategoryDescription(category, approvedStoreCount);
 
   return {

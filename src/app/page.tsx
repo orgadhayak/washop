@@ -25,10 +25,10 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+    absolute: "Washop – אינדקס חנויות ועסקים בוואטסאפ",
   },
   description:
-    "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
+    "גלו חנויות ועסקים בישראל שמציגים מוצרים ושירותים ומאפשרים קשר ישיר בוואטסאפ. חפשו לפי קטגוריה והגיעו לעסק המתאים.",
   alternates: {
     canonical: "/",
     languages: {
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+    title: "Washop – אינדקס חנויות ועסקים בוואטסאפ",
     description:
-      "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
+      "גלו חנויות ועסקים בישראל שמציגים מוצרים ושירותים ומאפשרים קשר ישיר בוואטסאפ. חפשו לפי קטגוריה והגיעו לעסק המתאים.",
     url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaShop – אינדקס חנויות וואטסאפ בישראל",
+    title: "Washop – אינדקס חנויות ועסקים בוואטסאפ",
     description:
-      "גלו בוואשופ חנויות וואטסאפ וקטלוגים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות למוכר דרך וואטסאפ.",
+      "גלו חנויות ועסקים בישראל שמציגים מוצרים ושירותים ומאפשרים קשר ישיר בוואטסאפ. חפשו לפי קטגוריה והגיעו לעסק המתאים.",
   },
 };
 
@@ -61,6 +61,14 @@ const benefits = [
 ];
 
 export default function Home() {
+  const faqItems = [
+    ["מהו Washop?", "וואשופ היא ספריית גילוי ואינדקס של חנויות ועסקים שמציגים מוצרים או שירותים ומאפשרים קשר ישיר בוואטסאפ. וואשופ אינה צד בעסקה ואינה מבצעת תשלומים."],
+    ["איך מוצאים חנות ב-Washop?", "מחפשים לפי קטגוריה, עיר, מוצר או שם עסק, פותחים את הכרטיס ובודקים את הקטלוג או פונים ישירות לבית העסק."],
+    ["איך מוסיפים עסק או חנות?", "שולחים פרטים דרך עמוד הוספת החנות. צוות וואשופ בודק את העסק ידנית, והגשה אינה מבטיחה אישור או פרסום."],
+    ["האם אפשר ליצור קשר עם העסק דרך WhatsApp?", "כן. בכרטיסים המאושרים אפשר לפתוח קטלוג או לשלוח הודעה ישירה, ולאשר מול העסק את כל פרטי ההתקשרות."],
+    ["האם Washop מבצע את התשלום?", "לא. התשלום, המשלוח, ההחזרות והשירות מסוכמים ישירות בין הלקוח לבין העסק."],
+    ["האם Washop אחראי לשירות שהעסק מספק?", "לא. וואשופ בודקת חנויות לפני פרסום, אך העסק אחראי למוצרים, למחירים, לתנאים ולשירות שהוא מספק."],
+  ];
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -94,6 +102,15 @@ export default function Home() {
         name: shop.name,
       })),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map(([question, answer]) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    },
   ];
 
   return (
@@ -110,11 +127,7 @@ export default function Home() {
               {siteConfig.trustLine}
             </div>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              מגלים{" "}
-              <span className="text-emerald-700">
-                חנויות וואטסאפ ישראליות
-              </span>{" "}
-              במקום אחד
+              חנויות ועסקים שאפשר למצוא וליצור איתם קשר בוואטסאפ
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               וואשופ היא ספרייה של חנויות ונותני שירות ישראליים שנבדקים ידנית.
@@ -432,6 +445,24 @@ export default function Home() {
                   {post.ctaLabel}
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 sm:py-18">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="שאלות נפוצות"
+            title="חנות וירטואלית בעברית עם קשר ישיר בוואטסאפ"
+            description="וואשופ עוזרת לגלות עסקים וחנויות. הפנייה, התשלום והשירות נשארים ישירות מול העסק."
+          />
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {faqItems.map(([question, answer]) => (
+              <details key={question} className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
+                <summary className="cursor-pointer text-lg font-black text-zinc-950">{question}</summary>
+                <p className="mt-3 leading-7 text-zinc-700">{answer}</p>
+              </details>
             ))}
           </div>
         </div>

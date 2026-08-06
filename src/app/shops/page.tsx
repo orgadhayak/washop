@@ -6,29 +6,21 @@ import { approvedShops } from "@/data/shops";
 import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { absoluteUrl } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "חנויות וואטסאפ בישראל – קטלוגים וקנייה ישירה | WaShop",
-  },
-  description:
-    "גלו חנויות וואטסאפ בישראל לפי קטגוריה, עיר ומוצרים. פתחו את הקטלוג, בדקו משלוחים ופנו ישירות למוכר דרך וואטסאפ.",
-  alternates: {
-    canonical: "/shops",
-  },
-  openGraph: {
-    title: "חנויות וואטסאפ בישראל – קטלוגים וקנייה ישירה | WaShop",
-    description:
-      "גלו חנויות וואטסאפ בישראל לפי קטגוריה, עיר ומוצרים. פתחו את הקטלוג, בדקו משלוחים ופנו ישירות למוכר דרך וואטסאפ.",
-    url: "/shops",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "חנויות וואטסאפ בישראל – קטלוגים וקנייה ישירה | WaShop",
-    description:
-      "גלו חנויות וואטסאפ בישראל לפי קטגוריה, עיר ומוצרים. פתחו את הקטלוג, בדקו משלוחים ופנו ישירות למוכר דרך וואטסאפ.",
-  },
-};
+export async function generateMetadata({ searchParams }: ShopsPageProps): Promise<Metadata> {
+  const params = await searchParams;
+  const hasFilter = ["q", "category", "city"].some((key) => readParam(params, key));
+  const title = "חנויות בוואטסאפ לפי קטגוריה | Washop";
+  const description = "מצאו חנויות ועסקים שמאפשרים פנייה ישירה דרך וואטסאפ. סננו לפי קטגוריה, עיר או מוצר ועברו לעסק המתאים.";
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: "/shops" },
+    robots: hasFilter ? { index: false, follow: true } : { index: true, follow: true },
+    openGraph: { title, description, url: "/shops", type: "website" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 type ShopsPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
@@ -42,23 +34,55 @@ function readParam(
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
 }
 
+const directoryFaq = [
+  ["איך מוצאים חנות בוואטסאפ?", "מחפשים לפי שם, עיר, קטגוריה או מוצר, פותחים את כרטיס העסק ועוברים לקטלוג או לשיחה ישירה."],
+  ["האם וואשופ מבצעת את העסקה?", "לא. וואשופ היא אינדקס גילוי. המחיר, התשלום, המשלוח, ההחזרות והשירות מסוכמים ישירות מול העסק."],
+  ["איך מוסיפים עסק לאינדקס?", "שולחים את פרטי העסק בעמוד הוספת חנות. הצוות בודק כל בקשה ידנית, והגשה אינה מבטיחה אישור."],
+];
+
 export default async function ShopsPage({ searchParams }: ShopsPageProps) {
   const params = await searchParams;
   const initialQuery = readParam(params, "q");
   const initialCategory = readParam(params, "category");
   const initialCity = readParam(params, "city");
   const activeCategories = getActiveCategoriesWithCounts();
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "חנויות וואטסאפ מאושרות בישראל",
-    itemListElement: approvedShops.map((shop, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: absoluteUrl(`/shop/${shop.slug}`),
-      name: shop.name,
-    })),
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "אינדקס חנויות ועסקים בוואטסאפ",
+      url: absoluteUrl("/shops"),
+      inLanguage: "he-IL",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "חנויות וואטסאפ מאושרות בישראל",
+      itemListElement: approvedShops.map((shop, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: absoluteUrl(`/shop/${shop.slug}`),
+        name: shop.name,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "וואשופ", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "חנויות ועסקים בוואטסאפ", item: absoluteUrl("/shops") },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: directoryFaq.map(([question, answer]) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    },
+  ];
 
   return (
     <div className="py-8 sm:py-12">
@@ -72,7 +96,7 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
             ספריית חנויות
           </p>
           <h1 className="mt-2 text-3xl font-black leading-tight text-zinc-950 sm:text-5xl">
-            חנויות וואטסאפ בישראל
+            אינדקס חנויות ועסקים בוואטסאפ
           </h1>
           <div className="mx-auto mt-5 max-w-3xl space-y-4 text-lg leading-8 text-zinc-600">
             <p>
@@ -195,6 +219,18 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
                 תקנון ומדיניות לחנות
               </Link>
             </div>
+          </div>
+        </section>
+
+        <section className="mx-auto mt-6 max-w-6xl">
+          <h2 className="text-2xl font-black text-zinc-950">שאלות נפוצות על האינדקס</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            {directoryFaq.map(([question, answer]) => (
+              <details key={question} className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
+                <summary className="cursor-pointer font-black text-zinc-950">{question}</summary>
+                <p className="mt-2 text-sm leading-7 text-zinc-700">{answer}</p>
+              </details>
+            ))}
           </div>
         </section>
       </div>

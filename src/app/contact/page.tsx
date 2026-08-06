@@ -24,6 +24,9 @@ export default function ContactPage() {
           אפשר לפנות אלינו לגבי חנות קיימת, הצטרפות לוואשופ, תיקון פרטים או
           שאלה כללית.
         </p>
+        <p className="mt-3 text-sm font-bold leading-7 text-zinc-600">
+          לשאלות על שירות לקוחות בוואטסאפ לעסקים אפשר לקרוא את <Link href="/blog/sherut-lakohot-bewhatsapp-laasakim" className="text-emerald-700 underline underline-offset-4">המדריך המעשי</Link>. וואשופ אינה התמיכה הרשמית של WhatsApp ואינה מנהלת את שירות העסק.
+        </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <a

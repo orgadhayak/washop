@@ -15,12 +15,12 @@ import { approvedGlobalShops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
 
-const globalTitle = "WaShop Global | Discover stores and shop by chat";
+const globalTitle = "WaShop Global – WhatsApp Store Directory";
 const globalDescription =
-  "Discover carefully reviewed stores, open their WhatsApp catalogs and connect directly with sellers. WaShop Global is an English gateway for chat-based store discovery.";
+  "Explore businesses and stores that connect with customers through WhatsApp. Browse categories and contact the relevant seller directly.";
 
 export const metadata: Metadata = {
-  title: globalTitle,
+  title: { absolute: globalTitle },
   description: globalDescription,
   alternates: {
     canonical: "/global",
@@ -150,7 +150,7 @@ export default function GlobalPage() {
               WaShop Global
             </p>
             <h1 className="mt-2 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              Discover carefully reviewed stores and shop by chat
+              Discover Stores That Sell Through WhatsApp
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               Browse independent stores, open their catalogs and connect directly

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "www.washop.co.il" }],
         destination: "https://washop.co.il/:path*",
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },

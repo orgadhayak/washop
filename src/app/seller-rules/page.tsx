@@ -3,12 +3,13 @@ import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "מי יכול לפרסם חנות בוואשופ?",
+  title: "כללי מוכרים ב-Washop",
   description:
     "תנאי פרסום וסטנדרטים לחנויות וואטסאפ שרוצות להופיע בוואשופ.",
   alternates: {
     canonical: "/seller-rules",
   },
+  robots: { index: false, follow: true },
 };
 
 const suitableItems = [
@@ -86,7 +87,7 @@ export default function SellerRulesPage() {
             בדיקה ידנית וסטנדרט פרסום
           </div>
           <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
-            מי יכול לפרסם חנות בוואשופ?
+            כללים והנחיות למוכרים ב-Washop
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-9 text-emerald-50">
             וואשופ אינו ספריית ספאם פתוחה. כל חנות נבדקת ידנית, והמטרה היא
