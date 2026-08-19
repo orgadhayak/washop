@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #effff5;
+  --background: #dff9e9;
   --foreground: #171717;
   --whatsapp-green: #00a884;
   --whatsapp-green-dark: #008f72;
-  --whatsapp-mint: #e8fff1;
+  --whatsapp-mint: #d8f8e4;
 }
 
 @theme inline {
@@ -17,7 +17,7 @@
 
 body {
   background-color: var(--background);
-  background-image: linear-gradient(180deg, #ffffff 0, #effff5 30rem, #fafffc 62rem, #e8fff1 100%);
+  background-image: linear-gradient(180deg, #ffffff 0 7rem, #dff9e9 28rem, #f7fff9 60rem, #d4f7e1 100%);
   color: var(--foreground);
   font-family: var(--font-assistant), "Assistant", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
@@ -70,7 +70,7 @@ html {
 .home-hero-shell {
   isolation: isolate;
   position: relative;
-  background: linear-gradient(125deg, #ffffff 0%, #f7fffa 48%, #ddf9e8 100%);
+  background: linear-gradient(125deg, #ffffff 0%, #e9faef 40%, #bdeecf 100%);
 }
 
 .home-hero-shell::before {
@@ -95,12 +95,12 @@ html {
 
 .home-mint-band {
   background-color: var(--whatsapp-mint);
-  background-image: linear-gradient(180deg, #effff5 0%, #ffffff 100%);
+  background-image: linear-gradient(180deg, #d8f8e4 0%, #effff5 55%, #ffffff 100%);
 }
 
 .home-fresh-band {
-  background-color: #dff9e9;
-  background-image: linear-gradient(135deg, #dff9e9 0%, #f7fffa 56%, #ffffff 100%);
+  background-color: #c9f3d9;
+  background-image: linear-gradient(135deg, #c9f3d9 0%, #e8faef 58%, #ffffff 100%);
 }
 
 .home-whatsapp-band {

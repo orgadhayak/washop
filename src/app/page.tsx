@@ -245,7 +245,7 @@ export default function Home() {
 
       <HomeStoresMomentum />
 
-      <section className="bg-[#dff9e9] py-8 sm:py-10">
+      <section className="bg-[#c9f3d9] py-8 sm:py-10">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
             <h2 className="text-2xl font-black text-zinc-950">
@@ -272,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="categories" className="bg-white py-14 sm:py-18">
+      <section id="categories" className="bg-[#f7fff9] py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="קטגוריות"
@@ -390,7 +390,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-emerald-50 py-14 sm:py-18">
+      <section className="bg-[#d8f8e4] py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-[#00a884]/25 bg-gradient-to-br from-[#00a884] via-[#009b72] to-[#008f72] p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
             <div>
