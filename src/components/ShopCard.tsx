@@ -49,7 +49,7 @@ export function ShopCard({ shop, description }: ShopCardProps) {
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm shadow-emerald-950/5 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
       <Link
         href={`/shop/${shop.slug}`}
-        className="group block cursor-pointer border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/80 p-4 transition hover:from-emerald-100/80 hover:to-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-inset sm:p-5"
+        className="group block cursor-pointer border-b border-emerald-200 bg-white p-4 transition hover:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-inset sm:p-5"
       >
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
@@ -108,7 +108,7 @@ export function ShopCard({ shop, description }: ShopCardProps) {
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}
-              className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-black text-emerald-800 transition hover:bg-emerald-100"
+              className="rounded-full border border-emerald-300 bg-white px-2.5 py-1 text-xs font-black text-emerald-800 transition hover:border-emerald-500"
             >
               {category.name}
             </Link>
@@ -124,7 +124,7 @@ export function ShopCard({ shop, description }: ShopCardProps) {
           {visibleTags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-bold text-zinc-700"
+              className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs font-bold text-zinc-700"
             >
               <Tags className="size-3.5 text-emerald-600" aria-hidden="true" />
               {tag}
@@ -138,7 +138,7 @@ export function ShopCard({ shop, description }: ShopCardProps) {
         </div>
 
         <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto] sm:items-center">
-          <div className="flex flex-wrap items-center gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-emerald-950">
+          <div className="flex flex-wrap items-center gap-2 rounded-lg border border-emerald-300 bg-white px-3 py-2 text-emerald-950">
             <div
               className="flex items-center gap-1 text-emerald-600"
               aria-label="דירוג וואשופ חמישה כוכבים"

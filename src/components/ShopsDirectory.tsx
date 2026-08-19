@@ -83,7 +83,7 @@ export function ShopsDirectory({
               desktopPlaceholder="חפשו עיר, מוצר או חנות"
               mobilePlaceholder="חפשו עיר, מוצר או חנות"
               dir="rtl"
-              className="h-12 w-full rounded-full border border-emerald-200 bg-emerald-50/50 pr-12 pl-4 text-sm font-bold text-zinc-950 outline-none transition placeholder:text-sm placeholder:font-bold placeholder:text-zinc-400 focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100 sm:text-base sm:placeholder:text-base"
+              className="h-12 w-full rounded-full border border-emerald-300 bg-white pr-12 pl-4 text-sm font-bold text-zinc-950 outline-none transition placeholder:text-sm placeholder:font-bold placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500 sm:text-base sm:placeholder:text-base"
             />
           </label>
 
@@ -92,7 +92,7 @@ export function ShopsDirectory({
             <select
               value={category}
               onChange={(event) => setCategory(event.target.value)}
-              className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm font-bold text-zinc-800 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
+              className="h-12 w-full rounded-full border border-emerald-300 bg-white px-4 text-sm font-bold text-zinc-800 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500"
             >
               <option value="">כל הקטגוריות</option>
               {activeCategories.map((item) => (
@@ -108,7 +108,7 @@ export function ShopsDirectory({
             <select
               value={city}
               onChange={(event) => setCity(event.target.value)}
-              className="h-12 w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 text-sm font-bold text-zinc-800 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
+              className="h-12 w-full rounded-full border border-emerald-300 bg-white px-4 text-sm font-bold text-zinc-800 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500"
             >
               <option value="">כל הערים</option>
               {cityOptions.map((item) => (
@@ -150,7 +150,7 @@ export function ShopsDirectory({
           ))}
         </div>
       ) : (
-        <div className="rounded-lg border border-dashed border-emerald-300 bg-emerald-50/60 p-8 text-center">
+        <div className="rounded-lg border border-dashed border-emerald-400 bg-white p-8 text-center">
           <h2 className="text-2xl font-black text-zinc-950">
             עדיין אין חנויות בקטגוריה הזו. יש לכם חנות וואטסאפ מתאימה? שלחו אותה לבדיקה.
           </h2>

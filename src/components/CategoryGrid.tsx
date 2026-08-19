@@ -18,7 +18,7 @@ export function CategoryGrid() {
             className="group rounded-lg border border-emerald-950/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-3">
-              <span className="grid size-11 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
+              <span className="grid size-11 place-items-center rounded-lg bg-[#00a884] text-white">
                 <Icon className="size-5" aria-hidden="true" />
               </span>
             </div>

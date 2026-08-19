@@ -122,7 +122,7 @@ export default function Home() {
       <section className="home-hero-shell overflow-hidden border-b border-emerald-950/10">
         <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#00a884] bg-[#00a884] px-4 py-2 text-sm font-black text-white">
               <ShieldCheck className="size-4" aria-hidden="true" />
               {siteConfig.trustLine}
             </div>
@@ -245,9 +245,9 @@ export default function Home() {
 
       <HomeStoresMomentum />
 
-      <section className="bg-[#c9f3d9] py-8 sm:py-10">
+      <section className="bg-[#00a884] py-8 sm:py-10">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
+          <div className="rounded-2xl border border-white/70 bg-white p-6 shadow-sm shadow-emerald-950/10">
             <h2 className="text-2xl font-black text-zinc-950">
               אנחנו כאן כדי להישאר
             </h2>
@@ -258,7 +258,7 @@ export default function Home() {
               ולפנות אליהן בביטחון.
             </p>
           </div>
-          <div className="rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm shadow-emerald-950/5">
+          <div className="rounded-2xl border border-white/70 bg-white p-6 shadow-sm shadow-emerald-950/10">
             <h2 className="text-2xl font-black text-zinc-950">
               נרשמים בישראל. נחשפים גם לעולם.
             </h2>
@@ -272,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="categories" className="bg-[#f7fff9] py-14 sm:py-18">
+      <section id="categories" className="bg-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="קטגוריות"
@@ -353,7 +353,7 @@ export default function Home() {
                   key={benefit.title}
                   className="rounded-lg border border-emerald-950/10 bg-white p-5 text-center shadow-sm"
                 >
-                  <span className="mx-auto grid size-12 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
+                  <span className="mx-auto grid size-12 place-items-center rounded-lg bg-[#00a884] text-white">
                     <Icon className="size-6" aria-hidden="true" />
                   </span>
                   <h3 className="mt-4 text-base font-black text-zinc-950">
@@ -390,7 +390,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#d8f8e4] py-14 sm:py-18">
+      <section className="bg-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-[#00a884]/25 bg-gradient-to-br from-[#00a884] via-[#009b72] to-[#008f72] p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
             <div>
@@ -459,7 +459,7 @@ export default function Home() {
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {faqItems.map(([question, answer]) => (
-              <details key={question} className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
+              <details key={question} className="rounded-xl border border-emerald-300 bg-white p-5">
                 <summary className="cursor-pointer text-lg font-black text-zinc-950">{question}</summary>
                 <p className="mt-3 leading-7 text-zinc-700">{answer}</p>
               </details>

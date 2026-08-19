@@ -26,7 +26,7 @@ export function Footer() {
 
   if (isGlobal) {
     return (
-      <footer className="border-t border-emerald-300 bg-[#d4f7e1]" dir="ltr" lang="en">
+      <footer className="border-t-4 border-[#00a884] bg-white" dir="ltr" lang="en">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
           <div className="space-y-4">
             <HomeLogoLink
@@ -113,7 +113,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-emerald-300 bg-[#d4f7e1]">
+    <footer className="border-t-4 border-[#00a884] bg-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
           <HomeLogoLink

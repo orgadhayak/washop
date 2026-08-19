@@ -26,7 +26,7 @@ const stats = [
 export function ShopsStatusBanner() {
   return (
     <section
-      className="rounded-xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/70 to-white p-4 shadow-sm shadow-emerald-950/5"
+      className="rounded-xl border border-emerald-300 bg-white p-4 shadow-sm shadow-emerald-950/5"
       aria-labelledby="shops-status-title"
     >
       <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -49,7 +49,7 @@ export function ShopsStatusBanner() {
               key={label}
               className="flex items-center gap-3 rounded-lg border border-emerald-100 bg-white px-3 py-2 shadow-sm"
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
+              <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#00a884] text-white">
                 <Icon className="size-4" aria-hidden="true" />
               </span>
               <div>

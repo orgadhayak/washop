@@ -26,9 +26,9 @@ const stats = [
 
 export function HomeStoresMomentum() {
   return (
-    <section className="bg-[#d4f7e1] py-6 sm:py-8">
+    <section className="bg-[#00a884] py-6 sm:py-8">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[#00a884]/35 bg-gradient-to-br from-white via-[#e9faef] to-[#bfeecf] p-4 shadow-lg shadow-emerald-950/5 sm:p-5">
+        <div className="rounded-2xl border border-white/75 bg-white p-4 shadow-lg shadow-emerald-950/10 sm:p-5">
           <div className="grid gap-5 lg:grid-cols-[1.05fr_1fr] lg:items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-sm font-black text-emerald-800 shadow-sm">
@@ -63,7 +63,7 @@ export function HomeStoresMomentum() {
                   className="rounded-xl border border-emerald-100 bg-white px-4 py-3 text-zinc-950 shadow-sm"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="grid size-9 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
+                    <span className="grid size-9 place-items-center rounded-lg bg-[#00a884] text-white">
                       <Icon className="size-5" aria-hidden="true" />
                     </span>
                     <span className="text-3xl font-black">{value}</span>
