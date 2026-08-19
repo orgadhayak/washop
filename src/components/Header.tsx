@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b border-emerald-950/10 bg-[#f4fbf6]/94 shadow-sm shadow-emerald-950/5 backdrop-blur"
+      className="sticky top-0 z-40 border-b border-emerald-200/80 bg-white/95 shadow-sm shadow-emerald-950/5 backdrop-blur"
       dir={isGlobal ? "ltr" : "rtl"}
       lang={isGlobal ? "en" : "he"}
     >

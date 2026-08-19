@@ -194,7 +194,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="absolute left-2 top-1/2 inline-flex h-12 -translate-y-1/2 items-center justify-center rounded-full bg-zinc-950 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
+              className="absolute left-2 top-1/2 inline-flex h-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#008f72] px-5 text-sm font-black text-white transition hover:bg-[#007f62]"
             >
               חיפוש
             </button>
@@ -202,7 +202,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-emerald-50/95 via-[#f4fbf6] to-emerald-50/70 py-14 sm:py-18">
+      <section className="home-mint-band py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="חנויות מומלצות"
@@ -245,7 +245,7 @@ export default function Home() {
 
       <HomeStoresMomentum />
 
-      <section className="bg-emerald-100/55 py-8 sm:py-10">
+      <section className="bg-[#dff9e9] py-8 sm:py-10">
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm shadow-emerald-950/5">
             <h2 className="text-2xl font-black text-zinc-950">
@@ -285,7 +285,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-emerald-100/80 via-emerald-50 to-white py-14 sm:py-18">
+      <section className="home-fresh-band py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="מדריך קצר"
@@ -337,7 +337,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f1faf4] py-14 sm:py-18">
+      <section className="bg-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="למה וואטסאפ"
@@ -366,23 +366,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-emerald-950 py-14 text-white sm:py-18">
+      <section className="home-whatsapp-band py-14 text-white sm:py-18">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <p className="text-sm font-black text-emerald-300">סטנדרט פרסום</p>
+            <p className="text-sm font-black text-emerald-100">סטנדרט פרסום</p>
             <h2 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">
               וואשופ לא מיועד לכל אחד
             </h2>
           </div>
           <div>
-            <p className="text-lg leading-9 text-zinc-200">
+            <p className="text-lg leading-9 text-white/90">
               אנחנו רוצים לרכז חנויות וואטסאפ איכותיות, חוקיות ורציניות בלבד.
               כל חנות נבדקת ידנית לפני שהיא מופיעה באתר, כדי שהלקוחות יוכלו
               למצוא עסקים אמיתיים, שירות טוב וקטלוגים שימושיים.
             </p>
             <Link
               href="/seller-rules"
-              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-500 px-6 text-sm font-black text-zinc-950 transition hover:bg-emerald-400"
+              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-black text-[#007f62] transition hover:bg-emerald-50"
             >
               מי יכול לפרסם בוואשופ?
             </Link>
@@ -392,7 +392,7 @@ export default function Home() {
 
       <section className="bg-emerald-50 py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-emerald-700/20 bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-950 p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
+          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-[#00a884]/25 bg-gradient-to-br from-[#00a884] via-[#009b72] to-[#008f72] p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
             <div>
               <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
                 יש לכם חנות וואטסאפ?
@@ -422,7 +422,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-[#f4fbf6] to-emerald-50/70 py-14 sm:py-18">
+      <section className="home-mint-band py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="מהבלוג" title="מחשבות על קנייה ישירה בוואטסאפ" />
           <div className="mt-10 grid gap-4">

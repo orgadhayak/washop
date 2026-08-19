@@ -70,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl" className={`${assistant.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-[#f4fbf6] text-zinc-950">
+      <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

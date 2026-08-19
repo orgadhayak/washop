@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4fbf6;
+  --background: #effff5;
   --foreground: #171717;
+  --whatsapp-green: #00a884;
+  --whatsapp-green-dark: #008f72;
+  --whatsapp-mint: #e8fff1;
 }
 
 @theme inline {
@@ -13,9 +16,8 @@
 }
 
 body {
-  background:
-    radial-gradient(circle at 8% 4%, rgba(52, 211, 153, 0.08), transparent 26rem),
-    var(--background);
+  background-color: var(--background);
+  background-image: linear-gradient(180deg, #ffffff 0, #effff5 30rem, #fafffc 62rem, #e8fff1 100%);
   color: var(--foreground);
   font-family: var(--font-assistant), "Assistant", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
@@ -68,44 +70,42 @@ html {
 .home-hero-shell {
   isolation: isolate;
   position: relative;
-  background:
-    radial-gradient(circle at 83% 20%, rgba(16, 185, 129, 0.18) 0 11rem, transparent 11.15rem),
-    radial-gradient(circle at 8% 88%, rgba(74, 222, 128, 0.1) 0 8rem, transparent 8.15rem),
-    linear-gradient(135deg, #f6fdf8 0%, #e2f8e9 48%, #f8fdf9 100%);
+  background: linear-gradient(125deg, #ffffff 0%, #f7fffa 48%, #ddf9e8 100%);
 }
 
 .home-hero-shell::before {
-  background-image: radial-gradient(rgba(5, 150, 105, 0.16) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: repeating-linear-gradient(135deg, rgba(0, 168, 132, 0.055) 0 1px, transparent 1px 18px);
   content: "";
   inset: 0;
-  mask-image: linear-gradient(to left, #000, transparent 72%);
-  opacity: 0.38;
+  opacity: 0.55;
   pointer-events: none;
   position: absolute;
-  -webkit-mask-image: linear-gradient(to left, #000, transparent 72%);
   z-index: -1;
 }
 
 .home-hero-shell::after {
-  background: rgba(110, 231, 183, 0.24);
-  border-radius: 999px;
-  content: "";
-  filter: blur(54px);
-  height: 16rem;
-  left: -5rem;
-  pointer-events: none;
-  position: absolute;
-  top: -5rem;
-  width: 16rem;
-  z-index: -1;
+  content: none;
 }
 
 .home-search-band {
-  background:
-    radial-gradient(circle at 20% 30%, rgba(167, 243, 208, 0.22), transparent 16rem),
-    linear-gradient(115deg, #047857 0%, #059669 48%, #047857 100%);
+  background-color: var(--whatsapp-green);
+  background-image: linear-gradient(115deg, #008f72 0%, #00a884 46%, #00bd7e 100%);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.home-mint-band {
+  background-color: var(--whatsapp-mint);
+  background-image: linear-gradient(180deg, #effff5 0%, #ffffff 100%);
+}
+
+.home-fresh-band {
+  background-color: #dff9e9;
+  background-image: linear-gradient(135deg, #dff9e9 0%, #f7fffa 56%, #ffffff 100%);
+}
+
+.home-whatsapp-band {
+  background-color: var(--whatsapp-green);
+  background-image: linear-gradient(120deg, #008f72 0%, #00a884 54%, #00b97d 100%);
 }
 
 .home-mascot-stage {
@@ -114,30 +114,11 @@ html {
 }
 
 .home-mascot-stage::before {
-  background:
-    radial-gradient(circle at 50% 43%, rgba(255, 255, 255, 0.98) 0 32%, rgba(220, 252, 231, 0.92) 58%, rgba(167, 243, 208, 0.46) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 45% 55% 50% 50% / 51% 42% 58% 49%;
-  box-shadow:
-    0 28px 70px rgba(6, 78, 59, 0.14),
-    inset 0 1px rgba(255, 255, 255, 0.9);
-  content: "";
-  inset: 2.75rem 1rem 2rem;
-  position: absolute;
-  transform: rotate(-3deg);
-  z-index: -1;
+  content: none;
 }
 
 .home-mascot-stage::after {
-  border: 1px solid rgba(16, 185, 129, 0.22);
-  border-radius: 999px;
-  content: "";
-  height: 5.5rem;
-  left: 1.5rem;
-  position: absolute;
-  top: 2.5rem;
-  width: 5.5rem;
-  z-index: -1;
+  content: none;
 }
 
 .home-mascot-image {
@@ -167,13 +148,8 @@ html {
     min-height: 21rem;
   }
 
-  .home-mascot-stage::before {
-    inset: 2rem 0.5rem 1.25rem;
-  }
-
   .home-hero-shell::before {
-    mask-image: linear-gradient(to bottom, transparent, #000 45%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%, transparent);
+    opacity: 0.35;
   }
 }
 
