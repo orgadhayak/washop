@@ -18,6 +18,7 @@ import { HomeStoresMomentum } from "@/components/HomeStoresMomentum";
 import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ShopCard } from "@/components/ShopCard";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { blogPosts } from "@/data/blog";
 import { approvedShops, featuredShops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
@@ -142,18 +143,22 @@ export default function Home() {
                 <Store className="size-5" aria-hidden="true" />
                 חנויות וואטסאפ בישראל
               </Link>
-              <Link
+              <TrackedActionLink
                 href="/add-store"
+                eventName="seller_cta_click"
+                eventProperties={{ destination: "/add-store", source: "homepage_hero", locale: "he" }}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
                 שליחת חנות וואטסאפ לבדיקה
-              </Link>
-              <Link
+              </TrackedActionLink>
+              <TrackedActionLink
                 href="/global"
+                eventName="language_or_global_switch"
+                eventProperties={{ destination: "global", source: "homepage_hero", locale: "he" }}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-zinc-200 bg-white px-6 text-base font-black text-zinc-800 transition hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
                 Global · English
-              </Link>
+              </TrackedActionLink>
             </div>
             <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-zinc-600">
               <BadgeCheck className="size-4 text-emerald-600" aria-hidden="true" />
@@ -237,6 +242,7 @@ export default function Home() {
                 key={shop.id}
                 shop={shop}
                 description={shop.featuredDescription}
+                surface="homepage"
               />
             ))}
           </div>
@@ -404,12 +410,14 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
+              <TrackedActionLink
                 href="/add-store"
+                eventName="seller_cta_click"
+                eventProperties={{ destination: "/add-store", source: "homepage_seller_cta", locale: "he" }}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-base font-black text-emerald-800 shadow-lg shadow-emerald-950/20 transition hover:bg-emerald-50"
               >
                 שליחת חנות לבדיקה
-              </Link>
+              </TrackedActionLink>
               <Link
                 href="/partners"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 text-base font-black text-white transition hover:bg-white/20"

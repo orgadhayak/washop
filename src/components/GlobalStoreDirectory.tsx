@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   BadgeCheck,
   Globe2,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { approvedGlobalShops } from "@/data/shops";
 import { createChatUrl } from "@/lib/whatsapp";
+import { trackSafeEvent } from "@/lib/analytics";
 
 const categoryNames: Record<string, string> = {
   "website-building": "Websites",
@@ -64,6 +65,8 @@ export function GlobalStoreDirectory() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
+  const viewTracked = useRef(false);
+  const filtersReady = useRef(false);
 
   const filteredShops = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -97,6 +100,45 @@ export function GlobalStoreDirectory() {
       return matchesQuery && matchesCategory && matchesLocation;
     });
   }, [category, location, query]);
+
+  useEffect(() => {
+    if (viewTracked.current) return;
+    viewTracked.current = true;
+    trackSafeEvent("shop_directory_view", {
+      route: "/global",
+      approved_store_count: approvedGlobalShops.length,
+      locale: "en",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!filtersReady.current) {
+      filtersReady.current = true;
+      if (!query.trim() && !category && !location) return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      if (query.trim()) {
+        trackSafeEvent("directory_search", {
+          has_query: true,
+          result_count: filteredShops.length,
+          locale: "en",
+        });
+      }
+
+      if (category || location) {
+        trackSafeEvent("directory_filter", {
+          category_filter: Boolean(category),
+          city_filter: Boolean(location),
+          category_slug: category || undefined,
+          result_count: filteredShops.length,
+          locale: "en",
+        });
+      }
+    }, 600);
+
+    return () => window.clearTimeout(timeout);
+  }, [category, filteredShops.length, location, query]);
 
   return (
     <section id="stores" className="py-12 sm:py-16">
@@ -242,6 +284,13 @@ export function GlobalStoreDirectory() {
                     href={shop.catalogUrl}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() =>
+                      trackSafeEvent("whatsapp_seller_click", {
+                        action: "catalog",
+                        shop_slug: shop.slug,
+                        surface: "global_directory",
+                      })
+                    }
                     className="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-600 px-4 text-sm font-black text-white transition hover:bg-emerald-700"
                   >
                     Open catalog
@@ -253,6 +302,13 @@ export function GlobalStoreDirectory() {
                     )}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() =>
+                      trackSafeEvent("whatsapp_seller_click", {
+                        action: "message",
+                        shop_slug: shop.slug,
+                        surface: "global_directory",
+                      })
+                    }
                     className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-4 text-sm font-black text-emerald-700 transition hover:bg-emerald-50"
                   >
                     <MessageCircle className="size-4" aria-hidden="true" />

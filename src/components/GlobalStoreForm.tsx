@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { trackSafeEvent } from "@/lib/analytics";
 
 type FormState = {
   storeName: string;
@@ -50,6 +51,13 @@ export function GlobalStoreForm() {
     "idle",
   );
   const [message, setMessage] = useState("");
+  const started = useRef(false);
+
+  function trackStart() {
+    if (started.current) return;
+    started.current = true;
+    trackSafeEvent("add_store_start", { source: "global", locale: "en" });
+  }
 
   function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -57,6 +65,7 @@ export function GlobalStoreForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    trackStart();
     setStatus("loading");
     setMessage("");
 
@@ -73,6 +82,7 @@ export function GlobalStoreForm() {
       }
 
       setStatus("success");
+      trackSafeEvent("add_store_complete", { source: "global", locale: "en" });
       setMessage(result.message ?? successMessage);
       setForm(initialState);
     } catch (error) {
@@ -89,6 +99,7 @@ export function GlobalStoreForm() {
     <form
       id="apply"
       onSubmit={handleSubmit}
+      onFocusCapture={trackStart}
       className="space-y-5 rounded-xl border border-emerald-950/10 bg-white p-5 shadow-sm sm:p-6"
     >
       <div className="hidden" aria-hidden="true">

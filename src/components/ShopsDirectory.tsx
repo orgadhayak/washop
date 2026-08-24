@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { categories } from "@/data/categories";
 import { approvedShops } from "@/data/shops";
@@ -8,6 +8,7 @@ import { ResponsiveSearchInput } from "@/components/ResponsiveSearchInput";
 import { ShopCard } from "@/components/ShopCard";
 import { ShopsStatusBanner } from "@/components/ShopsStatusBanner";
 import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
+import { trackSafeEvent } from "@/lib/analytics";
 
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
 const activeCategories = getActiveCategoriesWithCounts();
@@ -29,6 +30,8 @@ export function ShopsDirectory({
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
   const [city, setCity] = useState(initialCity);
+  const viewTracked = useRef(false);
+  const filtersReady = useRef(false);
 
   const filteredShops = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -58,6 +61,45 @@ export function ShopsDirectory({
       return matchesQuery && matchesCategory && matchesCity;
     });
   }, [category, city, query]);
+
+  useEffect(() => {
+    if (viewTracked.current) return;
+    viewTracked.current = true;
+    trackSafeEvent("shop_directory_view", {
+      route: "/shops",
+      approved_store_count: approvedShops.length,
+      locale: "he",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!filtersReady.current) {
+      filtersReady.current = true;
+      if (!query.trim() && !category && !city) return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      if (query.trim()) {
+        trackSafeEvent("directory_search", {
+          has_query: true,
+          result_count: filteredShops.length,
+          locale: "he",
+        });
+      }
+
+      if (category || city) {
+        trackSafeEvent("directory_filter", {
+          category_filter: Boolean(category),
+          city_filter: Boolean(city),
+          category_slug: category || undefined,
+          result_count: filteredShops.length,
+          locale: "he",
+        });
+      }
+    }, 600);
+
+    return () => window.clearTimeout(timeout);
+  }, [category, city, filteredShops.length, query]);
 
   return (
     <div className="space-y-5">
@@ -146,7 +188,7 @@ export function ShopsDirectory({
       {filteredShops.length ? (
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
           {filteredShops.map((shop) => (
-            <ShopCard key={shop.id} shop={shop} />
+            <ShopCard key={shop.id} shop={shop} surface="directory" />
           ))}
         </div>
       ) : (

@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { trackSafeEvent } from "@/lib/analytics";
 
 type FormState = {
   storeName: string;
@@ -35,6 +36,13 @@ export function SubmitStoreForm() {
     "idle",
   );
   const [message, setMessage] = useState("");
+  const started = useRef(false);
+
+  function trackStart() {
+    if (started.current) return;
+    started.current = true;
+    trackSafeEvent("add_store_start", { source: "add_store", locale: "he" });
+  }
 
   function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -42,6 +50,7 @@ export function SubmitStoreForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    trackStart();
     setStatus("loading");
     setMessage("");
 
@@ -58,6 +67,7 @@ export function SubmitStoreForm() {
       }
 
       setStatus("success");
+      trackSafeEvent("add_store_complete", { source: "add_store", locale: "he" });
       setMessage(result.message ?? successMessage);
       setForm(initialState);
     } catch (error) {
@@ -69,6 +79,7 @@ export function SubmitStoreForm() {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocusCapture={trackStart}
       className="space-y-5 rounded-lg border border-emerald-950/10 bg-white p-5 shadow-sm sm:p-6"
     >
       <div className="hidden" aria-hidden="true">

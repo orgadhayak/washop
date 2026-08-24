@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   BadgeCheck,
@@ -13,6 +15,7 @@ import {
 } from "lucide-react";
 import { categories } from "@/data/categories";
 import type { Shop } from "@/data/shops";
+import { trackSafeEvent } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site";
 import { createChatUrl } from "@/lib/whatsapp";
 
@@ -25,9 +28,10 @@ const verificationBadges = [
 type ShopCardProps = {
   shop: Shop;
   description?: string;
+  surface?: "homepage" | "directory" | "category";
 };
 
-export function ShopCard({ shop, description }: ShopCardProps) {
+export function ShopCard({ shop, description, surface = "directory" }: ShopCardProps) {
   const chatMessage = shop.hasWashopBenefit
     ? "שלום, הגעתי דרך וואשופ ורציתי לשאול על ההטבה ללקוחות וואשופ."
     : siteConfig.shopMessage;
@@ -174,6 +178,13 @@ export function ShopCard({ shop, description }: ShopCardProps) {
             href={shop.catalogUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={() =>
+              trackSafeEvent("whatsapp_seller_click", {
+                action: "catalog",
+                shop_slug: shop.slug,
+                surface,
+              })
+            }
             className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-black text-white shadow-sm shadow-emerald-800/15 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
           >
             צפייה בקטלוג
@@ -182,6 +193,13 @@ export function ShopCard({ shop, description }: ShopCardProps) {
             href={createChatUrl(shop.phone, chatMessage)}
             target="_blank"
             rel="noreferrer"
+            onClick={() =>
+              trackSafeEvent("whatsapp_seller_click", {
+                action: "message",
+                shop_slug: shop.slug,
+                surface,
+              })
+            }
             className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-4 text-sm font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
           >
             <MessageCircle className="size-4" aria-hidden="true" />

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Globe2, PlusCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { trackSafeEvent } from "@/lib/analytics";
 import { mainNavigation } from "@/lib/site";
 
 const globalNavigation = [
@@ -14,9 +15,14 @@ const globalNavigation = [
   { label: "Israel · עברית", href: "/" },
 ];
 
+const englishArticleRoutes = [
+  "/blog/washop-global-whatsapp-store-directory",
+  "/blog/whatsapp-store-discovery-index-for-quality-sellers",
+];
+
 export function Header() {
   const pathname = usePathname();
-  const isGlobal = pathname === "/global";
+  const isGlobal = pathname === "/global" || englishArticleRoutes.includes(pathname);
   const navigation = isGlobal ? globalNavigation : mainNavigation;
   const actionHref = isGlobal ? "/global#apply" : "/add-store";
   const actionLabel = isGlobal ? "Apply" : "הוספת חנות";
@@ -37,6 +43,14 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => {
+                if (item.href === "/global" || (isGlobal && item.href === "/")) {
+                  trackSafeEvent("language_or_global_switch", {
+                    destination: item.href === "/" ? "israel" : "global",
+                    source: "header_desktop",
+                  });
+                }
+              }}
               className="rounded-full px-3 py-2 transition hover:bg-emerald-50 hover:text-emerald-700"
             >
               {item.label}
@@ -45,6 +59,13 @@ export function Header() {
         </nav>
         <Link
           href={actionHref}
+          onClick={() =>
+            trackSafeEvent("seller_cta_click", {
+              destination: actionHref,
+              source: "header",
+              locale: isGlobal ? "en" : "he",
+            })
+          }
           className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-bold text-white shadow-sm shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
         >
           {isGlobal ? (
@@ -63,6 +84,14 @@ export function Header() {
           <Link
             key={item.href}
             href={item.href}
+            onClick={() => {
+              if (item.href === "/global" || (isGlobal && item.href === "/")) {
+                trackSafeEvent("language_or_global_switch", {
+                  destination: item.href === "/" ? "israel" : "global",
+                  source: "header_mobile",
+                });
+              }
+            }}
             className="shrink-0 rounded-full px-3 py-2 transition hover:bg-emerald-50 hover:text-emerald-700"
           >
             {item.label}

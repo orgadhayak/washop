@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail, MessageCircle, PlusCircle } from "lucide-react";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { siteConfig } from "@/lib/site";
 import { createChatUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "צור קשר",
-  description: "צרו קשר עם וואשופ דרך וואטסאפ או אימייל.",
+  title: { absolute: "יצירת קשר עם וואשופ" },
+  description:
+    "צרו קשר עם צוות וואשופ לגבי האינדקס, חנות קיימת, הצטרפות או תיקון פרטים. וואשופ אינה התמיכה הרשמית של WhatsApp.",
   alternates: {
     canonical: "/contact",
   },
@@ -29,13 +31,16 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <a
+          <TrackedActionLink
             href={createChatUrl(
               siteConfig.whatsappIntlPhone,
               siteConfig.whatsappIntroMessage,
             )}
             target="_blank"
             rel="noreferrer"
+            external
+            eventName="contact_submit"
+            eventProperties={{ method: "whatsapp", source: "contact_card", route: "/contact" }}
             className="rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
           >
             <MessageCircle className="size-8 text-emerald-600" aria-hidden="true" />
@@ -45,9 +50,12 @@ export default function ContactPage() {
             <p className="mt-2 text-lg font-bold text-emerald-700">
               שליחת הודעה בוואטסאפ
             </p>
-          </a>
-          <a
+          </TrackedActionLink>
+          <TrackedActionLink
             href={`mailto:${siteConfig.supportEmail}`}
+            external
+            eventName="contact_submit"
+            eventProperties={{ method: "email", source: "contact_card", route: "/contact" }}
             className="rounded-lg border border-emerald-950/10 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
           >
             <Mail className="size-8 text-emerald-600" aria-hidden="true" />
@@ -55,22 +63,25 @@ export default function ContactPage() {
             <p className="mt-2 text-lg font-bold text-emerald-700">
               שליחת מייל לוואשופ
             </p>
-          </a>
+          </TrackedActionLink>
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
+          <TrackedActionLink
             href={createChatUrl(
               siteConfig.whatsappIntlPhone,
               siteConfig.whatsappIntroMessage,
             )}
             target="_blank"
             rel="noreferrer"
+            external
+            eventName="contact_submit"
+            eventProperties={{ method: "whatsapp", source: "contact_primary", route: "/contact" }}
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
           >
             <MessageCircle className="size-5" aria-hidden="true" />
             שליחת הודעה בוואטסאפ
-          </a>
+          </TrackedActionLink>
           <Link
             href="/add-store"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50"

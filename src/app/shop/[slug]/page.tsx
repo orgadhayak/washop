@@ -9,6 +9,8 @@ import {
   Store,
   Truck,
 } from "lucide-react";
+import { AnalyticsPageView } from "@/components/AnalyticsPageView";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { categories } from "@/data/categories";
 import { getShopBySlug, shops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
@@ -34,16 +36,23 @@ export async function generateMetadata({ params }: ShopPageProps): Promise<Metad
   }
 
   return {
-    title: shop.metaTitle ?? `${shop.name} | חנות וואטסאפ`,
+    title: {
+      absolute: shop.metaTitle ?? `${shop.name} חנות וואטסאפ ב${shop.city}`,
+    },
     description: shop.metaDescription ?? shop.description,
     alternates: {
       canonical: `/shop/${shop.slug}`,
     },
     openGraph: {
-      title: shop.metaTitle ?? `${shop.name} | washop.co.il`,
+      title: shop.metaTitle ?? `${shop.name} חנות וואטסאפ ב${shop.city}`,
       description: shop.metaDescription ?? shop.description,
       url: `/shop/${shop.slug}`,
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: shop.metaTitle ?? `${shop.name} חנות וואטסאפ ב${shop.city}`,
+      description: shop.metaDescription ?? shop.description,
     },
   };
 }
@@ -56,21 +65,47 @@ export default async function ShopPage({ params }: ShopPageProps) {
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: shop.name,
-    description: shop.description,
-    url: absoluteUrl(`/shop/${shop.slug}`),
-    telephone: shop.phone,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: shop.city,
-      addressCountry: "IL",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: shop.name,
+      description: shop.description,
+      url: absoluteUrl(`/shop/${shop.slug}`),
+      telephone: shop.phone,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: shop.city,
+        addressCountry: shop.countryCode ?? "IL",
+      },
+      areaServed: shop.countryCode ?? "IL",
+      sameAs: [shop.catalogUrl],
     },
-    areaServed: "IL",
-    sameAs: [shop.catalogUrl],
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "וואשופ",
+          item: siteConfig.domain,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "חנויות וואטסאפ",
+          item: absoluteUrl("/shops"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: shop.name,
+          item: absoluteUrl(`/shop/${shop.slug}`),
+        },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -78,14 +113,27 @@ export default async function ShopPage({ params }: ShopPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <AnalyticsPageView
+        eventName="shop_profile_view"
+        properties={{
+          route: `/shop/${shop.slug}`,
+          shop_slug: shop.slug,
+          locale: "he",
+        }}
+      />
       <div className="py-12 sm:py-16">
         <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/shops"
-            className="inline-flex items-center gap-2 text-sm font-black text-emerald-700 hover:text-emerald-800"
-          >
-            חזרה לכל החנויות
-          </Link>
+          <nav aria-label="פירורי לחם" className="flex flex-wrap items-center gap-2 text-sm font-black text-zinc-500">
+            <Link href="/" className="hover:text-emerald-700">
+              וואשופ
+            </Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/shops" className="hover:text-emerald-700">
+              חנויות וואטסאפ
+            </Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-zinc-800">{shop.name}</span>
+          </nav>
 
           <article className="mt-6 overflow-hidden rounded-lg border border-emerald-950/10 bg-white shadow-sm">
             <div className="shop-hero-safe p-4 sm:p-8">
@@ -214,23 +262,37 @@ export default async function ShopPage({ params }: ShopPageProps) {
                 </p>
 
                 <div className="mt-6 grid gap-3">
-                  <a
+                  <TrackedActionLink
                     href={shop.catalogUrl}
                     target="_blank"
                     rel="noreferrer"
+                    external
+                    eventName="whatsapp_seller_click"
+                    eventProperties={{
+                      action: "catalog",
+                      shop_slug: shop.slug,
+                      surface: "shop_profile",
+                    }}
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
                   >
                     צפייה בקטלוג בוואטסאפ
-                  </a>
-                  <a
+                  </TrackedActionLink>
+                  <TrackedActionLink
                     href={createChatUrl(shop.phone, siteConfig.shopMessage)}
                     target="_blank"
                     rel="noreferrer"
+                    external
+                    eventName="whatsapp_seller_click"
+                    eventProperties={{
+                      action: "message",
+                      shop_slug: shop.slug,
+                      surface: "shop_profile",
+                    }}
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-5 text-sm font-black text-emerald-700 transition hover:bg-emerald-50"
                   >
                     <MessageCircle className="size-4" aria-hidden="true" />
                     שליחת הודעה לחנות
-                  </a>
+                  </TrackedActionLink>
                 </div>
               </aside>
             </div>

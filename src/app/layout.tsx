@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -68,12 +69,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const footerCategories = getActiveCategoriesWithCounts()
+    .slice(0, 8)
+    .map(({ slug, name }) => ({ slug, name }));
+
   return (
     <html lang="he" dir="rtl" className={`${assistant.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Footer activeCategories={footerCategories} />
         <FloatingWhatsAppButton />
         <Analytics />
       </body>

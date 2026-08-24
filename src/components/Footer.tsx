@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { categories } from "@/data/categories";
 import { HomeLogoLink } from "@/components/HomeLogoLink";
 import { createChatUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/lib/site";
@@ -20,9 +19,18 @@ const footerLinks = [
   { label: "בלוג", href: "/blog" },
 ];
 
-export function Footer() {
+const englishArticleRoutes = [
+  "/blog/washop-global-whatsapp-store-directory",
+  "/blog/whatsapp-store-discovery-index-for-quality-sellers",
+];
+
+type FooterProps = {
+  activeCategories: Array<{ slug: string; name: string }>;
+};
+
+export function Footer({ activeCategories }: FooterProps) {
   const pathname = usePathname();
-  const isGlobal = pathname === "/global";
+  const isGlobal = pathname === "/global" || englishArticleRoutes.includes(pathname);
 
   if (isGlobal) {
     return (
@@ -149,7 +157,7 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-black text-zinc-950">קטגוריות</h2>
           <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-zinc-600 sm:grid-cols-2 lg:grid-cols-1">
-            {categories.slice(0, 8).map((category) => (
+            {activeCategories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}

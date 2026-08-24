@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AnalyticsPageView } from "@/components/AnalyticsPageView";
 import { ShopCard } from "@/components/ShopCard";
 import { categories, getCategoryBySlug, type Category } from "@/data/categories";
 import {
@@ -14,40 +15,92 @@ type CategoryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const appDevelopmentContent = {
-  h1: "נותני שירות לפיתוח אפליקציות בוואטסאפ",
-  description:
-    "מצאו עסקים ונותני שירות מאושרים שעוסקים בפיתוח אפליקציות, פיתוח ווב, שירותי פיתוח ווב, פיתוח אפליקציות ווב ויצירת פורטל ווב, ופנו אליהם ישירות דרך וואטסאפ כדי לברר התאמה, זמינות ותהליך עבודה.",
-  sections: [
-    {
-      title: "מה אפשר למצוא בקטגוריה הזו?",
-      text:
-        "קטגוריית פיתוח אפליקציות מיועדת לעסקים ונותני שירות שיכולים להציג דרך קטלוג או שיחה ישירה שירותים כמו אפיון מוצר, פיתוח אפליקציות, פיתוח ווב, יצירת פורטל ווב, כלים לעסקים ותמיכה טכנית סביב פרויקט דיגיטלי. וואשופ אינה מבצעת את העבודה ואינה מבטיחה תוצאה, אלא מאפשרת לגלות ספקים רלוונטיים וליצור איתם קשר ישיר.",
-    },
-    {
-      title: "מה כדאי להכין לפני שפונים?",
-      text:
-        "לפני שפונים לספק פיתוח כדאי להכין תיאור קצר של המטרה העסקית, קהל היעד, מסכים או תהליכים מרכזיים, פלטפורמות רצויות, תקציב משוער ולוח זמנים רצוי. ככל שהפנייה ברורה יותר, כך קל יותר לנותן השירות להבין אם הפרויקט מתאים לו.",
-    },
-    {
-      title: "שאלות שכדאי לשאול בשיחה",
-      text:
-        "בשיחה עם ספק פיתוח מומלץ לברר מה כלול בהצעה, מי אחראי על אפיון ועיצוב, האם מדובר באפליקציה, אתר או פיתוח אפליקציות ווב, איך מטפלים בתחזוקה, למי שייך הקוד או התוכן, איך מתומחרים שינויים ומה קורה אחרי העלייה לאוויר.",
-    },
-  ],
+type CategoryEditorialContent = {
+  heading: string;
+  description: string;
+  sectionHeading: string;
+  sections: Array<{ title: string; text: string }>;
+};
+
+const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
+  "app-development": {
+    heading: "עסקים לפיתוח אפליקציות",
+    description:
+      "גלו נותני שירות מאושרים לפיתוח אפליקציות וכלים דיגיטליים לעסקים. אפשר לקרוא על השירות, לפתוח את קטלוג הוואטסאפ ולברר ישירות התאמה, היקף עבודה ולוחות זמנים.",
+    sectionHeading: "איך בוחנים נותן שירות לפיתוח אפליקציות?",
+    sections: [
+      {
+        title: "מה אפשר למצוא בקטגוריה?",
+        text:
+          "הקטגוריה מרכזת עסקים שמציעים פיתוח אפליקציות, פיתוח ווב, פורטלים וכלים דיגיטליים. וואשופ עוזרת לגלות את נותן השירות ולפתוח שיחה ישירה, אך אינה מבצעת את הפרויקט ואינה צד בהתקשרות.",
+      },
+      {
+        title: "מה להכין לפני הפנייה?",
+        text:
+          "כדאי להכין מטרה עסקית, קהל יעד, תהליכים מרכזיים, פלטפורמה רצויה, תקציב משוער ולוח זמנים. מסמך קצר וברור עוזר לספק להבין אם הפרויקט מתאים לו.",
+      },
+      {
+        title: "מה חשוב לברר?",
+        text:
+          "בררו מה כלול באפיון, בעיצוב, בפיתוח, בבדיקות ובתחזוקה, למי שייכים הקוד והתוכן, איך מתומחרים שינויים ומה כולל השירות לאחר העלייה לאוויר.",
+      },
+    ],
+  },
+  "website-building": {
+    heading: "עסקים לבניית אתרים",
+    description:
+      "גלו נותני שירות מאושרים לבניית אתרים, דפי נחיתה ונוכחות דיגיטלית לעסקים. אפשר לבדוק את תחומי העבודה ולפנות ישירות בוואטסאפ כדי לברר התאמה לפרויקט.",
+    sectionHeading: "מה חשוב לבדוק לפני שבונים אתר לעסק?",
+    sections: [
+      {
+        title: "סוג האתר והמטרה",
+        text:
+          "הגדירו אם נדרש אתר תדמית, דף נחיתה, קטלוג, חנות או מערכת מותאמת. מטרה ברורה עוזרת לקבל הצעה שמתאימה לצורך ולא רק רשימת תכונות כללית.",
+      },
+      {
+        title: "תוכן, עיצוב ותחזוקה",
+        text:
+          "בררו מי אחראי על כתיבה, תמונות, עיצוב, אחסון, דומיין, נגישות ועדכונים. חשוב להבין מראש אילו משימות כלולות ואילו שירותים יתומחרו בנפרד.",
+      },
+      {
+        title: "בעלות ותמיכה אחרי ההשקה",
+        text:
+          "שאלו למי שייכים הקוד, החשבונות והתוכן, איך מקבלים גישה למערכות ומה כוללת התמיכה לאחר העלייה לאוויר. הסיכומים נעשים ישירות מול נותן השירות.",
+      },
+    ],
+  },
+  "technical-services-businesses": {
+    heading: "שירותים טכניים לעסקים",
+    description:
+      "גלו נותני שירות מאושרים לתמיכה טכנית, פתרון תקלות וכלים דיגיטליים לעסקים. אפשר להסביר את התקלה או הצורך ולברר ישירות זמינות, היקף טיפול ועלות.",
+    sectionHeading: "איך פונים נכון לקבלת שירות טכני לעסק?",
+    sections: [
+      {
+        title: "מתארים את הבעיה במדויק",
+        text:
+          "כתבו מה לא עובד, מתי התקלה התחילה, באיזו מערכת מדובר ומה כבר נוסה. אין לשלוח סיסמאות או מידע רגיש בצ׳אט לפני שמוודאים מול מי עובדים ואיך יישמר המידע.",
+      },
+      {
+        title: "מבררים היקף וזמינות",
+        text:
+          "בדקו אם השירות ניתן מרחוק או בבית העסק, מה זמן התגובה המשוער, מה כלול באבחון ומה דורש אישור נוסף לפני ביצוע או חיוב.",
+      },
+      {
+        title: "מסכמים אחריות והמשך טיפול",
+        text:
+          "לפני שמתחילים כדאי לסכם עלות, לוח זמנים, גיבוי, אחריות על השינוי ומה קורה אם נדרש טיפול נוסף. וואשופ אינה ספקית התמיכה ואינה צד בשירות.",
+      },
+    ],
+  },
 };
 
 function getCategoryHeading(category: Category) {
-  if (category.slug === "app-development") {
-    return "עסקים לפיתוח אפליקציות";
-  }
-
-  return category.name;
+  return categoryEditorialContent[category.slug]?.heading ?? category.name;
 }
 
 function getCategoryDescription(category: Category, approvedStoreCount: number) {
-  if (category.slug === "app-development") {
-    return appDevelopmentContent.description;
+  if (categoryEditorialContent[category.slug]) {
+    return categoryEditorialContent[category.slug].description;
   }
 
   if (approvedStoreCount > 0) {
@@ -119,15 +172,16 @@ export async function generateMetadata({
 
   const approvedStoreCount = getApprovedStoreCountForCategory(category.slug);
   const titleBySlug: Record<string, string> = {
-    "app-development": "עסקים לפיתוח אפליקציות | אינדקס Washop",
-    "website-building": "עסקים לבניית אתרים | אינדקס Washop",
-    "technical-services-businesses": "שירותים טכניים לעסקים | אינדקס Washop",
+    "app-development": "פיתוח אפליקציות לעסקים דרך וואטסאפ בוואשופ",
+    "website-building": "בניית אתרים לעסקים דרך וואטסאפ בוואשופ",
+    "technical-services-businesses": "שירותים טכניים לעסקים דרך וואטסאפ בוואשופ",
   };
-  const title = titleBySlug[category.slug] ?? `${category.name} | חנויות וואטסאפ מאושרות`;
+  const title =
+    titleBySlug[category.slug] ?? `${category.name} חנויות וואטסאפ מאושרות בוואשופ`;
   const description = getCategoryDescription(category, approvedStoreCount);
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: `/category/${category.slug}`,
@@ -163,12 +217,22 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const heading = getCategoryHeading(category);
   const description = getCategoryDescription(category, approvedStoreCount);
   const jsonLd = createCategoryJsonLd(category, shops);
+  const editorialContent = categoryEditorialContent[category.slug];
 
   return (
     <div className="py-10 sm:py-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AnalyticsPageView
+        eventName="category_view"
+        properties={{
+          route: `/category/${category.slug}`,
+          category_slug: category.slug,
+          approved_store_count: approvedStoreCount,
+          locale: "he",
+        }}
       />
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav
@@ -205,7 +269,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {shops.length ? (
             <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
               {shops.map((shop) => (
-                <ShopCard key={shop.id} shop={shop} />
+                <ShopCard key={shop.id} shop={shop} surface="category" />
               ))}
             </div>
           ) : (
@@ -269,13 +333,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </div>
         ) : null}
 
-        {category.slug === "app-development" && shops.length ? (
+        {editorialContent && shops.length ? (
           <section className="mx-auto mt-8 max-w-6xl rounded-xl border border-emerald-200 bg-white p-6 shadow-sm">
             <h2 className="text-3xl font-black text-zinc-950">
-              פיתוח אפליקציות, פיתוח ווב ויצירת פורטל ווב דרך קשר ישיר
+              {editorialContent.sectionHeading}
             </h2>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {appDevelopmentContent.sections.map((section) => (
+              {editorialContent.sections.map((section) => (
                 <div key={section.title} className="rounded-lg bg-emerald-50 p-5">
                   <h3 className="text-xl font-black text-zinc-950">
                     {section.title}

@@ -11,13 +11,14 @@ import {
 } from "lucide-react";
 import { GlobalStoreDirectory } from "@/components/GlobalStoreDirectory";
 import { GlobalStoreForm } from "@/components/GlobalStoreForm";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { approvedGlobalShops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
 
-const globalTitle = "WaShop Global – WhatsApp Store Directory";
+const globalTitle = "WaShop Global: Reviewed WhatsApp Store Directory";
 const globalDescription =
-  "Explore businesses and stores that connect with customers through WhatsApp. Browse categories and contact the relevant seller directly.";
+  "Discover reviewed stores, browse useful categories and contact sellers directly by chat. WaShop Global is the English gateway to the WaShop directory.";
 
 export const metadata: Metadata = {
   title: { absolute: globalTitle },
@@ -139,18 +140,20 @@ export default function GlobalPage() {
       <section className="border-b border-emerald-950/10 bg-white">
         <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
-            <Link
+            <TrackedActionLink
               href="/"
+              eventName="language_or_global_switch"
+              eventProperties={{ destination: "israel", source: "global_hero", locale: "en" }}
               className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
             >
               <Globe2 className="size-4" aria-hidden="true" />
               Israel · עברית
-            </Link>
+            </TrackedActionLink>
             <p className="mt-6 text-sm font-black text-emerald-700">
               WaShop Global
             </p>
             <h1 className="mt-2 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              Discover Stores That Sell Through WhatsApp
+              Discover carefully reviewed stores and shop by chat
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               Browse independent stores, open their catalogs and connect directly
@@ -164,12 +167,14 @@ export default function GlobalPage() {
               >
                 Browse stores
               </a>
-              <a
+              <TrackedActionLink
                 href="#apply"
+                eventName="seller_cta_click"
+                eventProperties={{ destination: "/global#apply", source: "global_hero", locale: "en" }}
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
                 Apply as a seller
-              </a>
+              </TrackedActionLink>
             </div>
           </div>
 
