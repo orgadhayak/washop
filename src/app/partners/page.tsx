@@ -53,15 +53,15 @@ const standards = [
 
 export default function PartnersPage() {
   return (
-    <div className="bg-[#00a884] py-12 text-white sm:py-16">
+    <div className="py-12 sm:py-16">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="max-w-3xl">
-          <p className="text-sm font-black text-white/85">תוכנית שותפים</p>
-          <h1 className="mt-2 text-4xl font-black leading-tight text-white sm:text-5xl">
+          <p className="text-sm font-black text-emerald-700">תוכנית שותפים</p>
+          <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
             תוכנית שותפים של וואשופ
           </h1>
-          <p className="mt-5 text-lg leading-9 text-white/90">
+          <p className="mt-5 text-lg leading-9 text-zinc-600">
             וואשופ נבנה כדי לעזור לאנשים בישראל לגלות חנויות וואטסאפ איכותיות,
             חוקיות ורציניות. אם אתם מכירים עסקים טובים, קהילות פעילות או תחום
             מסוים מקרוב, יכול להיות שתוכלו לעזור לנו לבנות אינדקס שימושי ואמין
@@ -70,14 +70,14 @@ export default function PartnersPage() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
               href="#partners-form"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-base font-black text-[#007f62] transition hover:bg-white/90"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
             >
               <Handshake className="size-5" aria-hidden="true" />
               השארת פרטים
             </a>
             <Link
               href="/seller-rules"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/50 bg-white/10 px-6 text-base font-black text-white transition hover:bg-white/20"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50"
             >
               תנאי פרסום בוואשופ
             </Link>
@@ -144,11 +144,11 @@ export default function PartnersPage() {
 
         <section id="partners-form" className="mt-12 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-sm font-black text-white/85">השארת פרטים</p>
-            <h2 className="mt-2 text-3xl font-black leading-tight text-white">
+            <p className="text-sm font-black text-emerald-700">השארת פרטים</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight text-zinc-950">
               רוצים לעזור לוואשופ לגדול?
             </h2>
-            <p className="mt-4 text-lg leading-9 text-white/90">
+            <p className="mt-4 text-lg leading-9 text-zinc-600">
               ספרו לנו בקצרה מי אתם, איזה אזור או תחום אתם מכירים, ואיך לדעתכם
               תוכלו לעזור. אין צורך להשאיר מספר טלפון בשלב הזה.
             </p>

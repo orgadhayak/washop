@@ -163,7 +163,7 @@ export function ShopsDirectory({
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 text-sm font-bold text-white/90">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 text-sm font-bold text-zinc-600">
         <span className="inline-flex items-center gap-2">
           <SlidersHorizontal className="size-4" aria-hidden="true" />
           נמצאו {filteredShops.length} חנויות
@@ -175,7 +175,7 @@ export function ShopsDirectory({
             setCategory("");
             setCity("");
           }}
-          className="rounded-full px-3 py-2 text-white transition hover:bg-white/15"
+          className="rounded-full px-3 py-2 text-emerald-700 transition hover:bg-emerald-50"
         >
           ניקוי סינון
         </button>

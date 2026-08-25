@@ -27,8 +27,8 @@ const aboutHighlights: Array<{ label: string; icon: LucideIcon }> = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#00a884] py-12 sm:py-16">
-      <div className="mx-auto w-[calc(100%-2rem)] max-w-4xl rounded-2xl bg-white px-5 py-8 shadow-lg shadow-emerald-950/10 sm:px-8 lg:px-10">
+    <div className="py-12 sm:py-16">
+      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-black text-emerald-700">אודות</p>
         <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
           וואשופ הוא אינדקס לחנויות וואטסאפ שנבדקות ידנית

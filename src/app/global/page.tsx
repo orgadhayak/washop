@@ -131,7 +131,7 @@ export default function GlobalPage() {
   ];
 
   return (
-    <div dir="ltr" lang="en" className="bg-white text-zinc-950">
+    <div dir="ltr" lang="en" className="bg-[#f7fbf8] text-zinc-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -178,7 +178,7 @@ export default function GlobalPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm shadow-emerald-950/5">
+          <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50 to-white p-5 shadow-sm shadow-emerald-950/5">
             <div className="rounded-xl bg-emerald-700 p-5 text-white">
               <ShieldCheck className="size-8 text-emerald-100" aria-hidden="true" />
               <h2 className="mt-4 text-2xl font-black">We’re here to stay</h2>
@@ -225,7 +225,7 @@ export default function GlobalPage() {
         </div>
       </section>
 
-      <section className="bg-[#00a884] py-12 sm:py-16">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div className="rounded-xl border border-emerald-200 bg-white p-6 shadow-sm">
             <BadgeCheck className="size-8 text-emerald-600" aria-hidden="true" />
@@ -281,10 +281,10 @@ export default function GlobalPage() {
         </div>
       </section>
 
-      <section id="faq" className="bg-[#00a884] py-12 text-white sm:py-16">
+      <section id="faq" className="py-12 sm:py-16">
         <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-black text-white/85">FAQ</p>
-          <h2 className="mt-2 text-3xl font-black leading-tight text-white">
+          <p className="text-sm font-black text-emerald-700">FAQ</p>
+          <h2 className="mt-2 text-3xl font-black leading-tight text-zinc-950">
             Clear boundaries before shopping or applying
           </h2>
           <div className="mt-8 grid gap-4">
@@ -298,7 +298,7 @@ export default function GlobalPage() {
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-xl border border-white bg-white p-6 text-zinc-950">
+          <div className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-6">
             <h3 className="text-2xl font-black text-zinc-950">
               Learn more about WaShop Global
             </h3>

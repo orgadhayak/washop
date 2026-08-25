@@ -141,14 +141,14 @@ export function GlobalStoreDirectory() {
   }, [category, filteredShops.length, location, query]);
 
   return (
-    <section id="stores" className="bg-[#00a884] py-12 text-white sm:py-16">
+    <section id="stores" className="py-12 sm:py-16">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-black text-white/85">Approved stores</p>
-          <h2 className="mt-2 text-3xl font-black leading-tight text-white sm:text-4xl">
+          <p className="text-sm font-black text-emerald-700">Approved stores</p>
+          <h2 className="mt-2 text-3xl font-black leading-tight text-zinc-950 sm:text-4xl">
             Browse reviewed stores and start a direct chat
           </h2>
-          <p className="mt-4 text-base leading-8 text-white/90">
+          <p className="mt-4 text-base leading-8 text-zinc-600">
             Only approved and globally visible stores appear here. Pending stores
             are never shown publicly.
           </p>

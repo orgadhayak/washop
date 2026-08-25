@@ -123,12 +123,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
   ];
 
   return (
-    <article className="bg-[#00a884] py-12 sm:py-16" dir={direction} lang={locale}>
+    <article className="py-12 sm:py-16" dir={direction} lang={locale}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto w-[calc(100%-2rem)] max-w-3xl rounded-2xl bg-white px-5 py-8 shadow-lg shadow-emerald-950/10 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm font-black text-emerald-700 hover:text-emerald-800"

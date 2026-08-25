@@ -213,9 +213,8 @@ export default function Home() {
             eyebrow="חנויות מומלצות"
             title="חנויות וואטסאפ שכבר אפשר לגלות"
             description="התחלה נקייה עם חנויות מאושרות, קטגוריות פעילות ומקום להוסיף עוד עסקים איכותיים."
-            tone="inverse"
           />
-          <div className="mx-auto mt-8 grid max-w-6xl gap-4 rounded-2xl border border-white bg-white p-5 shadow-sm shadow-emerald-950/10 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="mx-auto mt-8 grid max-w-6xl gap-4 rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/80 to-white p-5 shadow-sm shadow-emerald-950/5 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-black text-emerald-800 ring-1 ring-emerald-200">
                 <Sparkles className="size-3.5" aria-hidden="true" />
@@ -298,7 +297,6 @@ export default function Home() {
             eyebrow="מדריך קצר"
             title="איך מגלים חנויות וואטסאפ בוואשופ?"
             description="הספרייה נועדה לעזור ללקוחות למצוא עסקים פעילים ולפנות אליהם ישירות, בלי להפוך את וואשופ לצד בעסקה."
-            tone="inverse"
           />
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
@@ -434,11 +432,7 @@ export default function Home() {
 
       <section className="home-mint-band py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="מהבלוג"
-            title="מחשבות על קנייה ישירה בוואטסאפ"
-            tone="inverse"
-          />
+          <SectionHeader eyebrow="מהבלוג" title="מחשבות על קנייה ישירה בוואטסאפ" />
           <div className="mt-10 grid gap-4">
             {blogPosts.map((post) => (
               <Link

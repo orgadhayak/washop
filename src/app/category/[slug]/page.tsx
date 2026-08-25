@@ -220,7 +220,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const editorialContent = categoryEditorialContent[category.slug];
 
   return (
-    <div className="bg-[#00a884] py-10 text-white sm:py-14">
+    <div className="py-10 sm:py-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -237,29 +237,29 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav
           aria-label="פירורי לחם"
-          className="mb-6 flex flex-wrap items-center gap-2 text-sm font-bold text-white/80"
+          className="mb-6 flex flex-wrap items-center gap-2 text-sm font-bold text-zinc-500"
         >
-          <Link href="/" className="hover:text-white">
+          <Link href="/" className="hover:text-emerald-700">
             וואשופ
           </Link>
           <span aria-hidden="true">/</span>
-          <Link href="/shops" className="hover:text-white">
+          <Link href="/shops" className="hover:text-emerald-700">
             חנויות וואטסאפ
           </Link>
           <span aria-hidden="true">/</span>
-          <span className="text-white">{category.name}</span>
+          <span className="text-zinc-800">{category.name}</span>
         </nav>
 
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm font-black tracking-normal text-white/85">
+          <p className="text-sm font-black tracking-normal text-emerald-700">
             קטגוריה
           </p>
-          <h1 className="mt-2 text-3xl font-black leading-tight text-white sm:text-5xl">
+          <h1 className="mt-2 text-3xl font-black leading-tight text-zinc-950 sm:text-5xl">
             {heading}
           </h1>
-          <p className="mt-4 text-lg leading-8 text-white/90">{description}</p>
+          <p className="mt-4 text-lg leading-8 text-zinc-600">{description}</p>
           {approvedStoreCount > 0 ? (
-            <p className="mx-auto mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-black text-[#007f62] ring-1 ring-white">
+            <p className="mx-auto mt-4 inline-flex rounded-full bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800 ring-1 ring-emerald-200">
               {approvedStoreCount} חנויות ונותני שירות מאושרים בקטגוריה
             </p>
           ) : null}
@@ -319,7 +319,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </div>
             </section>
 
-            <section className="rounded-xl border border-emerald-200 bg-white p-6 shadow-sm">
+            <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm">
               <h2 className="text-2xl font-black text-zinc-950">
                 מה חשוב לבדוק מול העסק?
               </h2>
@@ -340,7 +340,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </h2>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {editorialContent.sections.map((section) => (
-                <div key={section.title} className="rounded-lg border border-emerald-200 bg-white p-5">
+                <div key={section.title} className="rounded-lg bg-emerald-50 p-5">
                   <h3 className="text-xl font-black text-zinc-950">
                     {section.title}
                   </h3>

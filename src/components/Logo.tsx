@@ -8,7 +8,7 @@ export function Logo() {
   return (
     <HomeLogoLink
       dir="ltr"
-      className="brand-logo inline-flex items-center gap-2.5 rounded-xl bg-white px-2 py-1 text-lg font-black tracking-normal text-zinc-950 shadow-sm sm:gap-3 sm:text-2xl"
+      className="brand-logo inline-flex items-center gap-2.5 text-lg font-black tracking-normal text-zinc-950 sm:gap-3 sm:text-2xl"
       aria-label="washop.co.il"
     >
       <Image
