@@ -121,18 +121,18 @@ export default async function ShopPage({ params }: ShopPageProps) {
           locale: "he",
         }}
       />
-      <div className="py-12 sm:py-16">
+      <div className="bg-[#00a884] py-12 sm:py-16">
         <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-          <nav aria-label="פירורי לחם" className="flex flex-wrap items-center gap-2 text-sm font-black text-zinc-500">
-            <Link href="/" className="hover:text-emerald-700">
+          <nav aria-label="פירורי לחם" className="flex flex-wrap items-center gap-2 text-sm font-black text-white/80">
+            <Link href="/" className="hover:text-white">
               וואשופ
             </Link>
             <span aria-hidden="true">/</span>
-            <Link href="/shops" className="hover:text-emerald-700">
+            <Link href="/shops" className="hover:text-white">
               חנויות וואטסאפ
             </Link>
             <span aria-hidden="true">/</span>
-            <span className="text-zinc-800">{shop.name}</span>
+            <span className="text-white">{shop.name}</span>
           </nav>
 
           <article className="mt-6 overflow-hidden rounded-lg border border-emerald-950/10 bg-white shadow-sm">

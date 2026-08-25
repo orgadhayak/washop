@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="py-12 sm:py-16">
+    <div className="bg-[#00a884] py-12 text-white sm:py-16">
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <p className="text-sm font-black text-emerald-700">בלוג</p>
-        <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
+        <p className="text-sm font-black text-white/85">בלוג</p>
+        <h1 className="mt-2 text-4xl font-black leading-tight text-white sm:text-5xl">
           המדריכים של Washop
         </h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-600">
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-white/90">
           התחילו מהמדריכים על חנות וירטואלית בוואטסאפ או על שירות לקוחות, ואחר כך גלו חנויות ועסקים או שלחו עסק לבדיקה.
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
-          <Link href="/blog/hanut-virtualit-bewhatsapp" className="rounded-full bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800">איך פותחים חנות וירטואלית בוואטסאפ?</Link>
-          <Link href="/blog/sherut-lakohot-bewhatsapp-laasakim" className="rounded-full bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-800">שירות לקוחות בוואטסאפ לעסקים</Link>
+          <Link href="/blog/hanut-virtualit-bewhatsapp" className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#007f62]">איך פותחים חנות וירטואלית בוואטסאפ?</Link>
+          <Link href="/blog/sherut-lakohot-bewhatsapp-laasakim" className="rounded-full bg-white px-4 py-2 text-sm font-black text-[#007f62]">שירות לקוחות בוואטסאפ לעסקים</Link>
           <Link href="/shops" className="rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-black text-emerald-700">חנויות ועסקים בוואטסאפ</Link>
         </div>
         <div className="mt-10 grid gap-4">

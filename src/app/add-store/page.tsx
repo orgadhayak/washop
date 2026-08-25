@@ -57,18 +57,18 @@ export default function AddStorePage() {
   };
 
   return (
-    <div className="py-12 sm:py-16">
+    <div className="bg-[#00a884] py-12 text-white sm:py-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div>
-          <p className="text-sm font-black text-emerald-700">הצטרפות לוואשופ</p>
-          <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
+          <p className="text-sm font-black text-white/85">הצטרפות לוואשופ</p>
+          <h1 className="mt-2 text-4xl font-black leading-tight text-white sm:text-5xl">
             פרסום והוספת חנות וואטסאפ לוואשופ
           </h1>
-          <p className="mt-5 text-lg leading-9 text-zinc-600">
+          <p className="mt-5 text-lg leading-9 text-white/90">
             יש לכם חנות וואטסאפ איכותית או רעיון לחנות כזו? מייל חובה בלבד.
             כל שאר הפרטים יעזרו לנו להבין את העסק, אבל אינם חובה.
           </p>
@@ -136,7 +136,7 @@ export default function AddStorePage() {
               תנאי הפרסום בוואשופ
             </Link>
           </section>
-          <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+          <section className="rounded-xl border border-emerald-200 bg-white p-6">
             <h2 className="text-2xl font-black text-zinc-950">
               מה כדאי להכין לפני השליחה?
             </h2>
@@ -172,7 +172,7 @@ export default function AddStorePage() {
           </h2>
           <div className="mt-5 grid gap-4">
             {faqItems.map((item) => (
-              <div key={item.question} className="rounded-lg bg-emerald-50 p-5">
+              <div key={item.question} className="rounded-lg border border-emerald-200 bg-white p-5">
                 <h3 className="text-xl font-black text-zinc-950">{item.question}</h3>
                 <p className="mt-3 leading-8 text-zinc-700">{item.answer}</p>
               </div>

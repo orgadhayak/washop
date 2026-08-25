@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
 import { Footer } from "@/components/Footer";
@@ -8,10 +8,13 @@ import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const assistant = Assistant({
-  subsets: ["hebrew", "latin"],
-  variable: "--font-assistant",
+const abraham = localFont({
+  src: "./fonts/Abraham-Regular.woff",
+  variable: "--font-abraham",
+  weight: "400",
+  style: "normal",
   display: "swap",
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -74,7 +77,7 @@ export default function RootLayout({
     .map(({ slug, name }) => ({ slug, name }));
 
   return (
-    <html lang="he" dir="rtl" className={`${assistant.variable} h-full antialiased`}>
+    <html lang="he" dir="rtl" className={`${abraham.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>

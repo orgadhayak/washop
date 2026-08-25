@@ -85,20 +85,20 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
   ];
 
   return (
-    <div className="py-8 sm:py-12">
+    <div className="bg-[#00a884] py-8 text-white sm:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm font-black tracking-normal text-emerald-700">
+          <p className="text-sm font-black tracking-normal text-white/85">
             ספריית חנויות
           </p>
-          <h1 className="mt-2 text-3xl font-black leading-tight text-zinc-950 sm:text-5xl">
+          <h1 className="mt-2 text-3xl font-black leading-tight text-white sm:text-5xl">
             אינדקס חנויות ועסקים בוואטסאפ
           </h1>
-          <div className="mx-auto mt-5 max-w-3xl space-y-4 text-lg leading-8 text-zinc-600">
+          <div className="mx-auto mt-5 max-w-3xl space-y-4 text-lg leading-8 text-white/90">
             <p>
               וואשופ מרכזת חנויות וואטסאפ ונותני שירות ישראליים שעברו בדיקה
               ידנית לפני פרסום. אפשר לחפש לפי עיר, קטגוריה, מוצר או שם חנות,
@@ -111,13 +111,13 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/add-store"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-black text-[#007f62] transition hover:bg-white/90"
             >
               יש לכם חנות? שלחו לבדיקה
             </Link>
             <Link
               href="/blog/hanut-virtualit-bewhatsapp"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-emerald-200 bg-white px-5 text-sm font-black text-emerald-700 transition hover:bg-emerald-50"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/50 bg-white/10 px-5 text-sm font-black text-white transition hover:bg-white/20"
             >
               מדריך לפתיחת קטלוג וואטסאפ
             </Link>
@@ -223,10 +223,10 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
         </section>
 
         <section className="mx-auto mt-6 max-w-6xl">
-          <h2 className="text-2xl font-black text-zinc-950">שאלות נפוצות על האינדקס</h2>
+          <h2 className="text-2xl font-black text-white">שאלות נפוצות על האינדקס</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {directoryFaq.map(([question, answer]) => (
-              <details key={question} className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
+              <details key={question} className="rounded-xl border border-white bg-white p-4">
                 <summary className="cursor-pointer font-black text-zinc-950">{question}</summary>
                 <p className="mt-2 text-sm leading-7 text-zinc-700">{answer}</p>
               </details>

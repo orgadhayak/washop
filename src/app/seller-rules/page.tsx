@@ -79,7 +79,7 @@ function RuleSection({
 
 export default function SellerRulesPage() {
   return (
-    <div className="py-12 sm:py-16">
+    <div className="bg-[#00a884] py-12 sm:py-16">
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-lg bg-emerald-950 p-6 text-white sm:p-8">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-black text-emerald-100">

@@ -40,8 +40,8 @@ function LegalPage({
   children: React.ReactNode;
 }) {
   return (
-    <div className="py-12 sm:py-16">
-      <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#00a884] py-12 sm:py-16">
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-3xl rounded-2xl bg-white px-5 py-8 shadow-lg shadow-emerald-950/10 sm:px-8 lg:px-10">
         <h1 className="text-4xl font-black leading-tight text-zinc-950">{title}</h1>
         <div className="mt-8 space-y-5 text-lg leading-9 text-zinc-700 [&_a]:font-bold [&_a]:text-emerald-700">
           {children}

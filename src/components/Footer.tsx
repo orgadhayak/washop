@@ -34,12 +34,12 @@ export function Footer({ activeCategories }: FooterProps) {
 
   if (isGlobal) {
     return (
-      <footer className="border-t-4 border-[#00a884] bg-white" dir="ltr" lang="en">
+      <footer className="border-t-4 border-[#00c853] bg-[#007f62] text-white" dir="ltr" lang="en">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
           <div className="space-y-4">
             <HomeLogoLink
               aria-label="washop.co.il"
-              className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:gap-4"
+                className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#007f62] sm:gap-4"
             >
               <Image
                 src="/brand/washop-footer-mascot.png"
@@ -53,53 +53,53 @@ export function Footer({ activeCategories }: FooterProps) {
                 className="inline-flex items-baseline text-2xl font-black leading-none tracking-normal sm:text-4xl"
                 style={{ unicodeBidi: "isolate" }}
               >
-                <span className="text-[#232326]">wa</span>
-                <span className="text-[#00bf36]">shop</span>
-                <span className="text-sm font-bold text-[#2f2f32] sm:text-lg">
+                <span className="text-white">wa</span>
+                <span className="text-[#a8ffbf]">shop</span>
+                <span className="text-sm font-bold text-white sm:text-lg">
                   .co.il
                 </span>
               </span>
             </HomeLogoLink>
-            <p className="max-w-md text-sm leading-7 text-zinc-600">
+            <p className="max-w-md text-sm leading-7 text-white/85">
               WaShop helps customers discover carefully reviewed stores, open
               catalogs and connect directly with sellers by chat.
             </p>
-            <p className="text-xs leading-6 text-zinc-500">
+            <p className="text-xs leading-6 text-white/70">
               WaShop is an independent service and is not affiliated with
               WhatsApp or Meta.
             </p>
           </div>
 
           <div>
-            <h2 className="text-sm font-black text-zinc-950">Global links</h2>
-            <div className="mt-3 grid gap-2 text-sm text-zinc-600">
-              <Link href="/global#stores" className="transition hover:text-emerald-700">
+            <h2 className="text-sm font-black text-white">Global links</h2>
+            <div className="mt-3 grid gap-2 text-sm text-white/80">
+              <Link href="/global#stores" className="transition hover:text-white">
                 Stores
               </Link>
-              <Link href="/global#apply" className="transition hover:text-emerald-700">
+              <Link href="/global#apply" className="transition hover:text-white">
                 Apply as a seller
               </Link>
               <Link
                 href="/blog/washop-global-whatsapp-store-directory"
-                className="transition hover:text-emerald-700"
+                className="transition hover:text-white"
               >
                 WaShop Global article
               </Link>
-              <Link href="/" className="transition hover:text-emerald-700">
+              <Link href="/" className="transition hover:text-white">
                 Israel · עברית
               </Link>
             </div>
           </div>
 
           <div>
-            <h2 className="text-sm font-black text-zinc-950">Contact</h2>
-            <div className="mt-3 space-y-3 text-sm text-zinc-600">
+            <h2 className="text-sm font-black text-white">Contact</h2>
+            <div className="mt-3 space-y-3 text-sm text-white/80">
               <a
                 href={createChatUrl(
                   siteConfig.whatsappIntlPhone,
                   "Hello, I reached WaShop Global and would like more details.",
                 )}
-                className="flex items-center gap-2 transition hover:text-emerald-700"
+                className="flex items-center gap-2 transition hover:text-white"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -108,7 +108,7 @@ export function Footer({ activeCategories }: FooterProps) {
               </a>
               <a
                 href={`mailto:${siteConfig.supportEmail}`}
-                className="flex items-center gap-2 transition hover:text-emerald-700"
+                className="flex items-center gap-2 transition hover:text-white"
               >
                 <Mail className="size-4" aria-hidden="true" />
                 Email WaShop
@@ -121,12 +121,12 @@ export function Footer({ activeCategories }: FooterProps) {
   }
 
   return (
-    <footer className="border-t-4 border-[#00a884] bg-white">
+    <footer className="border-t-4 border-[#00c853] bg-[#007f62] text-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
           <HomeLogoLink
             aria-label="וואשופ"
-            className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:gap-4"
+            className="inline-flex w-fit items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#007f62] sm:gap-4"
           >
             <Image
               src="/brand/washop-footer-mascot.png"
@@ -140,28 +140,28 @@ export function Footer({ activeCategories }: FooterProps) {
               className="inline-flex items-baseline text-2xl font-black leading-none tracking-normal sm:text-4xl"
               style={{ unicodeBidi: "isolate" }}
             >
-              <span className="text-[#232326]">wa</span>
-              <span className="text-[#00bf36]">shop</span>
-              <span className="text-sm font-bold text-[#2f2f32] sm:text-lg">
+              <span className="text-white">wa</span>
+              <span className="text-[#a8ffbf]">shop</span>
+              <span className="text-sm font-bold text-white sm:text-lg">
                 .co.il
               </span>
             </span>
           </HomeLogoLink>
-          <p className="max-w-md text-sm leading-7 text-zinc-600">
+          <p className="max-w-md text-sm leading-7 text-white/85">
             וואשופ מרכז חנויות וואטסאפ ישראליות במקום אחד, עם דגש על קטלוגים
             פעילים, פנייה ישירה למוכר וחוויית קנייה פשוטה.
           </p>
-          <p className="text-xs leading-6 text-zinc-500">{siteConfig.disclaimer}</p>
+          <p className="text-xs leading-6 text-white/70">{siteConfig.disclaimer}</p>
         </div>
 
         <div>
-          <h2 className="text-sm font-black text-zinc-950">קטגוריות</h2>
-          <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-zinc-600 sm:grid-cols-2 lg:grid-cols-1">
+          <h2 className="text-sm font-black text-white">קטגוריות</h2>
+          <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-white/80 sm:grid-cols-2 lg:grid-cols-1">
             {activeCategories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}
-                className="transition hover:text-emerald-700"
+                className="transition hover:text-white"
               >
                 {category.name}
               </Link>
@@ -170,14 +170,14 @@ export function Footer({ activeCategories }: FooterProps) {
         </div>
 
         <div>
-          <h2 className="text-sm font-black text-zinc-950">קשר מהיר</h2>
-          <div className="mt-3 space-y-3 text-sm text-zinc-600">
+          <h2 className="text-sm font-black text-white">קשר מהיר</h2>
+          <div className="mt-3 space-y-3 text-sm text-white/80">
             <a
               href={createChatUrl(
                 siteConfig.whatsappIntlPhone,
                 siteConfig.whatsappIntroMessage,
               )}
-              className="flex items-center gap-2 transition hover:text-emerald-700"
+              className="flex items-center gap-2 transition hover:text-white"
               target="_blank"
               rel="noreferrer"
             >
@@ -186,7 +186,7 @@ export function Footer({ activeCategories }: FooterProps) {
             </a>
             <a
               href={`mailto:${siteConfig.supportEmail}`}
-              className="flex items-center gap-2 transition hover:text-emerald-700"
+              className="flex items-center gap-2 transition hover:text-white"
             >
               <Mail className="size-4" aria-hidden="true" />
               שליחת מייל לוואשופ
@@ -196,7 +196,7 @@ export function Footer({ activeCategories }: FooterProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="transition hover:text-emerald-700"
+                  className="transition hover:text-white"
                 >
                   {item.label}
                 </Link>
