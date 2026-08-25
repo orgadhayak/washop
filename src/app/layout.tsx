@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Rubik } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
 import { Footer } from "@/components/Footer";
@@ -8,13 +8,11 @@ import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const secularOne = localFont({
-  src: "./fonts/SecularOne-Regular.ttf",
-  variable: "--font-secular-one",
-  weight: "400",
-  style: "normal",
+const rubik = Rubik({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-rubik",
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
-  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -77,7 +75,7 @@ export default function RootLayout({
     .map(({ slug, name }) => ({ slug, name }));
 
   return (
-    <html lang="he" dir="rtl" className={`${secularOne.variable} h-full antialiased`}>
+    <html lang="he" dir="rtl" className={`${rubik.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>

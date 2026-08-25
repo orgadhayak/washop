@@ -10,7 +10,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-secular-one), "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
+  --font-sans: var(--font-rubik), "Rubik", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   --font-mono: "Segoe UI Mono", Consolas, monospace;
 }
 
@@ -18,7 +18,7 @@ body {
   background-color: var(--background);
   background-image: none;
   color: var(--foreground);
-  font-family: var(--font-secular-one), "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-rubik), "Rubik", "Noto Sans Hebrew", "Heebo", "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
 }
 
