@@ -8,20 +8,11 @@ import { getActiveCategoriesWithCounts } from "@/lib/category-stats";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const comixNo2 = localFont({
-  src: [
-    {
-      path: "./fonts/ComixNo2-Medium.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/ComixNo2-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-comix-no2",
+const secularOne = localFont({
+  src: "./fonts/SecularOne-Regular.ttf",
+  variable: "--font-secular-one",
+  weight: "400",
+  style: "normal",
   display: "swap",
   fallback: ["Arial", "sans-serif"],
 });
@@ -86,7 +77,7 @@ export default function RootLayout({
     .map(({ slug, name }) => ({ slug, name }));
 
   return (
-    <html lang="he" dir="rtl" className={`${comixNo2.variable} h-full antialiased`}>
+    <html lang="he" dir="rtl" className={`${secularOne.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>
