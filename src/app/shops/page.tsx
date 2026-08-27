@@ -9,8 +9,8 @@ import { absoluteUrl } from "@/lib/utils";
 export async function generateMetadata({ searchParams }: ShopsPageProps): Promise<Metadata> {
   const params = await searchParams;
   const hasFilter = ["q", "category", "city"].some((key) => readParam(params, key));
-  const title = "חנויות בוואטסאפ לפי קטגוריה | Washop";
-  const description = "מצאו חנויות ועסקים שמאפשרים פנייה ישירה דרך וואטסאפ. סננו לפי קטגוריה, עיר או מוצר ועברו לעסק המתאים.";
+  const title = "חנויות וואטסאפ בישראל לפי עיר וקטגוריה בוואשופ";
+  const description = "גלו חנויות וואטסאפ ועסקים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר, מוצר או שם עסק ופנו ישירות לבית העסק.";
 
   return {
     title: { absolute: title },
@@ -46,6 +46,12 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
   const initialCategory = readParam(params, "category");
   const initialCity = readParam(params, "city");
   const activeCategories = getActiveCategoriesWithCounts();
+  const shopsByCity = Array.from(new Set(approvedShops.map((shop) => shop.city)))
+    .sort((first, second) => first.localeCompare(second, "he"))
+    .map((city) => ({
+      city,
+      shops: approvedShops.filter((shop) => shop.city === city),
+    }));
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -140,6 +146,36 @@ export default async function ShopsPage({ searchParams }: ShopsPageProps) {
             ))}
           </div>
         </div>
+
+        <section className="mx-auto mt-4 max-w-6xl rounded-xl border border-emerald-200 bg-white p-4 shadow-sm shadow-emerald-950/5">
+          <h2 className="text-sm font-black text-zinc-950">
+            חנויות וואטסאפ פעילות לפי עיר
+          </h2>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            {shopsByCity.map(({ city, shops }) => (
+              <div key={city} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                <Link
+                  href={`/shops?city=${encodeURIComponent(city)}`}
+                  className="font-black text-emerald-700 transition hover:text-emerald-800"
+                >
+                  {city}
+                </Link>
+                <span aria-hidden="true" className="text-zinc-300">•</span>
+                {shops.map((shop, index) => (
+                  <span key={shop.slug} className="inline-flex items-center gap-x-2">
+                    {index > 0 ? <span aria-hidden="true" className="text-zinc-300">,</span> : null}
+                    <Link
+                      href={`/shop/${shop.slug}`}
+                      className="font-bold text-zinc-700 transition hover:text-emerald-700"
+                    >
+                      {shop.name}
+                    </Link>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className="mt-6">
           <ShopsDirectory

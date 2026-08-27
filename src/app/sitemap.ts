@@ -8,27 +8,30 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
-  "",
-  "/global",
-  "/shops",
-  "/add-store",
-  "/about",
-  "/contact",
-  "/blog",
-  "/partners",
-  "/privacy",
-  "/terms",
-  "/accessibility",
+  { route: "", priority: 1, lastModified: "2026-08-28" },
+  { route: "/global", priority: 0.7, lastModified: "2026-08-28" },
+  { route: "/shops", priority: 0.7, lastModified: "2026-08-28" },
+  { route: "/add-store", priority: 0.7 },
+  { route: "/about", priority: 0.7 },
+  { route: "/contact", priority: 0.7 },
+  { route: "/blog", priority: 0.7, lastModified: "2026-08-28" },
+  { route: "/partners", priority: 0.7 },
+  { route: "/privacy", priority: 0.7 },
+  { route: "/terms", priority: 0.7 },
+  { route: "/accessibility", priority: 0.7 },
 ];
+
+const shopTemplateLastModified = new Date("2026-08-28");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const activeCategories = getActiveCategoriesWithCounts();
 
   return [
-    ...staticRoutes.map((route) => ({
+    ...staticRoutes.map(({ route, priority, lastModified }) => ({
       url: `${siteConfig.domain}${route}`,
+      ...(lastModified ? { lastModified: new Date(lastModified) } : {}),
       changeFrequency: "weekly" as const,
-      priority: route === "" ? 1 : 0.7,
+      priority,
     })),
     ...activeCategories.map((category) => ({
       url: `${siteConfig.domain}/category/${category.slug}`,
@@ -40,7 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .filter((shop) => shop.status === "approved")
       .map((shop) => ({
       url: `${siteConfig.domain}/shop/${shop.slug}`,
-      lastModified: new Date(shop.updatedAt),
+      lastModified: new Date(
+        Math.max(new Date(shop.updatedAt).getTime(), shopTemplateLastModified.getTime()),
+      ),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),

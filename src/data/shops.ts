@@ -1,4 +1,4 @@
-export type ShopStatus = "approved" | "pending";
+export type ShopStatus = "approved" | "pending" | "hidden";
 export type InternationalShippingStatus = "ask_seller" | "not_available" | "confirmed";
 
 export type Shop = {
@@ -233,7 +233,7 @@ export const shops = [
     countryCode: "IL",
     countryNameEn: "Israel",
     shipsNationwide: true,
-    globalVisible: true,
+    globalVisible: false,
     internationalShippingStatus: "ask_seller",
     languages: ["Hebrew"],
     categories: [
@@ -259,8 +259,8 @@ export const shops = [
     hasWashopBenefit: true,
     benefitLabel: "הטבת וואשופ פעילה",
     benefitText: "בקשו את ההטבה כשאתם פונים דרך וואשופ",
-    status: "approved",
-    featured: true,
+    status: "hidden",
+    featured: false,
     createdAt: "2026-07-05",
     updatedAt: "2026-07-05",
   },
@@ -271,7 +271,7 @@ export const featuredShops = approvedShops.filter((shop) => shop.featured);
 export const approvedGlobalShops = approvedShops.filter((shop) => shop.globalVisible);
 
 export function getShopBySlug(slug: string) {
-  return shops.find((shop) => shop.slug === slug);
+  return approvedShops.find((shop) => shop.slug === slug);
 }
 
 export function getShopsByCategory(categorySlug: string) {

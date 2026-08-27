@@ -45,3 +45,14 @@ test("canonical host stays HTTPS and non-www", async () => {
   assert.match(site, /domain:\s*"https:\/\/washop\.co\.il"/);
   assert.match(sitemap, /siteConfig\.domain/);
 });
+
+test("hidden shops are excluded from public routes and sitemap entries", async () => {
+  const shops = await readFile("src/data/shops.ts", "utf8");
+  const shopPage = await readFile("src/app/shop/[slug]/page.tsx", "utf8");
+  const sitemap = await readFile("src/app/sitemap.ts", "utf8");
+
+  assert.match(shops, /export type ShopStatus = "approved" \| "pending" \| "hidden"/);
+  assert.match(shops, /export function getShopBySlug\(slug: string\) \{\s*return approvedShops\.find/s);
+  assert.match(shopPage, /return approvedShops\.map\(\(shop\) => \(\{ slug: shop\.slug \}\)\)/);
+  assert.match(sitemap, /\.filter\(\(shop\) => shop\.status === "approved"\)/);
+});

@@ -12,7 +12,7 @@ import {
 import { AnalyticsPageView } from "@/components/AnalyticsPageView";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { categories } from "@/data/categories";
-import { getShopBySlug, shops } from "@/data/shops";
+import { approvedShops, getShopBySlug } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
 import { createChatUrl } from "@/lib/whatsapp";
@@ -24,7 +24,7 @@ type ShopPageProps = {
 const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
 
 export function generateStaticParams() {
-  return shops.map((shop) => ({ slug: shop.slug }));
+  return approvedShops.map((shop) => ({ slug: shop.slug }));
 }
 
 export async function generateMetadata({ params }: ShopPageProps): Promise<Metadata> {
@@ -64,6 +64,8 @@ export default async function ShopPage({ params }: ShopPageProps) {
   if (!shop) {
     notFound();
   }
+
+  const relatedShops = approvedShops.filter((candidate) => candidate.slug !== shop.slug);
 
   const jsonLd = [
     {
@@ -223,6 +225,25 @@ export default async function ShopPage({ params }: ShopPageProps) {
                     ))}
                   </div>
                 </div>
+
+                {relatedShops.length ? (
+                  <section className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <h2 className="text-xl font-black text-zinc-950">
+                      חנויות נוספות שאפשר לגלות בוואשופ
+                    </h2>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {relatedShops.map((relatedShop) => (
+                        <Link
+                          key={relatedShop.slug}
+                          href={`/shop/${relatedShop.slug}`}
+                          className="rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
+                        >
+                          {relatedShop.name} · {relatedShop.city}
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
               </div>
 
               <aside className="rounded-lg bg-zinc-50 p-5">

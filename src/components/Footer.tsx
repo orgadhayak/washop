@@ -85,6 +85,12 @@ export function Footer({ activeCategories }: FooterProps) {
               >
                 WaShop Global article
               </Link>
+              <Link
+                href="/blog/whatsapp-store-discovery-index-for-quality-sellers"
+                className="transition hover:text-emerald-700"
+              >
+                Store discovery article
+              </Link>
               <Link href="/" className="transition hover:text-emerald-700">
                 Israel · עברית
               </Link>

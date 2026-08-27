@@ -303,15 +303,23 @@ export default function GlobalPage() {
               Learn more about WaShop Global
             </h3>
             <p className="mt-3 max-w-3xl leading-8 text-zinc-700">
-              Read the English article about how WaShop Global works, what buyers
-              should confirm and how sellers can apply.
+              Explore how chat-based store discovery works and how suitable sellers
+              can build a clearer presence on the open web.
             </p>
-            <Link
-              href="/blog/washop-global-whatsapp-store-directory"
-              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
-            >
-              Read the article
-            </Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/blog/washop-global-whatsapp-store-directory"
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-600 px-5 text-sm font-black text-white transition hover:bg-emerald-700"
+              >
+                Read about WaShop Global
+              </Link>
+              <Link
+                href="/blog/whatsapp-store-discovery-index-for-quality-sellers"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-emerald-300 bg-white px-5 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
+              >
+                Learn about store discovery
+              </Link>
+            </div>
           </div>
         </div>
       </section>
