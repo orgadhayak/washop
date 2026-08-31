@@ -99,6 +99,20 @@ export const shops = [
       "רוולושיין סטודיו הוא עסק ישראלי בתחום המספרות וטיפוח השיער. דרך קטלוג הוואטסאפ אפשר למצוא שירותי מספרה, מוצרים ואביזרים הקשורים לטיפוח שיער, ציוד ומוצרים לספרים, וגם קורסים והכשרות למי שרוצה ללמוד את תחום הספרות והתספורות.",
     descriptionEn:
       "Revolution Studio is an Israeli hair and grooming business with salon services, hair-care products, barber accessories and training courses available through a WhatsApp catalog.",
+    shortDescription:
+      "מספרה, טיפוח שיער, ציוד מקצועי וקורסים בפתח תקווה",
+    cardDescription:
+      "שירותי מספרה, מוצרי טיפוח שיער, ציוד מקצועי וקורסים דרך קטלוג וואטסאפ.",
+    searchAliases: [
+      "רוולושיין",
+      "Revolution Studio",
+      "מספרה בפתח תקווה",
+      "קורס ספרות",
+      "קורס תספורות",
+    ],
+    metaTitle: "רוולושיין סטודיו מספרה וטיפוח שיער בפתח תקווה",
+    metaDescription:
+      "רוולושיין סטודיו בפתח תקווה מציגה שירותי מספרה, מוצרי טיפוח שיער, ציוד מקצועי לספרים וקורסים דרך קטלוג וואטסאפ שנבדק ידנית בוואשופ.",
     catalogUrl: "https://wa.me/c/972538771200",
     phone: "972538771200",
     city: "פתח תקווה",
@@ -135,7 +149,7 @@ export const shops = [
     status: "approved",
     featured: true,
     createdAt: "2026-06-30",
-    updatedAt: "2026-06-30",
+    updatedAt: "2026-08-31",
   },
   {
     id: "liel-gifts-and-blocks",
