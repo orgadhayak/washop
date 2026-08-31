@@ -46,6 +46,25 @@ test("canonical host stays HTTPS and non-www", async () => {
   assert.match(sitemap, /siteConfig\.domain/);
 });
 
+test("production observability is wired into the root layout", async () => {
+  const layout = await readFile("src/app/layout.tsx", "utf8");
+  const llms = await readFile("public/llms.txt", "utf8");
+
+  assert.match(layout, /@vercel\/analytics\/next/);
+  assert.match(layout, /@vercel\/speed-insights\/next/);
+  assert.match(layout, /<Analytics \/>/);
+  assert.match(layout, /<SpeedInsights \/>/);
+  assert.match(llms, /https:\/\/washop\.co\.il\/shops/);
+});
+
+test("the blog index exposes crawlable collection metadata", async () => {
+  const blog = await readFile("src/app/blog/page.tsx", "utf8");
+
+  assert.match(blog, /CollectionPage/);
+  assert.match(blog, /ItemList/);
+  assert.match(blog, /BreadcrumbList/);
+});
+
 test("hidden shops are excluded from public routes and sitemap entries", async () => {
   const shops = await readFile("src/data/shops.ts", "utf8");
   const shopPage = await readFile("src/app/shop/[slug]/page.tsx", "utf8");

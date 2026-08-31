@@ -1,0 +1,20 @@
+# WaShop
+
+WaShop is an independent directory of manually reviewed WhatsApp stores and businesses in Israel. Visitors can search by category, city, product, or store name, open a WhatsApp catalog, and contact the seller directly. WaShop is not WhatsApp, Meta, a payment processor, or a party to transactions.
+
+## Primary pages
+
+- Home: https://washop.co.il/
+- Israeli WhatsApp stores directory: https://washop.co.il/shops
+- Global English directory: https://washop.co.il/global
+- Submit a store for review: https://washop.co.il/add-store
+- Guides: https://washop.co.il/blog
+- Contact: https://washop.co.il/contact
+
+## Discovery and trust
+
+Stores are reviewed manually before publication. Buyers should confirm availability, price, delivery, payment, returns, and service directly with the seller. Global visibility does not imply worldwide shipping.
+
+## Language
+
+The primary site language is Hebrew. The English entry point is https://washop.co.il/global.

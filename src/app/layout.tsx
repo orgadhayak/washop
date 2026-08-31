@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { FloatingWhatsAppButton } from "@/components/FloatingWhatsAppButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -82,6 +83,7 @@ export default function RootLayout({
         <Footer activeCategories={footerCategories} />
         <FloatingWhatsAppButton />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

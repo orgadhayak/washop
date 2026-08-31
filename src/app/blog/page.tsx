@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog";
+import { siteConfig } from "@/lib/site";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: { absolute: "מדריכים לחנויות וואטסאפ ולעסקים בוואשופ" },
@@ -11,8 +13,46 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "מדריכים לחנויות וואטסאפ ולעסקים",
+      url: absoluteUrl("/blog"),
+      inLanguage: "he-IL",
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.domain,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "מדריכי וואשופ",
+      itemListElement: blogPosts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: post.title,
+        url: absoluteUrl(`/blog/${post.slug}`),
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "וואשופ", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "בלוג", item: absoluteUrl("/blog") },
+      ],
+    },
+  ];
+
   return (
     <div className="py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-black text-emerald-700">בלוג</p>
         <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
