@@ -27,9 +27,9 @@ type JsonLdRecord = Record<string, unknown>;
 
 const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
   "app-development": {
-    heading: "עסקים לפיתוח אפליקציות",
+    heading: "פיתוח ווב ואפליקציות לעסקים",
     description:
-      "גלו נותני שירות מאושרים לפיתוח אפליקציות וכלים דיגיטליים לעסקים. אפשר לקרוא על השירות, לפתוח את קטלוג הוואטסאפ ולברר ישירות התאמה, היקף עבודה ולוחות זמנים.",
+      "גלו נותני שירות מאושרים לפיתוח ווב, אפליקציות וכלים דיגיטליים לעסקים. אפשר לקרוא על השירות, לפתוח את קטלוג הוואטסאפ ולברר ישירות התאמה, היקף עבודה ולוחות זמנים.",
     sectionHeading: "איך בוחנים נותן שירות לפיתוח אפליקציות?",
     sections: [
       {
@@ -240,7 +240,7 @@ export async function generateMetadata({
 
   const approvedStoreCount = getApprovedStoreCountForCategory(category.slug);
   const titleBySlug: Record<string, string> = {
-    "app-development": "פיתוח אפליקציות לעסקים דרך וואטסאפ בוואשופ",
+    "app-development": "פיתוח ווב ואפליקציות לעסקים דרך וואטסאפ בוואשופ",
     "website-building": "בניית אתרים לעסקים דרך וואטסאפ בוואשופ",
     "technical-services-businesses": "שירותים טכניים לעסקים דרך וואטסאפ בוואשופ",
   };

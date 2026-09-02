@@ -122,3 +122,11 @@ test("approved shop pages expose grounded local-business entity data", async () 
   assert.match(shopPage, /knowsAbout: \[\.\.\.shopCategories, \.\.\.shop\.tags\]/);
   assert.match(shopPage, /availableLanguage: shop\.languages/);
 });
+
+test("the app development category reflects its Search Console web-development intent", async () => {
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+
+  assert.match(categoryPage, /heading: "פיתוח ווב ואפליקציות לעסקים"/);
+  assert.match(categoryPage, /פיתוח ווב, אפליקציות וכלים דיגיטליים/);
+  assert.match(categoryPage, /פיתוח ווב ואפליקציות לעסקים דרך וואטסאפ בוואשופ/);
+});
