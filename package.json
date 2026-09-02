@@ -12,6 +12,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test:seo": "node --test tests/seo-foundation.test.mjs",
+    "seo:ai-audit": "node scripts/ai-map-audit.mjs",
     "seo:audit": "node scripts/seo-audit.mjs"
   },
   "dependencies": {

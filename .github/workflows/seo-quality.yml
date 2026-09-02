@@ -39,6 +39,9 @@ jobs:
       - name: SEO foundation tests
         run: npm run test:seo
 
+      - name: AI map audit
+        run: npm run seo:ai-audit
+
       - name: Build
         run: npm run build
 
