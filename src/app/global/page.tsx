@@ -16,9 +16,9 @@ import { approvedGlobalShops } from "@/data/shops";
 import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
 
-const globalTitle = "WaShop Global: Reviewed WhatsApp Store Directory";
+const globalTitle = "WhatsApp Store Directory: Reviewed Stores by Chat | WaShop Global";
 const globalDescription =
-  "Discover reviewed stores, browse useful categories and contact sellers directly by chat. WaShop Global is the English gateway to the WaShop directory.";
+  "Discover reviewed WhatsApp stores by category and location, open useful catalogs and contact sellers directly by chat. WaShop Global is WaShop's English directory gateway.";
 
 export const metadata: Metadata = {
   title: { absolute: globalTitle },

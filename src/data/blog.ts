@@ -329,13 +329,13 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "וואטסאפ יכולה להיות ערוץ שירות לקוחות יעיל לעסקים, אם מגדירים שעות מענה, הודעות פתיחה, תיוג שיחות, פרטיות ותהליך ברור. הנה מדריך פרקטי לניהול שירות לקוחות בוואטסאפ בלי להפוך את הערוץ לספאם.",
     publishedAt: "2026-07-14",
-    modifiedAt: "2026-08-20",
+    modifiedAt: "2026-09-02",
     hebrewDate: "כ״ט בתמוז תשפ״ו",
     gregorianDate: "14 ביולי 2026",
     ctaLabel: "מדריך שירות לקוחות",
-    metaTitle: "שירות לקוחות בוואטסאפ לעסקים – מדריך מעשי | WaShop",
+    metaTitle: "שירות לקוחות בוואטסאפ לעסקים | מדריך מעשי | WaShop",
     metaDescription:
-      "מדריך מעשי לשירות לקוחות בוואטסאפ: פרופיל עסקי, שעות מענה, הודעות פתיחה, תיוג שיחות, פרטיות, הזמנות והימנעות מספאם.",
+      "איך מנהלים שירות לקוחות בוואטסאפ לעסק? מדריך מעשי לפרופיל עסקי, שעות מענה, הודעות פתיחה, תיוג שיחות, הזמנות, פרטיות והימנעות מספאם.",
     articleCtaTitle: "רוצים לגלות חנויות וואטסאפ פעילות?",
     articleCtaDescription:
       "עברו לספריית החנויות של וואשופ וראו איך עסקים מציגים קטלוגים ופונים ללקוחות בצורה ישירה.",
@@ -706,14 +706,15 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "WaShop Global helps customers discover carefully reviewed WhatsApp stores, open their catalogs and connect directly with sellers without turning WaShop into a marketplace middleman.",
     publishedAt: "2026-07-14",
+    modifiedAt: "2026-09-02",
     hebrewDate: "July 14, 2026",
     gregorianDate: "",
     ctaLabel: "Read about WaShop Global",
     locale: "en",
     direction: "ltr",
-    metaTitle: "WaShop Global WhatsApp Store Directory",
+    metaTitle: "WhatsApp Store Directory | Discover Stores by Chat | WaShop Global",
     metaDescription:
-      "Learn how WaShop Global helps customers discover reviewed WhatsApp stores, contact sellers directly and understand the difference between global visibility and worldwide delivery.",
+      "Discover reviewed WhatsApp stores by category and location, open catalogs and contact sellers directly. Learn what WaShop Global visibility means—and what it does not guarantee.",
     articleCtaTitle: "Explore WaShop Global",
     articleCtaDescription:
       "Browse reviewed stores, learn how direct chat commerce works and apply if your store may fit WaShop.",
