@@ -128,6 +128,18 @@ export default function GlobalPage() {
         name: shop.nameEn ?? shop.name,
       })),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
   ];
 
   return (
@@ -153,19 +165,20 @@ export default function GlobalPage() {
               WaShop Global
             </p>
             <h1 className="mt-2 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              Discover carefully reviewed stores and shop by chat
+              Discover reviewed WhatsApp stores and shop by chat
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
-              Browse independent stores, open their catalogs and connect directly
-              with the seller. WaShop helps customers discover stores from Israel
-              and around the world without adding a marketplace middleman.
+              Browse independent WhatsApp stores by category and location, open
+              their catalogs and connect directly with the seller. WaShop helps
+              customers discover stores from Israel and around the world without
+              adding a marketplace middleman.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#stores"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
-                Browse stores
+                Browse reviewed WhatsApp stores
               </a>
               <TrackedActionLink
                 href="#apply"
