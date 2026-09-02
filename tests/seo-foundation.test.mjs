@@ -138,3 +138,9 @@ test("the website category reflects its portal-building Search Console intent", 
   assert.match(categoryPage, /בניית אתרים, פורטלי ווב, דפי נחיתה/);
   assert.match(categoryPage, /בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ/);
 });
+
+test("the site description covers the homepage online-store synonym", async () => {
+  const siteConfig = await readFile("src/lib/site.ts", "utf8");
+
+  assert.match(siteConfig, /חנויות וירטואליות, חנויות מקוונות וקטלוגים בוואטסאפ/);
+});
