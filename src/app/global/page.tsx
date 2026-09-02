@@ -164,7 +164,7 @@ export default function GlobalPage() {
   ];
 
   return (
-    <div dir="ltr" lang="en" className="bg-[#f7fbf8] text-zinc-950">
+    <div dir="ltr" lang="en" className="bg-white text-zinc-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -212,7 +212,7 @@ export default function GlobalPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50 to-white p-5 shadow-sm shadow-emerald-950/5">
+          <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm shadow-emerald-950/5">
             <div className="rounded-xl bg-emerald-700 p-5 text-white">
               <ShieldCheck className="size-8 text-emerald-100" aria-hidden="true" />
               <h2 className="mt-4 text-2xl font-black">We’re here to stay</h2>

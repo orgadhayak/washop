@@ -82,7 +82,7 @@ html {
 
 .home-search-band {
   background-color: var(--whatsapp-green);
-  background-image: linear-gradient(115deg, #008f72 0%, #00a884 46%, #00bd7e 100%);
+  background-image: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.16);
 }
 
@@ -96,7 +96,16 @@ html {
 
 .home-whatsapp-band {
   background-color: var(--whatsapp-green);
-  background-image: linear-gradient(120deg, #008f72 0%, #00a884 54%, #00b97d 100%);
+  background-image: none;
+}
+
+/* Keep the public palette crisp: surfaces are white, while green is reserved
+   for intentional bands, actions and accents. */
+.bg-emerald-50,
+.bg-emerald-50\/50,
+.bg-emerald-50\/60,
+.bg-emerald-50\/80 {
+  background-color: #ffffff !important;
 }
 
 .home-mascot-stage {
@@ -170,7 +179,7 @@ html {
   box-sizing: border-box;
   background: #00a884;
   background-color: #00a884;
-  background-image: linear-gradient(135deg, #00a884 0%, #009b72 100%);
+  background-image: none;
   color: #ffffff;
   max-width: 100%;
 }
