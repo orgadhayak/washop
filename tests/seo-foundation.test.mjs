@@ -144,3 +144,12 @@ test("the site description covers the homepage online-store synonym", async () =
 
   assert.match(siteConfig, /חנויות וירטואליות, חנויות מקוונות וקטלוגים בוואטסאפ/);
 });
+
+test("the sitemap records editorial freshness for recently improved categories", async () => {
+  const sitemap = await readFile("src/app/sitemap.ts", "utf8");
+
+  assert.match(sitemap, /categoryContentLastModified/);
+  assert.match(sitemap, /"app-development": new Date\("2026-09-02"\)/);
+  assert.match(sitemap, /"website-building": new Date\("2026-09-02"\)/);
+  assert.match(sitemap, /getSitemapCategoryLastModified\(category\.slug\)/);
+});

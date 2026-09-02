@@ -22,6 +22,21 @@ const staticRoutes = [
 ];
 
 const shopTemplateLastModified = new Date("2026-08-28");
+const categoryContentLastModified: Record<string, Date> = {
+  "app-development": new Date("2026-09-02"),
+  "website-building": new Date("2026-09-02"),
+};
+
+function getSitemapCategoryLastModified(categorySlug: string) {
+  const timestamps = [
+    getCategoryLastModified(categorySlug),
+    categoryContentLastModified[categorySlug],
+  ]
+    .filter((date): date is Date => Boolean(date))
+    .map((date) => date.getTime());
+
+  return timestamps.length ? new Date(Math.max(...timestamps)) : undefined;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const activeCategories = getActiveCategoriesWithCounts();
@@ -35,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...activeCategories.map((category) => ({
       url: `${siteConfig.domain}/category/${category.slug}`,
-      lastModified: getCategoryLastModified(category.slug),
+      lastModified: getSitemapCategoryLastModified(category.slug),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
