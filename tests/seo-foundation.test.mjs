@@ -86,6 +86,8 @@ test("active service categories expose useful FAQ content", async () => {
   assert.match(categoryPage, /faqs: Array/);
   assert.match(categoryPage, /פיתוח ווב או אפליקציה/);
   assert.match(categoryPage, /שאלות נפוצות בקטגוריה/);
+  assert.match(categoryPage, /"@type": "CollectionPage"/);
+  assert.match(categoryPage, /inLanguage: "he-IL"/);
   assert.match(categoryPage, /"@type": "FAQPage"/);
 });
 

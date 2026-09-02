@@ -199,8 +199,22 @@ function createCategoryJsonLd(category: Category, shops: ReturnType<typeof getAp
     return [breadcrumbList];
   }
 
+  const categoryUrl = absoluteUrl(`/category/${category.slug}`);
   const jsonLd: JsonLdRecord[] = [
     breadcrumbList,
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: getCategoryHeading(category),
+      description: getCategoryDescription(category, shops.length),
+      url: categoryUrl,
+      inLanguage: "he-IL",
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.domain,
+      },
+    },
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
