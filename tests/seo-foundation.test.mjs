@@ -130,3 +130,11 @@ test("the app development category reflects its Search Console web-development i
   assert.match(categoryPage, /פיתוח ווב, אפליקציות וכלים דיגיטליים/);
   assert.match(categoryPage, /פיתוח ווב ואפליקציות לעסקים דרך וואטסאפ בוואשופ/);
 });
+
+test("the website category reflects its portal-building Search Console intent", async () => {
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+
+  assert.match(categoryPage, /heading: "בניית אתרים ופורטלי ווב לעסקים"/);
+  assert.match(categoryPage, /בניית אתרים, פורטלי ווב, דפי נחיתה/);
+  assert.match(categoryPage, /בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ/);
+});

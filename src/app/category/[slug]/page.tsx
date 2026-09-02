@@ -67,9 +67,9 @@ const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
     ],
   },
   "website-building": {
-    heading: "עסקים לבניית אתרים",
+    heading: "בניית אתרים ופורטלי ווב לעסקים",
     description:
-      "גלו נותני שירות מאושרים לבניית אתרים, דפי נחיתה ונוכחות דיגיטלית לעסקים. אפשר לבדוק את תחומי העבודה ולפנות ישירות בוואטסאפ כדי לברר התאמה לפרויקט.",
+      "גלו נותני שירות מאושרים לבניית אתרים, פורטלי ווב, דפי נחיתה ונוכחות דיגיטלית לעסקים. אפשר לבדוק את תחומי העבודה ולפנות ישירות בוואטסאפ כדי לברר התאמה לפרויקט.",
     sectionHeading: "מה חשוב לבדוק לפני שבונים אתר לעסק?",
     sections: [
       {
@@ -241,7 +241,7 @@ export async function generateMetadata({
   const approvedStoreCount = getApprovedStoreCountForCategory(category.slug);
   const titleBySlug: Record<string, string> = {
     "app-development": "פיתוח ווב ואפליקציות לעסקים דרך וואטסאפ בוואשופ",
-    "website-building": "בניית אתרים לעסקים דרך וואטסאפ בוואשופ",
+    "website-building": "בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ",
     "technical-services-businesses": "שירותים טכניים לעסקים דרך וואטסאפ בוואשופ",
   };
   const title =
