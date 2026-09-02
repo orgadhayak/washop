@@ -34,6 +34,7 @@ category page as the current source for the stores shown there.
 - Software and digital services: https://washop.co.il/category/software-digital
 - App development: https://washop.co.il/category/app-development
 - Technical services for businesses: https://washop.co.il/category/technical-services-businesses
+- Local services: https://washop.co.il/category/local-services
 - Hair and barbers: https://washop.co.il/category/hair-barbers
 - Beauty care: https://washop.co.il/category/beauty-care
 - Training and courses: https://washop.co.il/category/courses-training
