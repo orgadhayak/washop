@@ -167,6 +167,13 @@ test("the homepage title and primary heading match observed online-store intent"
   assert.match(home, /חנויות וירטואליות ועסקים בישראל/);
 });
 
+test("the virtual-store guide owns the observed Hebrew online-store intent", async () => {
+  const blog = await readFile("src/data/blog.ts", "utf8");
+
+  assert.match(blog, /title: "איך פותחים חנות וירטואלית בעברית בוואטסאפ\?"/);
+  assert.match(blog, /metaTitle: "חנות וירטואלית בעברית בוואטסאפ: איך מתחילים\? \| WaShop"/);
+});
+
 test("the sitemap records editorial freshness for recently improved categories", async () => {
   const sitemap = await readFile("src/app/sitemap.ts", "utf8");
 
