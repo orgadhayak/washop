@@ -28,8 +28,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
   },
-  description:
-    "גלו חנויות וואטסאפ ועסקים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר, פתחו קטלוג ופנו ישירות לבית העסק.",
+  description: siteConfig.description,
   alternates: {
     canonical: "/",
     languages: {
@@ -40,16 +39,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
-    description:
-      "גלו חנויות וואטסאפ ועסקים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר, פתחו קטלוג ופנו ישירות לבית העסק.",
+    description: siteConfig.description,
     url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
-    description:
-      "גלו חנויות וואטסאפ ועסקים ישראליים שנבדקו ידנית. חפשו לפי קטגוריה, עיר או מוצר, פתחו קטלוג ופנו ישירות לבית העסק.",
+    description: siteConfig.description,
   },
 };
 
