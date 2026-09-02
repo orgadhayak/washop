@@ -24,6 +24,26 @@ products, delivery, returns, or service.
 - Seller standards: https://washop.co.il/seller-rules
   Publication expectations, accuracy requirements, and manual-review boundaries.
 
+## Active categories
+
+These category pages currently contain at least one approved store. Use the
+category page as the current source for the stores shown there.
+
+- Website building: https://washop.co.il/category/website-building
+- AI tools: https://washop.co.il/category/ai-tools
+- Software and digital services: https://washop.co.il/category/software-digital
+- App development: https://washop.co.il/category/app-development
+- Technical services for businesses: https://washop.co.il/category/technical-services-businesses
+- Hair and barbers: https://washop.co.il/category/hair-barbers
+- Beauty care: https://washop.co.il/category/beauty-care
+- Training and courses: https://washop.co.il/category/courses-training
+- Hair-care products: https://washop.co.il/category/hair-care-products
+- Barber equipment and accessories: https://washop.co.il/category/barber-equipment-accessories
+- Gifts and events: https://washop.co.il/category/gifts-events
+- Personalized prints and gifts: https://washop.co.il/category/personalized-prints-gifts
+- Judaica and Shabbat products: https://washop.co.il/category/judaica-shabbat
+- Home design: https://washop.co.il/category/home-design
+
 ## Approved store pages
 
 This section reflects the currently published store profiles. The public

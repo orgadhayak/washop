@@ -64,6 +64,9 @@ test("production observability is wired into the root layout", async () => {
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/revolution-studio/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/liel-gifts-and-blocks/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/blog\/hanut-virtualit-bewhatsapp/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/website-building/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/app-development/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/hair-barbers/);
 });
 
 test("global discovery exposes visible FAQ content as structured data", async () => {
