@@ -146,13 +146,13 @@ test("the website category reflects its portal-building Search Console intent", 
   assert.match(categoryPage, /בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ/);
 });
 
-test("the technical services category reflects its observed web-development intent", async () => {
+test("the technical services category has a distinct support intent", async () => {
   const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
 
-  assert.match(categoryPage, /שירותי פיתוח ווב ותמיכה טכנית לעסקים/);
-  assert.match(categoryPage, /שירותי פיתוח ווב, תמיכה טכנית/);
-  assert.match(categoryPage, /מה כוללים שירותי פיתוח ווב לעסק/);
-  assert.match(categoryPage, /שירותי פיתוח ווב ותמיכה טכנית לעסקים דרך וואטסאפ בוואשופ/);
+  assert.match(categoryPage, /תמיכה טכנית ופתרון תקלות דיגיטליות לעסקים/);
+  assert.match(categoryPage, /תמיכה טכנית, פתרון תקלות ותחזוקת כלים דיגיטליים/);
+  assert.match(categoryPage, /מה כוללת תמיכה טכנית לעסק/);
+  assert.match(categoryPage, /תמיכה טכנית ופתרון תקלות דיגיטליות לעסקים דרך וואטסאפ בוואשופ/);
 });
 
 test("the site description covers the homepage online-store synonym", async () => {
