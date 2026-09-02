@@ -216,7 +216,7 @@ export default function Home() {
             title="חנויות וואטסאפ שכבר אפשר לגלות"
             description="התחלה נקייה עם חנויות מאושרות, קטגוריות פעילות ומקום להוסיף עוד עסקים איכותיים."
           />
-          <div className="mx-auto mt-8 grid max-w-6xl gap-4 rounded-2xl border border-emerald-200 bg-gradient-to-br from-white via-emerald-50/80 to-white p-5 shadow-sm shadow-emerald-950/5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="mx-auto mt-8 grid max-w-6xl gap-4 rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm shadow-emerald-950/5 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-black text-emerald-800 ring-1 ring-emerald-200">
                 <Sparkles className="size-3.5" aria-hidden="true" />
@@ -400,7 +400,7 @@ export default function Home() {
 
       <section className="bg-white py-14 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-[#00a884]/25 bg-gradient-to-br from-[#00a884] via-[#009b72] to-[#008f72] p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
+          <div className="grid items-center gap-8 overflow-hidden rounded-3xl border border-[#00a884]/25 bg-[#00a884] p-6 text-white shadow-2xl shadow-emerald-950/15 sm:p-9 lg:grid-cols-[1fr_auto] lg:p-12">
             <div>
               <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
                 יש לכם חנות וואטסאפ?
