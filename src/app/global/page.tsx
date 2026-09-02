@@ -103,14 +103,16 @@ const faqItems = [
 ];
 
 export default function GlobalPage() {
+  const globalStoreListId = absoluteUrl("/global#approved-stores");
   const jsonLd = [
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
+      "@type": "CollectionPage",
       name: "WaShop Global",
       url: absoluteUrl("/global"),
       inLanguage: "en",
       description: globalDescription,
+      mainEntity: { "@id": globalStoreListId },
       isPartOf: {
         "@type": "WebSite",
         name: siteConfig.name,
@@ -120,6 +122,7 @@ export default function GlobalPage() {
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
+      "@id": globalStoreListId,
       name: "WaShop Global approved stores",
       itemListElement: approvedGlobalShops.map((shop, index) => ({
         "@type": "ListItem",
@@ -127,6 +130,24 @@ export default function GlobalPage() {
         url: absoluteUrl(`/shop/${shop.slug}`),
         name: shop.nameEn ?? shop.name,
       })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "WaShop",
+          item: siteConfig.domain,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Global WhatsApp Store Directory",
+          item: absoluteUrl("/global"),
+        },
+      ],
     },
     {
       "@context": "https://schema.org",

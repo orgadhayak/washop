@@ -65,6 +65,9 @@ test("global discovery exposes visible FAQ content as structured data", async ()
   const globalPage = await readFile("src/app/global/page.tsx", "utf8");
 
   assert.match(globalPage, /Discover reviewed WhatsApp stores and shop by chat/);
+  assert.match(globalPage, /"@type": "CollectionPage"/);
+  assert.match(globalPage, /"@type": "BreadcrumbList"/);
+  assert.match(globalPage, /globalStoreListId/);
   assert.match(globalPage, /"@type": "FAQPage"/);
   assert.match(globalPage, /faqItems\.map/);
 });
