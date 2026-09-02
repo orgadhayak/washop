@@ -66,21 +66,35 @@ export default async function ShopPage({ params }: ShopPageProps) {
   }
 
   const relatedShops = approvedShops.filter((candidate) => candidate.slug !== shop.slug);
+  const shopUrl = absoluteUrl(`/shop/${shop.slug}`);
+  const shopCategories = shop.categories
+    .map((categorySlug) => categoryBySlug.get(categorySlug)?.name)
+    .filter((name): name is string => Boolean(name));
 
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": `${shopUrl}#business`,
       name: shop.name,
       description: shop.description,
-      url: absoluteUrl(`/shop/${shop.slug}`),
+      url: shopUrl,
+      mainEntityOfPage: { "@id": shopUrl },
+      inLanguage: "he-IL",
       telephone: shop.phone,
       address: {
         "@type": "PostalAddress",
         addressLocality: shop.city,
         addressCountry: shop.countryCode ?? "IL",
       },
-      areaServed: shop.countryCode ?? "IL",
+      areaServed: [
+        { "@type": "City", name: shop.city },
+        ...(shop.shipsNationwide
+          ? [{ "@type": "Country", name: shop.countryNameEn ?? "Israel" }]
+          : []),
+      ],
+      knowsAbout: [...shopCategories, ...shop.tags],
+      availableLanguage: shop.languages,
       sameAs: [shop.catalogUrl],
     },
     {

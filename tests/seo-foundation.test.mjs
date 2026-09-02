@@ -112,3 +112,13 @@ test("hidden shops are excluded from public routes and sitemap entries", async (
   assert.match(shopPage, /return approvedShops\.map\(\(shop\) => \(\{ slug: shop\.slug \}\)\)/);
   assert.match(sitemap, /\.filter\(\(shop\) => shop\.status === "approved"\)/);
 });
+
+test("approved shop pages expose grounded local-business entity data", async () => {
+  const shopPage = await readFile("src/app/shop/[slug]/page.tsx", "utf8");
+
+  assert.match(shopPage, /"@type": "LocalBusiness"/);
+  assert.match(shopPage, /"@id": `\$\{shopUrl\}#business`/);
+  assert.match(shopPage, /areaServed: \[/);
+  assert.match(shopPage, /knowsAbout: \[\.\.\.shopCategories, \.\.\.shop\.tags\]/);
+  assert.match(shopPage, /availableLanguage: shop\.languages/);
+});
