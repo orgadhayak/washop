@@ -60,6 +60,9 @@ test("production observability is wired into the root layout", async () => {
   assert.match(llms, /https:\/\/washop\.co\.il\/shops/);
   assert.match(llms, /https:\/\/washop\.co\.il\/llms-full\.txt/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/global/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/navines/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/revolution-studio/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/liel-gifts-and-blocks/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/blog\/hanut-virtualit-bewhatsapp/);
 });
 

@@ -24,6 +24,24 @@ products, delivery, returns, or service.
 - Seller standards: https://washop.co.il/seller-rules
   Publication expectations, accuracy requirements, and manual-review boundaries.
 
+## Approved store pages
+
+This section reflects the currently published store profiles. The public
+directory and individual profiles are authoritative for current availability,
+catalog links, contact details, categories, and approval status.
+
+- Navines Israel: https://washop.co.il/shop/navines
+  Israeli software and digital-services business offering website building, AI
+  tools, app development, technical support, and other business solutions through
+  a WhatsApp catalog.
+- Revolution Studio: https://washop.co.il/shop/revolution-studio
+  Israeli hair and grooming business in Petah Tikva offering salon services,
+  hair-care products, barber accessories, and training through a WhatsApp
+  catalog.
+- Liel Gift Boxes and Printing: https://washop.co.il/shop/liel-gifts-and-blocks
+  Israeli gift business offering personalized gift boxes, printed products,
+  glass blocks, cups, holders, and custom items through a WhatsApp catalog.
+
 ## Guides for customers and sellers
 
 - Virtual WhatsApp store: https://washop.co.il/blog/hanut-virtualit-bewhatsapp
