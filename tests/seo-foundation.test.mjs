@@ -142,6 +142,15 @@ test("the website category reflects its portal-building Search Console intent", 
   assert.match(categoryPage, /בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ/);
 });
 
+test("the technical services category reflects its observed web-development intent", async () => {
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+
+  assert.match(categoryPage, /שירותי פיתוח ווב ותמיכה טכנית לעסקים/);
+  assert.match(categoryPage, /שירותי פיתוח ווב, תמיכה טכנית/);
+  assert.match(categoryPage, /מה כוללים שירותי פיתוח ווב לעסק/);
+  assert.match(categoryPage, /שירותי פיתוח ווב ותמיכה טכנית לעסקים דרך וואטסאפ בוואשופ/);
+});
+
 test("the site description covers the homepage online-store synonym", async () => {
   const siteConfig = await readFile("src/lib/site.ts", "utf8");
 
@@ -161,6 +170,7 @@ test("the sitemap records editorial freshness for recently improved categories",
   assert.match(sitemap, /categoryContentLastModified/);
   assert.match(sitemap, /"app-development": new Date\("2026-09-02"\)/);
   assert.match(sitemap, /"website-building": new Date\("2026-09-02"\)/);
+  assert.match(sitemap, /"technical-services-businesses": new Date\("2026-09-02"\)/);
   assert.match(sitemap, /getSitemapCategoryLastModified\(category\.slug\)/);
 });
 

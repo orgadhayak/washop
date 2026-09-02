@@ -23,8 +23,9 @@ const staticRoutes = [
 
 const shopTemplateLastModified = new Date("2026-08-28");
 const categoryContentLastModified: Record<string, Date> = {
-  "app-development": new Date("2026-09-02"),
-  "website-building": new Date("2026-09-02"),
+      "app-development": new Date("2026-09-02"),
+      "website-building": new Date("2026-09-02"),
+      "technical-services-businesses": new Date("2026-09-02"),
 };
 
 function getSitemapCategoryLastModified(categorySlug: string) {
