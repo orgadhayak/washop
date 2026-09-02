@@ -141,6 +141,7 @@ test("the website category reflects its portal-building Search Console intent", 
 
   assert.match(categoryPage, /heading: "בניית אתרים ופורטלי ווב לעסקים"/);
   assert.match(categoryPage, /בניית אתרים, פורטלי ווב, דפי נחיתה/);
+  assert.match(categoryPage, /מה כוללת בניית פורטל ווב לעסק/);
   assert.match(categoryPage, /בניית אתרים ופורטלי ווב לעסקים דרך וואטסאפ בוואשופ/);
 });
 
