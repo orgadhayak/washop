@@ -153,3 +153,11 @@ test("the sitemap records editorial freshness for recently improved categories",
   assert.match(sitemap, /"website-building": new Date\("2026-09-02"\)/);
   assert.match(sitemap, /getSitemapCategoryLastModified\(category\.slug\)/);
 });
+
+test("shop profiles link visitors to relevant WhatsApp store guides", async () => {
+  const shopPage = await readFile("src/app/shop/[slug]/page.tsx", "utf8");
+
+  assert.match(shopPage, /מדריכים שימושיים לחנויות וואטסאפ/);
+  assert.match(shopPage, /\/blog\/synchron-katalog-melay-ben-hanuyot/);
+  assert.match(shopPage, /\/blog\/taknon-hanut-virtualit/);
+});

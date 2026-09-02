@@ -240,6 +240,36 @@ export default async function ShopPage({ params }: ShopPageProps) {
                   </div>
                 </div>
 
+                <section className="mt-8 rounded-xl border border-emerald-200 bg-white p-5">
+                  <h2 className="text-xl font-black text-zinc-950">
+                    מדריכים שימושיים לחנויות וואטסאפ
+                  </h2>
+                  <p className="mt-2 text-sm font-bold leading-7 text-zinc-600">
+                    רוצים להבין איך קטלוג, מלאי ומדיניות עובדים בחנות וואטסאפ?
+                    הנה מדריכים קצרים שיעזרו להתכונן לשיחה עם העסק.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Link
+                      href="/blog/hanut-virtualit-bewhatsapp"
+                      className="rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
+                    >
+                      איך פותחים קטלוג וואטסאפ?
+                    </Link>
+                    <Link
+                      href="/blog/synchron-katalog-melay-ben-hanuyot"
+                      className="rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
+                    >
+                      סנכרון קטלוג ומלאי
+                    </Link>
+                    <Link
+                      href="/blog/taknon-hanut-virtualit"
+                      className="rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-black text-emerald-800 transition hover:bg-emerald-100"
+                    >
+                      תקנון ומדיניות לחנות
+                    </Link>
+                  </div>
+                </section>
+
                 {relatedShops.length ? (
                   <section className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
                     <h2 className="text-xl font-black text-zinc-950">
