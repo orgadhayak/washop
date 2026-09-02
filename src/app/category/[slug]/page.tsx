@@ -20,7 +20,10 @@ type CategoryEditorialContent = {
   description: string;
   sectionHeading: string;
   sections: Array<{ title: string; text: string }>;
+  faqs: Array<{ question: string; answer: string }>;
 };
+
+type JsonLdRecord = Record<string, unknown>;
 
 const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
   "app-development": {
@@ -43,6 +46,23 @@ const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
         title: "מה חשוב לברר?",
         text:
           "בררו מה כלול באפיון, בעיצוב, בפיתוח, בבדיקות ובתחזוקה, למי שייכים הקוד והתוכן, איך מתומחרים שינויים ומה כולל השירות לאחר העלייה לאוויר.",
+      },
+    ],
+    faqs: [
+      {
+        question: "מה כולל פיתוח ווב או אפליקציה לעסק?",
+        answer:
+          "היקף העבודה יכול לכלול אפיון, עיצוב, פיתוח, חיבור למערכות, בדיקות ותחזוקה. צריך לסכם מול נותן השירות מה כלול בפרויקט, מי אחראי על כל שלב ומה נמסר בסיום.",
+      },
+      {
+        question: "איך בוחרים נותן שירות לפיתוח אפליקציות?",
+        answer:
+          "מתחילים מתיאור ברור של המטרה, המשתמשים והפלטפורמה, ואז בודקים ניסיון רלוונטי, תהליך עבודה, לוחות זמנים, בעלות על הקוד ותמיכה לאחר ההשקה.",
+      },
+      {
+        question: "האם וואשופ מבצעת פיתוח אפליקציות או פיתוח ווב?",
+        answer:
+          "לא. וואשופ היא אינדקס לגילוי עסקים ונותני שירות. הפנייה, ההצעה, המחיר, הפיתוח והתמיכה נסגרים ישירות מול העסק שמופיע בכרטיס.",
       },
     ],
   },
@@ -68,6 +88,23 @@ const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
           "שאלו למי שייכים הקוד, החשבונות והתוכן, איך מקבלים גישה למערכות ומה כוללת התמיכה לאחר העלייה לאוויר. הסיכומים נעשים ישירות מול נותן השירות.",
       },
     ],
+    faqs: [
+      {
+        question: "איזה סוג אתר מתאים לעסק?",
+        answer:
+          "אפשר לבחור באתר תדמית, דף נחיתה, קטלוג, חנות או מערכת מותאמת לפי המטרה, כמות התוכן, תהליך המכירה והתחזוקה שהעסק צריך.",
+      },
+      {
+        question: "מה חשוב לסכם לפני בניית אתר?",
+        answer:
+          "כדאי לסכם מי אחראי על תוכן, עיצוב, דומיין, אחסון, נגישות, עדכונים, גישה לחשבונות, בעלות על הקוד ותמיכה לאחר העלייה לאוויר.",
+      },
+      {
+        question: "האם וואשופ בונה אתרים?",
+        answer:
+          "לא. וואשופ מאפשרת לגלות נותני שירות מאושרים ולפתוח איתם שיחה ישירה. תנאי הפרויקט והאחריות נקבעים מול נותן השירות.",
+      },
+    ],
   },
   "technical-services-businesses": {
     heading: "שירותים טכניים לעסקים",
@@ -89,6 +126,23 @@ const categoryEditorialContent: Record<string, CategoryEditorialContent> = {
         title: "מסכמים אחריות והמשך טיפול",
         text:
           "לפני שמתחילים כדאי לסכם עלות, לוח זמנים, גיבוי, אחריות על השינוי ומה קורה אם נדרש טיפול נוסף. וואשופ אינה ספקית התמיכה ואינה צד בשירות.",
+      },
+    ],
+    faqs: [
+      {
+        question: "איך פונים לקבלת שירות טכני לעסק?",
+        answer:
+          "מתארים את התקלה או הצורך, מציינים את המערכת והדחיפות, ולא שולחים סיסמאות או מידע רגיש לפני שמוודאים מול מי עובדים ואיך המידע נשמר.",
+      },
+      {
+        question: "מה לבדוק לפני שמזמינים תמיכה טכנית?",
+        answer:
+          "בדקו זמן תגובה, היקף האבחון, עלות, גיבוי, אחריות ומה קורה אם נדרש טיפול נוסף או שינוי במערכת.",
+      },
+      {
+        question: "האם וואשופ מספקת תמיכה טכנית לעסקים?",
+        answer:
+          "לא. וואשופ היא אינדקס גילוי בלבד. השירות, האבחון, המחיר והאחריות ניתנים ישירות על ידי העסק או נותן השירות שבכרטיס.",
       },
     ],
   },
@@ -140,7 +194,7 @@ function createCategoryJsonLd(category: Category, shops: ReturnType<typeof getAp
     return [breadcrumbList];
   }
 
-  return [
+  const jsonLd: JsonLdRecord[] = [
     breadcrumbList,
     {
       "@context": "https://schema.org",
@@ -154,6 +208,20 @@ function createCategoryJsonLd(category: Category, shops: ReturnType<typeof getAp
       })),
     },
   ];
+
+  if (categoryEditorialContent[category.slug]?.faqs.length) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: categoryEditorialContent[category.slug].faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    });
+  }
+
+  return jsonLd;
 }
 
 export function generateStaticParams() {
@@ -347,6 +415,20 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   <p className="mt-3 text-sm font-bold leading-7 text-zinc-700">
                     {section.text}
                   </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {editorialContent?.faqs.length && shops.length ? (
+          <section className="mx-auto mt-8 max-w-6xl rounded-xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm">
+            <h2 className="text-3xl font-black text-zinc-950">שאלות נפוצות בקטגוריה</h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {editorialContent.faqs.map((faq) => (
+                <div key={faq.question} className="rounded-lg border border-emerald-200 bg-white p-5">
+                  <h3 className="text-lg font-black text-zinc-950">{faq.question}</h3>
+                  <p className="mt-3 text-sm font-bold leading-7 text-zinc-700">{faq.answer}</p>
                 </div>
               ))}
             </div>

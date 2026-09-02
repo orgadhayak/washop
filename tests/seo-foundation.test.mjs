@@ -72,6 +72,15 @@ test("global discovery exposes visible FAQ content as structured data", async ()
   assert.match(globalPage, /faqItems\.map/);
 });
 
+test("active service categories expose useful FAQ content", async () => {
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+
+  assert.match(categoryPage, /faqs: Array/);
+  assert.match(categoryPage, /פיתוח ווב או אפליקציה/);
+  assert.match(categoryPage, /שאלות נפוצות בקטגוריה/);
+  assert.match(categoryPage, /"@type": "FAQPage"/);
+});
+
 test("the blog index exposes crawlable collection metadata", async () => {
   const blog = await readFile("src/app/blog/page.tsx", "utf8");
 
