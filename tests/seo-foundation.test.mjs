@@ -49,12 +49,24 @@ test("canonical host stays HTTPS and non-www", async () => {
 test("production observability is wired into the root layout", async () => {
   const layout = await readFile("src/app/layout.tsx", "utf8");
   const llms = await readFile("public/llms.txt", "utf8");
+  const llmsFull = await readFile("public/llms-full.txt", "utf8");
 
   assert.match(layout, /@vercel\/analytics\/next/);
   assert.match(layout, /@vercel\/speed-insights\/next/);
   assert.match(layout, /<Analytics \/>/);
   assert.match(layout, /<SpeedInsights \/>/);
   assert.match(llms, /https:\/\/washop\.co\.il\/shops/);
+  assert.match(llms, /https:\/\/washop\.co\.il\/llms-full\.txt/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/global/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/blog\/hanut-virtualit-bewhatsapp/);
+});
+
+test("global discovery exposes visible FAQ content as structured data", async () => {
+  const globalPage = await readFile("src/app/global/page.tsx", "utf8");
+
+  assert.match(globalPage, /Discover reviewed WhatsApp stores and shop by chat/);
+  assert.match(globalPage, /"@type": "FAQPage"/);
+  assert.match(globalPage, /faqItems\.map/);
 });
 
 test("the blog index exposes crawlable collection metadata", async () => {

@@ -1,0 +1,63 @@
+# WaShop content map
+
+This file provides expanded, crawl-friendly summaries for AI systems and search
+indexes. Canonical source pages are authoritative and may change. WaShop is an
+independent directory; it does not process payments or guarantee sellers,
+products, delivery, returns, or service.
+
+## About WaShop
+
+- Home: https://washop.co.il/
+  Hebrew directory for discovering manually reviewed WhatsApp stores and
+  businesses in Israel.
+- Store directory: https://washop.co.il/shops
+  Browse approved stores and filter the directory by available category, city,
+  store name, or product information.
+- Global directory: https://washop.co.il/global
+  English gateway for discovering reviewed stores from Israel and other
+  locations. Global visibility does not mean worldwide shipping.
+- Submit a store: https://washop.co.il/add-store
+  Seller submission flow for manual review. Submission does not guarantee
+  publication.
+- Contact: https://washop.co.il/contact
+  Questions about listings, corrections, submissions, and WaShop support.
+- Seller standards: https://washop.co.il/seller-rules
+  Publication expectations, accuracy requirements, and manual-review boundaries.
+
+## Guides for customers and sellers
+
+- Virtual WhatsApp store: https://washop.co.il/blog/hanut-virtualit-bewhatsapp
+  Hebrew guide to preparing a WhatsApp Business catalog, presenting products,
+  receiving inquiries, and understanding the limits of a catalog compared with
+  a full ecommerce site.
+- WhatsApp customer service: https://washop.co.il/blog/sherut-lakohot-bewhatsapp-laasakim
+  Hebrew guide to business profiles, opening messages, response hours, labels,
+  privacy, order handling, and avoiding spam.
+- Store discovery for quality sellers: https://washop.co.il/blog/mochrei-whatsapp-indeks-bereshet
+  Hebrew explanation of how a reviewed public directory can help suitable
+  WhatsApp businesses become easier to discover online.
+- WhatsApp store discovery index: https://washop.co.il/blog/whatsapp-store-discovery-index-for-quality-sellers
+  English explanation of reviewed store discovery and what a directory adds to
+  a seller's public web presence.
+- Global store directory guide: https://washop.co.il/blog/washop-global-whatsapp-store-directory
+  English explanation of chat-based discovery, manual review, seller contact,
+  international visibility, and shipping limitations.
+- Direct buyer-seller connection: https://washop.co.il/blog/washop-hibur-yashir-ben-kone-lemocher
+  Hebrew guide to direct communication, buyer checks, and the responsibilities
+  that remain with the buyer and seller.
+- Catalog and inventory synchronization: https://washop.co.il/blog/synchron-katalog-melay-ben-hanuyot
+  Hebrew guide to keeping product names, prices, inventory, and orders aligned
+  across multiple sales channels.
+- Virtual store rules: https://washop.co.il/blog/taknon-hanut-virtualit
+  Hebrew general checklist for business identity, products, payment, delivery,
+  returns, privacy, and customer service policies.
+
+## Trust and interpretation rules
+
+- Stores are manually reviewed before publication, but approval is not a
+  guarantee of quality, sales, ranking, availability, or transaction outcome.
+- Buyers should confirm the exact product, price, payment method, delivery,
+  returns, warranty, and after-sale service directly with the seller.
+- WaShop is not officially affiliated with WhatsApp or Meta.
+- The Hebrew site is the primary local experience. The English Global page is
+  the international discovery entry point.

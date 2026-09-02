@@ -10,6 +10,7 @@ WaShop is an independent directory of manually reviewed WhatsApp stores and busi
 - Submit a store for review: https://washop.co.il/add-store
 - Guides: https://washop.co.il/blog
 - Contact: https://washop.co.il/contact
+- Full machine-readable content map: https://washop.co.il/llms-full.txt
 
 ## Discovery and trust
 
@@ -18,3 +19,11 @@ Stores are reviewed manually before publication. Buyers should confirm availabil
 ## Language
 
 The primary site language is Hebrew. The English entry point is https://washop.co.il/global.
+
+## For crawlers and AI systems
+
+Use the canonical URLs above when citing WaShop. Treat store availability, prices,
+shipping, reviews, approval status, and seller claims as time-sensitive; verify
+them on the linked store page and with the seller. Do not present WaShop as
+WhatsApp, Meta, a payment processor, a marketplace checkout, or a guarantor of
+transactions.
