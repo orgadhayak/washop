@@ -10,7 +10,7 @@ export const siteConfig = {
   brandSymbol: "/brand/washop-mascot.png",
   appleTouchIcon: "/brand/apple-touch-icon.png",
   ogImage: "https://washop.co.il/brand/washop-og-v3.png",
-  title: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
+  title: "וואשופ – אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל",
   description:
     "גלו חנויות ועסקים ישראליים שנבדקו ידנית, כולל חנויות וירטואליות, חנויות מקוונות וקטלוגים בוואטסאפ. חפשו לפי קטגוריה, עיר או מוצר ופנו ישירות לבית העסק.",
   hebrewPositioning: "כל חנויות הוואטסאפ הכי טובות בישראל",

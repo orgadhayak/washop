@@ -145,6 +145,13 @@ test("the site description covers the homepage online-store synonym", async () =
   assert.match(siteConfig, /חנויות וירטואליות, חנויות מקוונות וקטלוגים בוואטסאפ/);
 });
 
+test("the homepage title and primary heading match observed online-store intent", async () => {
+  const home = await readFile("src/app/page.tsx", "utf8");
+
+  assert.match(home, /אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל/);
+  assert.match(home, /חנויות וירטואליות ועסקים בישראל/);
+});
+
 test("the sitemap records editorial freshness for recently improved categories", async () => {
   const sitemap = await readFile("src/app/sitemap.ts", "utf8");
 

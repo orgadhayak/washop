@@ -26,7 +26,7 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
+    absolute: "וואשופ – אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל",
   },
   description: siteConfig.description,
   alternates: {
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
+    title: "וואשופ – אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל",
     description: siteConfig.description,
     url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "וואשופ אינדקס חנויות ועסקים בוואטסאפ בישראל",
+    title: "וואשופ – אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל",
     description: siteConfig.description,
   },
 };
@@ -135,10 +135,10 @@ export default function Home() {
               {siteConfig.trustLine}
             </div>
             <p className="mt-5 text-sm font-black text-emerald-700">
-              וואשופ אינדקס חנויות וואטסאפ בישראל
+              וואשופ — אינדקס חנויות וירטואליות ומקוונות בוואטסאפ בישראל
             </p>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
-              חנויות ועסקים בישראל שאפשר למצוא וליצור איתם קשר בוואטסאפ
+              חנויות וירטואליות ועסקים בישראל שאפשר למצוא וליצור איתם קשר בוואטסאפ
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-zinc-600 sm:text-xl">
               וואשופ היא ספרייה של חנויות ונותני שירות ישראליים שנבדקים ידנית.
