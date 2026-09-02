@@ -55,6 +55,8 @@ test("production observability is wired into the root layout", async () => {
   assert.match(layout, /@vercel\/speed-insights\/next/);
   assert.match(layout, /<Analytics \/>/);
   assert.match(layout, /<SpeedInsights \/>/);
+  assert.match(layout, /rel="alternate" type="text\/markdown" href="\/llms\.txt"/);
+  assert.match(layout, /rel="describedby" type="text\/markdown" href="\/llms\.txt"/);
   assert.match(llms, /https:\/\/washop\.co\.il\/shops/);
   assert.match(llms, /https:\/\/washop\.co\.il\/llms-full\.txt/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/global/);

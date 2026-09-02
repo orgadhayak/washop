@@ -77,6 +77,10 @@ export default function RootLayout({
 
   return (
     <html lang="he" dir="rtl" className={`${rubik.variable} h-full antialiased`}>
+      <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" />
+        <link rel="describedby" type="text/markdown" href="/llms.txt" />
+      </head>
       <body className="flex min-h-full flex-col text-zinc-950">
         <Header />
         <main className="flex-1">{children}</main>
