@@ -94,6 +94,14 @@ test("the blog index exposes crawlable collection metadata", async () => {
   assert.match(blog, /BreadcrumbList/);
 });
 
+test("the homepage structured data exposes the real directory search action", async () => {
+  const home = await readFile("src/app/page.tsx", "utf8");
+
+  assert.match(home, /"@type": "SearchAction"/);
+  assert.match(home, /urlTemplate: `\$\{siteConfig\.domain\}\/shops\?q=\{search_term_string\}`/);
+  assert.match(home, /query-input/);
+});
+
 test("hidden shops are excluded from public routes and sitemap entries", async () => {
   const shops = await readFile("src/data/shops.ts", "utf8");
   const shopPage = await readFile("src/app/shop/[slug]/page.tsx", "utf8");

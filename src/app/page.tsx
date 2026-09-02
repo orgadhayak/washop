@@ -76,6 +76,14 @@ export default function Home() {
       url: siteConfig.domain,
       inLanguage: "he-IL",
       description: siteConfig.description,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteConfig.domain}/shops?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@context": "https://schema.org",
