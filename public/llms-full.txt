@@ -44,6 +44,9 @@ category page as the current source for the stores shown there.
 - Personalized prints and gifts: https://washop.co.il/category/personalized-prints-gifts
 - Judaica and Shabbat products: https://washop.co.il/category/judaica-shabbat
 - Home design: https://washop.co.il/category/home-design
+- Fashion and shoes: https://washop.co.il/category/fashion-shoes
+- Health and lifestyle: https://washop.co.il/category/health-lifestyle
+- Sports and fitness: https://washop.co.il/category/sports-fitness
 
 ## Approved store pages
 
@@ -62,6 +65,10 @@ catalog links, contact details, categories, and approval status.
 - Liel Gift Boxes and Printing: https://washop.co.il/shop/liel-gifts-and-blocks
   Israeli gift business offering personalized gift boxes, printed products,
   glass blocks, cups, holders, and custom items through a WhatsApp catalog.
+- Bumpers: https://washop.co.il/shop/bumpers
+  Israeli comfort-footwear store in Rishon LeZion offering massage flip-flops,
+  comfort shoes, and collections for women, men, and youth through a WhatsApp
+  catalog.
 
 ## Guides for customers and sellers
 

@@ -8,9 +8,9 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
-  { route: "", priority: 1, lastModified: "2026-09-02" },
+  { route: "", priority: 1, lastModified: "2026-10-20" },
   { route: "/global", priority: 0.8, lastModified: "2026-09-02" },
-  { route: "/shops", priority: 0.7, lastModified: "2026-08-28" },
+  { route: "/shops", priority: 0.7, lastModified: "2026-10-20" },
   { route: "/add-store", priority: 0.7 },
   { route: "/about", priority: 0.7 },
   { route: "/contact", priority: 0.7 },
@@ -23,6 +23,7 @@ const staticRoutes = [
 
 const shopTemplateLastModified = new Date("2026-08-28");
 const categoryContentLastModified: Record<string, Date> = {
+      "fashion-shoes": new Date("2026-10-20"),
       "app-development": new Date("2026-09-02"),
       "website-building": new Date("2026-09-02"),
       "technical-services-businesses": new Date("2026-09-02"),

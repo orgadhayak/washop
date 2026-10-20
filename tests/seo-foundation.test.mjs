@@ -63,11 +63,45 @@ test("production observability is wired into the root layout", async () => {
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/navines/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/revolution-studio/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/liel-gifts-and-blocks/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/shop\/bumpers/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/blog\/hanut-virtualit-bewhatsapp/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/website-building/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/app-development/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/local-services/);
   assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/hair-barbers/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/fashion-shoes/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/health-lifestyle/);
+  assert.match(llmsFull, /https:\/\/washop\.co\.il\/category\/sports-fitness/);
+});
+
+test("Bumpers is restored as an approved featured store", async () => {
+  const shops = await readFile("src/data/shops.ts", "utf8");
+
+  assert.match(
+    shops,
+    /id: "bumpers",[\s\S]*?status: "approved",\s*featured: true,[\s\S]*?updatedAt: "2026-10-20"/,
+  );
+});
+
+test("the footwear category targets Bumpers' real product intent", async () => {
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+  const sitemap = await readFile("src/app/sitemap.ts", "utf8");
+
+  assert.match(categoryPage, /כפכפי עיסוי ונעלי נוחות לנשים ולגברים/);
+  assert.match(categoryPage, /איך בוחרים כפכפים ונעלי נוחות דרך קטלוג וואטסאפ/);
+  assert.match(categoryPage, /איפה אפשר למצוא כפכפי עיסוי בוואטסאפ/);
+  assert.match(categoryPage, /כפכפי עיסוי ונעלי נוחות לנשים ולגברים בוואשופ/);
+  assert.match(sitemap, /"fashion-shoes": new Date\("2026-10-20"\)/);
+});
+
+test("IndexNow is configured from the production sitemap", async () => {
+  const script = await readFile("scripts/indexnow-submit.mjs", "utf8");
+  const keyFile = await readFile("public/ebfaa9c2c0d446219dce757c67b56df9.txt", "utf8");
+
+  assert.equal(keyFile.trim(), "ebfaa9c2c0d446219dce757c67b56df9");
+  assert.match(script, /const sitemapUrl = `\$\{siteUrl\}\/sitemap\.xml`/);
+  assert.match(script, /https:\/\/api\.indexnow\.org\/indexnow/);
+  assert.match(script, /urlList/);
 });
 
 test("global discovery exposes visible FAQ content as structured data", async () => {

@@ -273,10 +273,10 @@ export const shops = [
     hasWashopBenefit: true,
     benefitLabel: "הטבת וואשופ פעילה",
     benefitText: "בקשו את ההטבה כשאתם פונים דרך וואשופ",
-    status: "hidden",
-    featured: false,
+    status: "approved",
+    featured: true,
     createdAt: "2026-07-05",
-    updatedAt: "2026-07-05",
+    updatedAt: "2026-10-20",
   },
 ] satisfies Shop[];
 
