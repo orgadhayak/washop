@@ -45,7 +45,7 @@ export default function ContactPage() {
           >
             <MessageCircle className="size-8 text-emerald-600" aria-hidden="true" />
             <h2 className="mt-4 text-xl font-black text-zinc-950">
-              וואטסאפ / שירות לקוחות
+              פנייה לצוות וואשופ בוואטסאפ
             </h2>
             <p className="mt-2 text-lg font-bold text-emerald-700">
               שליחת הודעה בוואטסאפ

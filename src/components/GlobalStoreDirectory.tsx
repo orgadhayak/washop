@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   BadgeCheck,
@@ -256,6 +257,13 @@ export function GlobalStoreDirectory() {
                 <p className="mt-4 flex-1 text-base leading-7 text-zinc-600">
                   {shop.descriptionEn ?? shop.description}
                 </p>
+
+                <Link
+                  href={`/shop/${shop.slug}`}
+                  className="mt-2 self-start text-sm font-bold text-emerald-700 underline underline-offset-4 hover:text-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                >
+                  View store profile (Hebrew)
+                </Link>
 
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {shop.categories.slice(0, 4).map((item) => (

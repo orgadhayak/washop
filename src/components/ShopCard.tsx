@@ -29,9 +29,15 @@ type ShopCardProps = {
   shop: Shop;
   description?: string;
   surface?: "homepage" | "directory" | "category";
+  categorySlug?: string;
 };
 
-export function ShopCard({ shop, description, surface = "directory" }: ShopCardProps) {
+export function ShopCard({
+  shop,
+  description,
+  surface = "directory",
+  categorySlug,
+}: ShopCardProps) {
   const chatMessage = shop.hasWashopBenefit
     ? "שלום, הגעתי דרך וואשופ ורציתי לשאול על ההטבה ללקוחות וואשופ."
     : siteConfig.shopMessage;
@@ -53,6 +59,14 @@ export function ShopCard({ shop, description, surface = "directory" }: ShopCardP
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm shadow-emerald-950/5 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
       <Link
         href={`/shop/${shop.slug}`}
+        onClick={() => {
+          if (surface === "category") {
+            trackSafeEvent("category_shop_click", {
+              category_slug: categorySlug,
+              shop_slug: shop.slug,
+            });
+          }
+        }}
         className="group block cursor-pointer border-b border-emerald-200 bg-white p-4 transition hover:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-inset sm:p-5"
       >
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">

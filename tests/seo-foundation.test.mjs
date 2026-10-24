@@ -5,6 +5,7 @@ import test from "node:test";
 const requiredEvents = [
   "shop_directory_view",
   "category_view",
+  "category_shop_click",
   "shop_profile_view",
   "whatsapp_seller_click",
   "add_store_start",
@@ -44,6 +45,18 @@ test("canonical host stays HTTPS and non-www", async () => {
   const sitemap = await readFile("src/app/sitemap.ts", "utf8");
   assert.match(site, /domain:\s*"https:\/\/washop\.co\.il"/);
   assert.match(sitemap, /siteConfig\.domain/);
+});
+
+test("discovery pages expose crawlable store profiles and measurable category clicks", async () => {
+  const globalDirectory = await readFile("src/components/GlobalStoreDirectory.tsx", "utf8");
+  const categoryPage = await readFile("src/app/category/[slug]/page.tsx", "utf8");
+  const shopCard = await readFile("src/components/ShopCard.tsx", "utf8");
+
+  assert.match(globalDirectory, /href=\{`\/shop\/\$\{shop\.slug\}`\}/);
+  assert.match(globalDirectory, /View store profile \(Hebrew\)/);
+  assert.match(categoryPage, /categorySlug=\{category\.slug\}/);
+  assert.match(shopCard, /trackSafeEvent\("category_shop_click"/);
+  assert.match(shopCard, /category_slug: categorySlug/);
 });
 
 test("production observability is wired into the root layout", async () => {

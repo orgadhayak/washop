@@ -3,6 +3,7 @@ import { track } from "@vercel/analytics";
 export const analyticsEventNames = [
   "shop_directory_view",
   "category_view",
+  "category_shop_click",
   "shop_profile_view",
   "whatsapp_seller_click",
   "add_store_start",
