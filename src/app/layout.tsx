@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  verification: {
+    yandex: "8b2a03f916360b9d",
+  },
   alternates: {
     canonical: "/",
   },

@@ -8,13 +8,13 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
-  { route: "", priority: 1, lastModified: "2026-10-20" },
+  { route: "", priority: 1, lastModified: "2026-11-10" },
   { route: "/global", priority: 0.8, lastModified: "2026-09-02" },
   { route: "/shops", priority: 0.7, lastModified: "2026-10-20" },
   { route: "/add-store", priority: 0.7 },
   { route: "/about", priority: 0.7 },
   { route: "/contact", priority: 0.7 },
-  { route: "/blog", priority: 0.7, lastModified: "2026-08-28" },
+  { route: "/blog", priority: 0.7, lastModified: "2026-11-10" },
   { route: "/partners", priority: 0.7 },
   { route: "/privacy", priority: 0.7 },
   { route: "/terms", priority: 0.7 },
@@ -23,6 +23,11 @@ const staticRoutes = [
 
 const shopTemplateLastModified = new Date("2026-08-28");
 const categoryContentLastModified: Record<string, Date> = {
+      "hair-barbers": new Date("2026-11-10"),
+      "barber-equipment-accessories": new Date("2026-11-10"),
+      "courses-training": new Date("2026-11-10"),
+      "hair-care-products": new Date("2026-11-10"),
+      "beauty-care": new Date("2026-11-10"),
       "fashion-shoes": new Date("2026-10-20"),
       "app-development": new Date("2026-09-02"),
       "website-building": new Date("2026-09-02"),
