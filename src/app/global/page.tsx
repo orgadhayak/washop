@@ -100,6 +100,16 @@ const faqItems = [
     answer:
       "No. Submission does not guarantee approval. WaShop reviews stores manually and may decline or remove stores that do not fit the standard.",
   },
+  {
+    question: "How do I find a WhatsApp catalog for a store?",
+    answer:
+      "Search the directory by store name, product, category or location. Use Open catalog on the matching store card to view the seller's catalog, or Chat with store to ask a question. Confirm the item and current availability with that seller.",
+  },
+  {
+    question: "Can I contact the stores in English?",
+    answer:
+      "Check the languages listed on the store card and ask the seller before placing an order. The English directory helps you discover stores, but does not guarantee English-speaking service or an English catalog.",
+  },
 ];
 
 export default function GlobalPage() {
@@ -233,6 +243,49 @@ export default function GlobalPage() {
       </section>
 
       <GlobalStoreDirectory />
+
+      <section aria-labelledby="catalog-shopping-heading" className="border-b border-emerald-950/10 bg-emerald-50/50 py-12 sm:py-16">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-black text-emerald-700">Before your first message</p>
+          <h2 id="catalog-shopping-heading" className="mt-2 text-3xl font-black leading-tight text-zinc-950">
+            From a WhatsApp catalog to a clear order
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-emerald-200 bg-white p-6">
+              <h3 className="text-xl font-black">Choose the exact item or service</h3>
+              <p className="mt-3 leading-8 text-zinc-700">
+                Use the category and location filters above, then open a store&apos;s
+                catalog. Note the product name, size, quantity or service you need.
+                For a personalized gift, include the occasion and required date;
+                for a digital service, describe the task you want to complete.
+                A specific request helps the seller check whether they can help.
+              </p>
+              <p className="mt-3 leading-8 text-zinc-700">
+                Store profiles may be in Hebrew. Check the language information on
+                each card, and ask whether the seller can assist in your preferred
+                language. If the item is unclear, request a current photo or a
+                written description before confirming an order.
+              </p>
+            </div>
+            <div className="rounded-xl border border-emerald-200 bg-white p-6">
+              <h3 className="text-xl font-black">A message you can adapt</h3>
+              <blockquote className="mt-3 border-l-4 border-emerald-300 pl-4 leading-8 text-zinc-700">
+                Hello, I found your store on WaShop. I am interested in [item or
+                service] in [size, option or quantity]. Is it available? Can you
+                confirm the total price, delivery to [city and country], expected
+                timing and how to place the order? Can we communicate in English?
+              </blockquote>
+              <p className="mt-3 leading-8 text-zinc-700">
+                Replace the brackets with your details. Before payment, ask for a
+                written summary of the selected items, delivery charge, agreed
+                timing and return terms. For a service, confirm the scope and what
+                will be delivered. Keep the seller&apos;s confirmation in the same
+                conversation so you can refer to it later.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="how-it-works" className="bg-white py-12 sm:py-16">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">

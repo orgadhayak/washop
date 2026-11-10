@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
   { route: "", priority: 1, lastModified: "2026-11-10" },
-  { route: "/global", priority: 0.8, lastModified: "2026-09-02" },
+  { route: "/global", priority: 0.8, lastModified: "2026-11-10" },
   { route: "/shops", priority: 0.7, lastModified: "2026-10-20" },
   { route: "/add-store", priority: 0.7 },
   { route: "/about", priority: 0.7 },
@@ -29,8 +29,9 @@ const categoryContentLastModified: Record<string, Date> = {
       "hair-care-products": new Date("2026-11-10"),
       "beauty-care": new Date("2026-11-10"),
       "fashion-shoes": new Date("2026-10-20"),
-      "app-development": new Date("2026-09-02"),
-      "website-building": new Date("2026-09-02"),
+      "app-development": new Date("2026-11-10"),
+      "website-building": new Date("2026-11-10"),
+      "software-digital": new Date("2026-11-10"),
       "technical-services-businesses": new Date("2026-09-02"),
 };
 

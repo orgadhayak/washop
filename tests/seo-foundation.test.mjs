@@ -226,8 +226,8 @@ test("the sitemap records editorial freshness for recently improved categories",
   const sitemap = await readFile("src/app/sitemap.ts", "utf8");
 
   assert.match(sitemap, /categoryContentLastModified/);
-  assert.match(sitemap, /"app-development": new Date\("2026-09-02"\)/);
-  assert.match(sitemap, /"website-building": new Date\("2026-09-02"\)/);
+  assert.match(sitemap, /"app-development": new Date\("2026-11-10"\)/);
+  assert.match(sitemap, /"website-building": new Date\("2026-11-10"\)/);
   assert.match(sitemap, /"technical-services-businesses": new Date\("2026-09-02"\)/);
   assert.match(sitemap, /getSitemapCategoryLastModified\(category\.slug\)/);
 });
