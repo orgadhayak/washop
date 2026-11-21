@@ -146,21 +146,21 @@ export default function Home() {
               לעסק. וואשופ אינה חנות, מערכת סליקה או צד בעסקה.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/shops"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
-              >
-                <Store className="size-5" aria-hidden="true" />
-                חנויות וואטסאפ בישראל
-              </Link>
               <TrackedActionLink
                 href="/add-store"
                 eventName="seller_cta_click"
                 eventProperties={{ destination: "/add-store", source: "homepage_hero", locale: "he" }}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+              >
+                <Store className="size-5" aria-hidden="true" />
+                הוספת עסק לוואשופ
+              </TrackedActionLink>
+              <Link
+                href="/shops"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
-                שליחת חנות וואטסאפ לבדיקה
-              </TrackedActionLink>
+                חנויות וואטסאפ בישראל
+              </Link>
               <TrackedActionLink
                 href="/global"
                 eventName="language_or_global_switch"

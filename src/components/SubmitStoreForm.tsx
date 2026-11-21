@@ -11,6 +11,7 @@ type FormState = {
   phone: string;
   email: string;
   city: string;
+  catalogUrl: string;
   description: string;
   legalConfirmed: boolean;
   confirmEmail: string;
@@ -25,6 +26,7 @@ const initialState: FormState = {
   phone: "",
   email: "",
   city: "",
+  catalogUrl: "",
   description: "",
   legalConfirmed: false,
   confirmEmail: "",
@@ -60,14 +62,16 @@ export function SubmitStoreForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(form),
       });
-      const result = (await response.json()) as { message?: string; error?: string };
+      const result = (await response.json()) as { success?: boolean; message?: string; error?: string };
 
       if (!response.ok) {
         throw new Error(result.error ?? "לא הצלחנו לשלוח את הטופס.");
       }
 
       setStatus("success");
-      trackSafeEvent("add_store_complete", { source: "add_store", locale: "he" });
+      if (result.success) {
+        trackSafeEvent("add_store_complete", { source: "add_store", locale: "he" });
+      }
       setMessage(result.message ?? successMessage);
       setForm(initialState);
     } catch (error) {
@@ -95,10 +99,19 @@ export function SubmitStoreForm() {
       </div>
 
       <div className="rounded-lg bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-900">
-        מייל חובה בלבד. כל שאר הפרטים יעזרו לנו להבין את העסק, אבל אינם חובה.
-        אין צורך לבחור קטגוריות. צוות וואשופ יעבור על החנות וישייך אותה
-        לקטגוריות הנכונות לאחר בדיקה.
+        מתחילים באימייל ליצירת קשר. אפשר להוסיף פרטים על העסק וקישור לקטלוג
+        כדי לעזור לנו לבדוק את הבקשה; השדות האלה אינם חובה. אין צורך לבחור
+        קטגוריות.
       </div>
+
+      <TextInput
+        label="אימייל ליצירת קשר"
+        value={form.email}
+        onChange={(value) => updateField("email", value)}
+        inputMode="email"
+        dir="ltr"
+        required
+      />
 
       <div className="grid gap-4 md:grid-cols-2">
         <TextInput
@@ -123,12 +136,10 @@ export function SubmitStoreForm() {
           onChange={(value) => updateField("city", value)}
         />
         <TextInput
-          label="אימייל"
-          value={form.email}
-          onChange={(value) => updateField("email", value)}
-          inputMode="email"
+          label="קישור לקטלוג או לאתר (אם יש)"
+          value={form.catalogUrl}
+          onChange={(value) => updateField("catalogUrl", value)}
           dir="ltr"
-          required
         />
       </div>
 
@@ -208,10 +219,12 @@ function TextInput({
     <label className="block">
       <span className="text-sm font-black text-zinc-950">{label}</span>
       <input
+        type={inputMode === "email" ? "email" : inputMode === "tel" ? "tel" : "text"}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         required={required}
         inputMode={inputMode}
+        autoComplete={inputMode === "email" ? "email" : inputMode === "tel" ? "tel" : undefined}
         dir={dir}
         className="mt-2 h-12 w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 text-zinc-950 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
       />

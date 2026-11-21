@@ -60,8 +60,8 @@ export const blogPosts: BlogPost[] = [
     articleCtaTitle: "יש לכם חנות עם קטלוג פעיל?",
     articleCtaDescription:
       "וואשופ הוא אינדקס לגילוי חנויות וואטסאפ. אפשר להגיש חנות לבדיקה, ואם תאושר היא תופיע באתר עם קישור ישיר לעסק. וואשופ אינו שולח קמפיינים בשם החנות.",
-    articleCtaLabel: "איך מגישים חנות לוואשופ",
-    articleCtaHref: "/blog/lefarsem-hanut-whatsapp-bewashop",
+    articleCtaLabel: "שליחת עסק לבדיקה בוואשופ",
+    articleCtaHref: "/add-store",
     relatedLinks: [
       { label: "איך פותחים חנות וירטואלית בוואטסאפ", href: "/blog/hanut-virtualit-bewhatsapp" },
       { label: "שירות לקוחות בוואטסאפ לעסקים", href: "/blog/sherut-lakohot-bewhatsapp-laasakim" },

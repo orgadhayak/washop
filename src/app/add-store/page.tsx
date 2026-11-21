@@ -5,10 +5,10 @@ import { SubmitStoreForm } from "@/components/SubmitStoreForm";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "פרסום חנות וואטסאפ – שליחת עסק לבדיקה | WaShop",
+    absolute: "הוספת עסק או חנות וואטסאפ לוואשופ | שליחת בקשה",
   },
   description:
-    "שלחו את חנות הוואטסאפ שלכם לבדיקה ידנית בוואשופ. עסקים מתאימים יכולים להצטרף לאינדקס עם פרטי העסק וקישור ישיר לקטלוג או לשיחה.",
+    "יש לכם עסק שמוכר או נותן שירות דרך וואטסאפ? שלחו פרטים לבדיקה ידנית בוואשופ. מייל הוא הפרט היחיד שחובה למלא; עסקים מתאימים עשויים להופיע באינדקס.",
   alternates: {
     canonical: "/add-store",
   },
@@ -62,18 +62,23 @@ export default function AddStorePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
-        <div>
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:px-8">
+        <div className="lg:col-start-1 lg:row-start-1">
           <p className="text-sm font-black text-emerald-700">הצטרפות לוואשופ</p>
           <h1 className="mt-2 text-4xl font-black leading-tight text-zinc-950 sm:text-5xl">
-            פרסום והוספת חנות וואטסאפ לוואשופ
+            הוספת עסק או חנות וואטסאפ לוואשופ
           </h1>
           <p className="mt-5 text-lg leading-9 text-zinc-600">
-            יש לכם חנות וואטסאפ איכותית או רעיון לחנות כזו? מייל חובה בלבד.
-            כל שאר הפרטים יעזרו לנו להבין את העסק, אבל אינם חובה.
+            מוכרים מוצרים או נותנים שירות דרך וואטסאפ? שלחו פרטים כדי שנבדוק
+            אם העסק מתאים להופיע בוואשופ. מייל הוא הפרט היחיד שחובה למלא.
           </p>
+        </div>
 
-          <div className="mt-6 space-y-3">
+        <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <SubmitStoreForm />
+        </div>
+
+        <div className="space-y-3 lg:col-start-1 lg:row-start-2">
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-7 text-emerald-900">
               <div className="mb-2 font-black">
                 אין לכם עדיין קטלוג וואטסאפ? אין בעיה.
@@ -115,10 +120,7 @@ export default function AddStorePage() {
               </div>
               הטופס נשלח לצוות וואשופ.
             </div>
-          </div>
         </div>
-
-        <SubmitStoreForm />
       </div>
 
       <div className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
