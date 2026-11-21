@@ -86,6 +86,7 @@ export default function BlogPage() {
           <div className="rounded-xl border border-emerald-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-black text-zinc-950">חשיפה וצמיחה</h2>
             <div className="mt-3 grid gap-2 text-sm font-bold text-emerald-700">
+              <Link href="/blog/shivuk-whatsapp-laasakim" className="hover:text-emerald-800">שיווק בוואטסאפ לעסקים</Link>
               <Link href="/blog/mochrei-whatsapp-indeks-bereshet" className="hover:text-emerald-800">מאינדקס ברשת לפניות ישירות</Link>
               <Link href="/blog/mochrei-whatsapp-zechu-lehashafah" className="hover:text-emerald-800">חשיפה למוכרים בוואטסאפ</Link>
               <Link href="/blog/tochnit-hashutafim-shel-washop" className="hover:text-emerald-800">תוכנית השותפים של וואשופ</Link>
