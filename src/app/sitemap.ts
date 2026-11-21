@@ -22,6 +22,9 @@ const staticRoutes = [
 ];
 
 const shopTemplateLastModified = new Date("2026-08-28");
+const shopContentLastModified: Record<string, Date> = {
+  bumpers: new Date("2026-11-21"),
+};
 const categoryContentLastModified: Record<string, Date> = {
       "hair-barbers": new Date("2026-11-10"),
       "barber-equipment-accessories": new Date("2026-11-10"),
@@ -67,7 +70,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .map((shop) => ({
       url: `${siteConfig.domain}/shop/${shop.slug}`,
       lastModified: new Date(
-        Math.max(new Date(shop.updatedAt).getTime(), shopTemplateLastModified.getTime()),
+        Math.max(
+          new Date(shop.updatedAt).getTime(),
+          shopTemplateLastModified.getTime(),
+          shopContentLastModified[shop.slug]?.getTime() ?? 0,
+        ),
       ),
       changeFrequency: "weekly" as const,
       priority: 0.8,

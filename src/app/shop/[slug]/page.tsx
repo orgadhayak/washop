@@ -240,6 +240,39 @@ export default async function ShopPage({ params }: ShopPageProps) {
                   </div>
                 </div>
 
+                {shop.slug === "bumpers" ? (
+                  <section className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50/50 p-5">
+                    <h2 className="text-xl font-black text-zinc-950">
+                      איך בוחרים כפכפי באמפרס דרך הקטלוג?
+                    </h2>
+                    <p className="mt-3 leading-8 text-zinc-700">
+                      באמפרס מציגה כפכפי עיסוי ונעלי נוחות לנשים, לגברים ולנוער.
+                      כדי לברר דגם מתאים, פתחו את הקטלוג ושמרו את שם הדגם או
+                      צילום הפריט שמעניין אתכם. שלחו לחנות את המידה שאתם נועלים
+                      בדרך כלל, ושאלו אם קיימת טבלת מידות לדגם המסוים ומהן
+                      אפשרויות ההחלפה אם המידה אינה מתאימה.
+                    </p>
+                    <p className="mt-3 leading-8 text-zinc-700">
+                      אם אתם מחפשים צבע או שימוש מסוים, ציינו זאת בשיחה ובקשו
+                      אישור לזמינות, למחיר הסופי, לזמן האספקה ולעלות המשלוח.
+                      החנות ממוקמת בראשון לציון ומציינת משלוחים ברחבי הארץ;
+                      פרטי הזמנה ואפשרויות איסוף, אם קיימות, יש לברר ישירות
+                      מולה. וואשופ אינה מפרסמת כאן מלאי או מחיר לדגם מסוים.
+                    </p>
+                    <p className="mt-3 leading-8 text-zinc-700">
+                      אפשר לשלוח: ״שלום, ראיתי בקטלוג את דגם ___. אני מחפש/ת
+                      מידה ___ וצבע ___. האם הדגם זמין, מה המחיר כולל משלוח
+                      לעיר ___, ומה עושים אם המידה אינה מתאימה?״
+                    </p>
+                    <Link
+                      href="/category/fashion-shoes"
+                      className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-black text-emerald-800 ring-1 ring-emerald-200 hover:bg-emerald-50"
+                    >
+                      עוד על חנויות הנעלה בוואשופ
+                    </Link>
+                  </section>
+                ) : null}
+
                 <section className="mt-8 rounded-xl border border-emerald-200 bg-white p-5">
                   <h2 className="text-xl font-black text-zinc-950">
                     מדריכים שימושיים לחנויות וואטסאפ
