@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import {
   BadgeCheck,
   Handshake,
@@ -67,6 +68,23 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+
+        <section className="mt-10 rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+          <h2 className="text-2xl font-black text-zinc-950">בעלי עסק? הצטרפו לאינדקס של וואשופ</h2>
+          <p className="mt-3 leading-8 text-zinc-700">
+            אם אתם מוכרים מוצרים או נותנים שירות דרך וואטסאפ, אפשר לשלוח את העסק לבדיקה.
+            עסק שאושר יכול להופיע עם תיאור, שיוך לקטגוריות וקישור ישיר לפנייה.
+            אפשר להתחיל במייל גם אם הקטלוג עדיין בהכנה; הפרסום נעשה לאחר בדיקה ידנית.
+          </p>
+          <TrackedActionLink
+            href="/add-store"
+            eventName="seller_cta_click"
+            eventProperties={{ destination: "/add-store", source: "about_seller_cta", locale: "he" }}
+            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-base font-black text-white transition hover:bg-emerald-700"
+          >
+            הגשת העסק לפרסום בוואשופ
+          </TrackedActionLink>
+        </section>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Link

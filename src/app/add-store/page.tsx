@@ -124,6 +124,22 @@ export default function AddStorePage() {
       </div>
 
       <div className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+          <h2 className="text-2xl font-black text-zinc-950">מה נותן פרסום עסק באינדקס וואשופ?</h2>
+          <p className="mt-3 leading-8 text-zinc-700">
+            כרטיס עסק מרכז את מה שהלקוח צריך כדי להכיר אתכם ולפתוח שיחה: שם העסק,
+            תיאור הפעילות, תחום ואזור פעילות, וקישור לקטלוג או לוואטסאפ.
+            השיוך לקטגוריות מאפשר למצוא את העסק כחלק מספריית וואשופ, גם כשלא מכירים מראש את שמו.
+            אתם ממשיכים לנהל את הפניות וההזמנות ישירות מול הלקוחות.
+          </p>
+          <h3 className="mt-5 text-xl font-black text-zinc-950">מה קורה אחרי ששולחים פרטים?</h3>
+          <ol className="mt-3 list-decimal space-y-2 ps-6 leading-8 text-zinc-700">
+            <li>הבקשה נשלחת לצוות וואשופ לבדיקה ידנית של העסק והתאמתו לאתר.</li>
+            <li>אם חסר מידע, ניתן להשלים תיאור, פרטי קשר או קישור לקטלוג מול הצוות.</li>
+            <li>לאחר אישור, הצוות משייך את העסק לקטגוריות המתאימות ומכין את הפרסום.</li>
+          </ol>
+          <p className="mt-3 text-sm leading-7 text-zinc-600">הגשת בקשה אינה אישור אוטומטי. היקף החשיפה והפניות תלוי בפעילות האתר ובעניין של המבקרים.</p>
+        </section>
         <div className="grid gap-5 lg:grid-cols-2">
           <section className="rounded-xl border border-emerald-200 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-zinc-950">
