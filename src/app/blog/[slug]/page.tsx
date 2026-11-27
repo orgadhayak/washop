@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 import { siteConfig } from "@/lib/site";
 import { absoluteUrl } from "@/lib/utils";
@@ -147,6 +148,20 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           {post.title}
         </h1>
         <p className="mt-5 text-xl leading-9 text-zinc-600">{post.excerpt}</p>
+        {post.showSignupIntro ? (
+          <aside className="mt-6 rounded-lg border border-emerald-200 bg-emerald-50 p-5">
+            <p className="font-black text-zinc-950">{post.articleCtaTitle}</p>
+            <p className="mt-2 leading-7 text-zinc-700">{post.articleCtaDescription}</p>
+            <TrackedActionLink
+              href="/add-store"
+              eventName="seller_cta_click"
+              eventProperties={{ destination: "/add-store", source: "blog_intro", route: `/blog/${post.slug}`, locale }}
+              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-sm font-black text-white transition hover:bg-emerald-700"
+            >
+              {post.articleCtaLabel}
+            </TrackedActionLink>
+          </aside>
+        ) : null}
         {post.showTableOfContents && post.sections?.length ? (
           <nav
             aria-label={isEnglish ? "Table of contents" : "תוכן עניינים"}
