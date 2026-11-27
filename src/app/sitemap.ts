@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
   { route: "", priority: 1, lastModified: "2026-11-10" },
-  { route: "/global", priority: 0.8, lastModified: "2026-11-10" },
+  { route: "/global", priority: 0.8, lastModified: "2026-11-27" },
   { route: "/shops", priority: 0.7, lastModified: "2026-10-20" },
   { route: "/add-store", priority: 0.7, lastModified: "2026-11-27" },
   { route: "/about", priority: 0.7, lastModified: "2026-11-27" },

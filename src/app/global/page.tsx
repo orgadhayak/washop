@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     languages: {
       en: "/global",
       he: "/",
-      "x-default": "/global",
+      "x-default": "/",
     },
   },
   openGraph: {
@@ -80,6 +80,16 @@ const sellerBenefits = [
 ];
 
 const faqItems = [
+  {
+    question: "How do I submit my business to WaShop?",
+    answer:
+      "Use the seller application on this page. Provide your store name, country, WhatsApp number, a short description and contact details, then confirm the review conditions. WaShop reviews submissions manually before deciding whether to publish a listing.",
+  },
+  {
+    question: "Do I need a website or WhatsApp catalog to apply?",
+    answer:
+      "A website and WhatsApp catalog link are optional in the application. You do need a WhatsApp number and a clear description of your business. Add catalog or website links if you have them to help us review your submission.",
+  },
   {
     question: "Is WaShop a marketplace?",
     answer:
@@ -205,21 +215,35 @@ export default function GlobalPage() {
               adding a marketplace middleman.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#stores"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
-              >
-                Browse reviewed WhatsApp stores
-              </a>
               <TrackedActionLink
                 href="#apply"
                 eventName="seller_cta_click"
                 eventProperties={{ destination: "/global#apply", source: "global_hero", locale: "en" }}
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-600 px-6 text-base font-black text-white shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+              >
+                Submit your business
+              </TrackedActionLink>
+              <a
+                href="#stores"
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-emerald-200 bg-white px-6 text-base font-black text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
               >
-                Apply as a seller
-              </TrackedActionLink>
+                Browse reviewed WhatsApp stores
+              </a>
             </div>
+            <p className="mt-4 text-sm leading-7 text-zinc-600">
+              Run a business on WhatsApp? Apply for a reviewed listing so customers
+              can discover your business and contact you directly.
+            </p>
+            <TrackedActionLink
+              href="/add-store"
+              eventName="seller_cta_click"
+              eventProperties={{ destination: "/add-store", source: "global_hero_hebrew", locale: "he" }}
+              lang="he"
+              dir="rtl"
+              className="mt-2 inline-flex min-h-11 items-center text-sm font-bold text-emerald-800 underline underline-offset-4"
+            >
+              בעלי עסק בישראל? להגשת העסק בעברית
+            </TrackedActionLink>
           </div>
 
           <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm shadow-emerald-950/5">
@@ -347,10 +371,16 @@ export default function GlobalPage() {
       <section className="bg-white py-12 sm:py-16">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
-            <p className="text-sm font-black text-emerald-700">Seller rules</p>
+            <p className="text-sm font-black text-emerald-700">Join WaShop</p>
             <h2 className="mt-2 text-3xl font-black leading-tight text-zinc-950">
-              Apply only if the store is real, legal and clear
+              Submit your business for review
             </h2>
+            <p className="mt-4 text-base leading-8 text-zinc-600">
+              Tell us what your business offers, where it operates and how
+              customers can reach you on WhatsApp. A catalog or website link is
+              optional. After you submit, the WaShop team reviews the details
+              before deciding whether to publish your listing.
+            </p>
             <p className="mt-4 text-base leading-8 text-zinc-600">
               Submission does not guarantee approval or placement. WaShop may
               approve, decline, edit or remove a listing at any time. Sellers
